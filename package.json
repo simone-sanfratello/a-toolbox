@@ -1,0 +1,22 @@
+{
+    "name": "a-toolbox",
+    "version": "0.0.1",
+    "description": "lightweight tools",
+    "keywords": ["tools", "lib", "misc"],
+    "url": "http://github.com/simone-sanfratello/a-toolbox",
+    "author": "Simone Sanfratello <simone.sanfra@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/simone-sanfratello/a-toolbox.git"
+    },
+    "engines": {
+        "node": ">= 0.10.x"
+    },
+    "scripts": {
+        "test": "node test.js"
+    },
+    "files": ["main.js"],
+    "main": "main",
+    "dependencies": { }
+}
