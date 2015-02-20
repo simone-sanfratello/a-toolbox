@@ -22,8 +22,11 @@ var tools = require('a-toolbox.js');
 
 ## Tools on Browser
 
+```html
+
 <script src="https://raw.githubusercontent.com/simone-sanfratello/a-toolbox/master/main.js"></script>
 
+```
 
 #### tasks (promises) async manage
 
