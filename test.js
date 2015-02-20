@@ -38,3 +38,5 @@ for(var i  in _asyncOperationTimeout) {
 //>done task # 1
 //>done task # 3
 //>well done
+
+console.log(tools.math.rnd(100));

@@ -12,7 +12,7 @@ Javascript lightweight tools
 
     $ npm install a-toolbox
 
-## Tools
+## Tools on Node.js
 
 ```js
 
@@ -20,28 +20,10 @@ var tools = require('a-toolbox.js');
 
 ```
 
-#### add replaceAll in String prototype
+## Tools on Browser
 
-```js
+<script src="https://raw.githubusercontent.com/simone-sanfratello/a-toolbox/master/main.js"></script>
 
-console.log("no replace all in js native code that replace all the replace".replaceAll(' ', '_'));
-
-//> no_replace_all_in_js_native_code_that_replace_all_the_replace
-
-```
-
-#### array function management, inspired to goog.array (to be continued)
-
-```js
-
-var _array = ['very', 'annoying', 'remove', 'elements', 'in', 'js', 'arrays'];
-tools.array.remove(_array, 'very');
-tools.array.remove(_array, 'annoying');
-console.log(_array);
-
-//>[ 'remove', 'elements', 'in', 'js', 'arrays' ]
-
-```
 
 #### tasks (promises) async manage
 
@@ -72,6 +54,29 @@ for(var i  in _asyncOperationTimeout) {
 //>done task # 1
 //>done task # 3
 //>well done
+
+```
+
+#### add replaceAll in String prototype
+
+```js
+
+console.log("no replace all in js native code that replace all the replace".replaceAll(' ', '_'));
+
+//> no_replace_all_in_js_native_code_that_replace_all_the_replace
+
+```
+
+#### array function management, inspired to goog.array (to be continued)
+
+```js
+
+var _array = ['very', 'annoying', 'remove', 'elements', 'in', 'js', 'arrays'];
+tools.array.remove(_array, 'very');
+tools.array.remove(_array, 'annoying');
+console.log(_array);
+
+//>[ 'remove', 'elements', 'in', 'js', 'arrays' ]
 
 ```
 
