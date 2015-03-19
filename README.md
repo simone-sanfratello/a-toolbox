@@ -28,6 +28,8 @@ var tools = require('a-toolbox.js');
 
 ```
 
+## Tools
+
 #### tasks (promises) async manage
 
 ```js
@@ -60,7 +62,40 @@ for(var i  in _asyncOperationTimeout) {
 
 ```
 
-#### add replaceAll in String prototype
+#### object merge
+
+```js
+
+var _merge = {a: 1, b: 2};
+console.log('to merge', _merge);
+tools.object.merge(_merge, {a: 4, c: { d: 8, e: 9}});
+console.log('merged', _merge);
+
+//>to merge { a: 1, b: 2 }
+//>merged { a: 4, b: 2, c: { d: 8, e: 9 } }
+
+```
+
+#### random
+
+```js
+
+console.log('random number from 1 to 100:', tools.random.number(1, 100));
+
+//>random number from 1 to 100: 14
+
+console.log('random string of 8 chars, default set:', tools.random.string(8));
+
+//>random string of 8 chars, default set: dcglhcvr
+
+var _hex = '0123456789abcdef';
+console.log('random string of 16 chars, custom set (hex)', _hex, ':', tools.random.string(16, _hex));
+
+//>random string of 16 chars, custom set (hex) 0123456789abcdef : b4a61c1af5360fd4
+
+```
+
+#### replaceAll in String prototype
 
 ```js
 
@@ -70,7 +105,7 @@ console.log("no replace all in js native code that replace all the replace".repl
 
 ```
 
-#### array function management, inspired to goog.array (to be continued)
+#### array remove
 
 ```js
 
@@ -80,6 +115,99 @@ tools.array.remove(_array, 'annoying');
 console.log(_array);
 
 //>[ 'remove', 'elements', 'in', 'js', 'arrays' ]
+
+```
+
+#### array removeAt
+
+```js
+
+tools.array.removeAt(_array, 4);
+console.log(_array);
+
+//>[ 'remove', 'elements', 'in', 'arrays' ]
+
+```
+
+#### array first and last
+
+```js
+
+console.log('last element is', tools.array.last(_array));
+
+//>last element is js
+
+console.log('first element is', tools.array.first(_array));
+
+//>first element is remove
+
+```
+
+#### array contains
+
+```js
+
+console.log('contains js?', tools.array.contains(_array, 'js'));
+
+//>contains js? true
+
+console.log('contains ruby?', tools.array.contains(_array, 'ruby'));
+
+//>contains ruby? false
+
+```
+
+#### array insert
+
+```js
+
+tools.array.insert(_array, 0, 'something');
+console.log('inserted something', _array);
+
+//>inserted something [ 'something', 'remove', 'elements', 'in', 'js' ]
+
+```
+
+#### array get random element
+
+```js
+
+console.log('get random element:', tools.array.randomElement(_array));
+
+//>get random element element: in
+
+```
+
+#### array concat
+
+```js
+
+console.log('concat more arrays', tools.array.concat(_array, [0,1,2,3], ['a','b','c']));
+
+//>concat more arrays [ 'something',
+//>  'remove',
+//>  'elements',
+//>  'in',
+//>  'js',
+//>  0,
+//>  1,
+//>  2,
+//>  3,
+//>  'a',
+//>  'b',
+//>  'c' ]
+
+```
+
+#### array empty
+When you need to keep references
+
+```js
+
+tools.array.empty(_array);
+console.log('empty it', _array);
+
+//>empty it []
 
 ```
 
@@ -106,3 +234,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+

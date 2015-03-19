@@ -11,10 +11,10 @@ var tools = {
         /**
          * remove an element from array
          * @param {Array} array
-         * @param {*} value
+         * @param {*} item
          */
-        remove: function (array, value) {
-            var _index = array.indexOf(value);
+        remove: function (array, item) {
+            var _index = array.indexOf(item);
             if (_index != -1)
                 array.splice(_index, 1);
         },
@@ -27,13 +27,29 @@ var tools = {
             return Array.prototype.splice.call(array, index, 1).length == 1;
         },
         /**
+         * get last element of array or null
+         * @param {Array} array
+         * @returns {*} last element of the array or null
+         */
+        last: function (array) {
+            return array[array.length - 1] || null;
+        },
+        /**
+         * get first element of array or null
+         * @param {Array} array
+         * @returns {*} last element of the array or null
+         */
+        first: function (array) {
+            return array[0];
+        },
+        /**
          * check if array contains an element
          * @param {Array} array
-         * @param {*} value
+         * @param {*} item
          * @returns {Boolean} 
          */
-        contains: function (array, value) {
-            return array.indexOf(value) != -1;
+        contains: function (array, item) {
+            return array.indexOf(item) != -1;
         },
         /**
          * insert an item into array at index position 
@@ -42,6 +58,9 @@ var tools = {
          * @param {*} item
          */
         insert: function (array, index, item) {
+            if(index > array.length)
+                index = array.length;
+            
             if (array[index])
                 array.splice(index, 0, item);
             else
@@ -55,7 +74,7 @@ var tools = {
          */
         randomElement: function (array, not) {
             if (!not)
-                return array[tools.math.random(0, array.length - 1)];
+                return array[tools.random.number(0, array.length - 1)];
             else {
                 var _item, i = 0;
                 do {
@@ -72,35 +91,74 @@ var tools = {
          */
         concat: function (args) {
             return Array.prototype.concat.apply(Array.prototype, arguments);
+        },
+        /**
+         * empty - need to not break references
+         */
+        empty: function (array) {
+            while(array[0])
+                array.pop();
         }
     },
     /**
-     * math (?) utils
+     * random utils
      */
-    math: {
+    random: {
         /**
-         * return random int from 0 to val
-         * @param {number} val max value
+         * get random int from 0 to val
+         * @param {number} val max item
          * @returns {number}
          */
         rnd: function (val) {
-            if(!val)
+            if (!val)
                 return 0;
             return Math.floor(val * (Math.random() % 1));
         },
         /**
-         * return random int from min to max
+         * get random int from min to max
          * @param {number} min
          * @param {number} max
          * @returns {number}
          */
-        random: function (min, max) {
+        number: function (min, max) {
             if (!max)
-                return tools.math.rnd(min);
+                return tools.random.rnd(min);
 
             min = Math.floor(min);
             max = Math.floor(max);
-            return min + tools.math.rnd(1 + max - min);
+            return min + tools.random.rnd(1 + max - min);
+        },
+        /**
+         * get random string
+         * @param {number} [length=8]
+         * @param {Array} [set=qwertyuiopasdfghjklzxcvbnm]
+         * @returns {String}
+         */
+        string: function (length, set) {
+            if(!length)
+                lenght = 8;
+            if(!set)
+                set = 'qwertyuiopasdfghjklzxcvbnm';
+            var _str = '';
+            for(var i = 0; i < length; i++)
+                _str += tools.array.randomElement(set);
+            return _str;
+        }
+    },
+    object: {
+        /**
+         *  merge obj2 into obj1
+         *  @param {object} obj1
+         *  @param {object} obj2
+         */
+        merge: function(obj1, obj2) {
+            for(var i in obj2) {
+                if(typeof obj2[i] == 'object') {
+                    !obj1[i] && (obj1[i] = {});
+                    tools.object.merge(obj1[i], obj2[i]);
+                } else
+                    obj1[i] = obj2[i];
+            }
         }
     },
     /**
@@ -130,3 +188,6 @@ var tools = {
 };
 if (typeof window == 'undefined')
     module.exports = tools;
+
+
+

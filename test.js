@@ -13,6 +13,56 @@ console.log(_array);
 
 //>[ 'remove', 'elements', 'in', 'js', 'arrays' ]
 
+tools.array.removeAt(_array, 4);
+console.log(_array);
+
+//>[ 'remove', 'elements', 'in', 'arrays' ]
+
+console.log('last element is', tools.array.last(_array));
+
+//>last element is js
+
+console.log('first element is', tools.array.first(_array));
+
+//>first element is remove
+
+console.log('contains js?', tools.array.contains(_array, 'js'));
+
+//>contains js? true
+
+console.log('contains ruby?', tools.array.contains(_array, 'ruby'));
+
+//>contains ruby? false
+
+tools.array.insert(_array, 0, 'something');
+console.log('inserted something', _array);
+
+//>inserted something [ 'something', 'remove', 'elements', 'in', 'js' ]
+
+console.log('get random element:', tools.array.randomElement(_array));
+
+//>get random element element: in
+
+console.log('concat more arrays', tools.array.concat(_array, [0,1,2,3], ['a','b','c']));
+
+//>concat more arrays [ 'something',
+//>  'remove',
+//>  'elements',
+//>  'in',
+//>  'js',
+//>  0,
+//>  1,
+//>  2,
+//>  3,
+//>  'a',
+//>  'b',
+//>  'c' ]
+
+tools.array.empty(_array);
+console.log('empty it', _array);
+
+//>empty it []
+
 var _tasks = new tools.tasks(function () {
     console.log('well done');
 });
@@ -39,4 +89,25 @@ for(var i  in _asyncOperationTimeout) {
 //>done task # 3
 //>well done
 
-console.log(tools.math.rnd(100));
+var _merge = {a: 1, b: 2};
+console.log('to merge', _merge);
+tools.object.merge(_merge, {a: 4, c: { d: 8, e: 9}});
+console.log('merged', _merge);
+
+//>to merge { a: 1, b: 2 }
+//>merged { a: 4, b: 2, c: { d: 8, e: 9 } }
+
+console.log('random number from 1 to 100:', tools.random.number(1, 100));
+
+//>random number from 1 to 100: 14
+
+console.log('random string of 8 chars, default set:', tools.random.string(8));
+
+//>random string of 8 chars, default set: dcglhcvr
+
+var _hex = '0123456789abcdef';
+console.log('random string of 16 chars, custom set (hex)', _hex, ':', tools.random.string(16, _hex));
+
+//>random string of 16 chars, custom set (hex) 0123456789abcdef : b4a61c1af5360fd4
+
+
