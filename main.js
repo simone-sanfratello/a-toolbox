@@ -3,6 +3,10 @@ String.prototype.replaceAll = function (from, to) {
     return this.split(from).join(to);
 };
 
+String.prototype.capitalize = function () {
+    return this.substr(0,1).toUpperCase() + this.substr(1).toLowerCase();
+};
+
 var tools = {
     /**
      * array utils, inspired to goog.array
@@ -184,9 +188,17 @@ var tools = {
                 1 > __tasks.length && (done && done());
             }
         };
+    },
+    string: {
+        template: function (data, obj, remove) {
+            return data.replace(/\{([\w]+)\}/g, function (str, key) {
+                return obj[key] ? obj[key] : (remove ? '' : str);
+            });
+        }
     }
 };
-if (typeof window == 'undefined')
+
+if (module && module.exports)
     module.exports = tools;
 
 

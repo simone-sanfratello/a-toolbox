@@ -110,4 +110,12 @@ console.log('random string of 16 chars, custom set (hex)', _hex, ':', tools.rand
 
 //>random string of 16 chars, custom set (hex) 0123456789abcdef : b4a61c1af5360fd4
 
+var data = {
+    name: 'Alice',
+    year: 2014,
+    color: 'yellow'
+};
+
+var str = '<div>My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}';
+console.log('template:', tools.string.template(str, data));
 

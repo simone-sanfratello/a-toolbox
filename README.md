@@ -95,6 +95,22 @@ console.log('random string of 16 chars, custom set (hex)', _hex, ':', tools.rand
 
 ```
 
+#### string template
+Replace marker in template string with provided object data
+
+```js
+
+var data = {
+    name: 'Alice',
+    year: 2014,
+    color: 'yellow'
+};
+
+var str = '<div>My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}';
+console.log('template:', tools.string.template(str, data));
+
+//> template: <div>My name is Alice I was born in 2014 and my favourite color is yellow</div>{nothing}
+
 #### replaceAll in String prototype
 
 ```js
