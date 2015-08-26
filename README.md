@@ -4,7 +4,7 @@
 
 [![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MRV4AM2CA9F78 "Donate using Paypal")
 
-Javascript lightweight tools 
+Javascript lightweight tools
 
 "This is my rifle. There are many others like it, but this one is mine."
 
@@ -50,7 +50,7 @@ for(var i  in _asyncOperationTimeout) {
             _tasks.done('task#' + i);
         };
     }(i), _asyncOperationTimeout[i]);
-    
+
 }
 
 //>done task # 4
@@ -110,6 +110,8 @@ var str = '<div>My name is {name} I was born in {year} and my favourite color is
 console.log('template:', tools.string.template(str, data));
 
 //> template: <div>My name is Alice I was born in 2014 and my favourite color is yellow</div>{nothing}
+
+```
 
 #### replaceAll in String prototype
 
@@ -250,4 +252,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
