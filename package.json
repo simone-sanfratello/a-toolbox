@@ -14,9 +14,9 @@
         "node": ">= 0.10.x"
     },
     "scripts": {
-        "test": "node test.js"
+        "test": "istanbul cover test.js -x test.js"
     },
-    "files": ["main.js"],
-    "main": "main",
-    "dependencies": { }
+    "tonicExampleFilename": "test.js",
+    "files": ["main.js", "test.js"],
+    "main": "main"
 }

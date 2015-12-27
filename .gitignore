@@ -1,5 +1,7 @@
 *.log
+*.tgz
+
 /node_modules/
 /.vscode/
-*.tgz
+/coverage/
 

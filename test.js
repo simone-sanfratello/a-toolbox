@@ -1,4 +1,6 @@
-var tools = require('./main.js');
+//var tools = require('./main');
+var tools = require('a-toolbox');
+
 
 // add replaceAll in String prototype
 
@@ -118,4 +120,7 @@ var data = {
 
 var str = '<div>My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}';
 console.log('template:', tools.string.template(str, data));
+
+var str = '({cut these silly brackets please)}';
+console.log('trim:', tools.string.trim(str, ['{','}','(',')']));
 

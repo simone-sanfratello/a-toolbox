@@ -113,6 +113,18 @@ console.log('template:', tools.string.template(str, data));
 
 ```
 
+#### string trim
+Trim string using custom chars
+
+```js
+
+var str = '({cut these silly brackets please)}';
+console.log('trim:', tools.string.trim(str, ['{','}','(',')']));
+
+//> trim: cut these silly brackets please
+
+```
+
 #### replaceAll in String prototype
 
 ```js
