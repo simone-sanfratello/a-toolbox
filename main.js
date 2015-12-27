@@ -190,10 +190,25 @@ var tools = {
         };
     },
     string: {
-        template: function (data, obj, remove) {
-            return data.replace(/\{([\w]+)\}/g, function (str, key) {
+        template: function (str, obj, remove) {
+            return str.replace(/\{([\w]+)\}/g, function (str, key) {
                 return obj[key] ? obj[key] : (remove ? '' : str);
             });
+        },
+        /**
+         * 
+         * @see http://google.github.io/closure-library/api/namespace_goog_string.html
+         * @param {string} str
+         * @param {string[]} [cuts]
+         * @returns {string}
+         */
+        trim: function(str, cuts) {
+            if(!cuts)
+                return str.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '');
+            else {
+                var _cuts = cuts.join();
+                return str.replace(new RegExp('^[' + _cuts + ']+|[' + _cuts + ']+$', 'gm'), '');
+            }
         }
     }
 };
