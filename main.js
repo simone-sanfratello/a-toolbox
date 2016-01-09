@@ -110,11 +110,11 @@ var tools = {
       return Math.floor(val * (Math.random() % 1))
     },
     /**
-      * get random int from min to max
-      * @param {number} min
-      * @param {number} max
-      * @returns {number}
-      */
+     * get random int from min to max
+     * @param {number} min
+     * @param {number} max
+     * @returns {number}
+     */
     number: function (min, max) {
       if (!max) return tools.random.rnd(min)
       min = Math.floor(min)
@@ -122,11 +122,11 @@ var tools = {
       return min + tools.random.rnd(1 + max - min)
     },
     /**
-      * get random string
-      * @param {number} [length=8]
-      * @param {Array} [set=qwertyuiopasdfghjklzxcvbnm]
-      * @returns {String}
-      */
+     * get random string
+     * @param {number} [length=8]
+     * @param {Array} [set=qwertyuiopasdfghjklzxcvbnm]
+     * @returns {String}
+     */
     string: function (length, set) {
       if (!length) length = 8
       if (!set) set = 'qwertyuiopasdfghjklzxcvbnm'
@@ -154,16 +154,28 @@ var tools = {
       }
     },
     /**
-      * @see http://google.github.io/closure-library/api/source/closure/goog/object/object.js.src.html#l225
-      * @param {type} obj
-      * @returns {Array}
-      */
+     * @see http://google.github.io/closure-library/api/source/closure/goog/object/object.js.src.html#l225
+     * @param {object} obj
+     * @returns {Array}
+     */
     getKeys: function (obj) {
       var _keys = []
       for (var key in obj) {
         _keys.push(key)
       }
       return _keys
+    },
+    /**
+     * @param {object} obj
+     * @returns {object}
+     */
+    sortKeys: function (obj) {
+      var _keys = tools.object.getKeys(obj)
+      _keys.sort()
+      var _obj = {}
+      for(var i = 0; i < _keys.length; i++)
+        _obj[_keys[i]] = obj[_keys[i]]
+      return _obj
     }
   },
   /**
@@ -187,7 +199,9 @@ var tools = {
        */
       done: function (id) {
         tools.array.remove(__tasks, id)
-        __tasks.length > 1 && (done && done())
+        if(__tasks.length < 1) {
+          done && done()
+        }
       }
     }
   },

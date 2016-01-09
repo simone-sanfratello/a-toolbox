@@ -2,6 +2,7 @@
 [![NPM Version](http://img.shields.io/npm/v/a-toolbox.svg?style=flat)](https://www.npmjs.org/package/a-toolbox)
 [![NPM Downloads](https://img.shields.io/npm/dm/a-toolbox.svg?style=flat)](https://www.npmjs.org/package/a-toolbox)
 
+[![JS Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Code Climate](https://codeclimate.com/github/simone-sanfratello/a-toolbox/badges/gpa.svg)](https://codeclimate.com/github/simone-sanfratello/a-toolbox)
 [![Test Coverage](https://codeclimate.com/github/simone-sanfratello/a-toolbox/badges/coverage.svg)](https://codeclimate.com/github/simone-sanfratello/a-toolbox/coverage)
 
