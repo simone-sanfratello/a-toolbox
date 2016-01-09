@@ -1,22 +1,33 @@
 {
-    "name": "a-toolbox",
-    "version": "0.0.10",
-    "description": "lightweight tools",
-    "keywords": ["tools", "lib", "misc", "toolbox", "array", "task", "random"],
-    "url": "http://github.com/simone-sanfratello/a-toolbox",
-    "author": "Simone Sanfratello <simone.sanfra@gmail.com>",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/simone-sanfratello/a-toolbox.git"
-    },
-    "engines": {
-        "node": ">= 0.10.x"
-    },
-    "scripts": {
-        "test": "istanbul cover test.js -x test.js"
-    },
-    "tonicExampleFilename": "test.js",
-    "files": ["main.js", "test.js"],
-    "main": "main"
+  "name": "a-toolbox",
+  "version": "0.0.11",
+  "description": "lightweight tools",
+  "keywords": [
+    "tools",
+    "lib",
+    "misc",
+    "toolbox",
+    "array",
+    "task",
+    "random"
+  ],
+  "url": "http://github.com/simone-sanfratello/a-toolbox",
+  "author": "Simone Sanfratello <simone.sanfra@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/simone-sanfratello/a-toolbox.git"
+  },
+  "engines": {
+    "node": ">= 0.10.x"
+  },
+  "scripts": {
+    "test": "istanbul cover test.js -x test.js"
+  },
+  "tonicExampleFilename": "test.js",
+  "files": [
+    "main.js",
+    "test.js"
+  ],
+  "main": "main"
 }
