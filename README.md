@@ -129,11 +129,11 @@ console.log('trim:', tools.string.trim(str, ['{','}','(',')']));
 
 ```
 
-#### replaceAll in String prototype
+#### string replaceAll 
 
 ```js
 
-console.log("no replace all in js native code that replace all the replace".replaceAll(' ', '_'));
+console.log(tools.string.replaceAll("no replace all in js native code that replace all the replace", ' ', '_'));
 
 //> no_replace_all_in_js_native_code_that_replace_all_the_replace
 
@@ -249,7 +249,7 @@ console.log('empty it', _array);
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Simone Sanfratello
+Copyright (c) 2015-2016 Simone Sanfratello
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

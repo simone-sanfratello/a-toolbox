@@ -10,7 +10,8 @@ var tools = {
      */
     remove: function (array, item) {
       var _index = array.indexOf(item)
-      if (_index !== -1) array.splice(_index, 1)
+      if (_index !== -1)
+        array.splice(_index, 1)
     },
     /**
      * remove an element from array at position
@@ -29,28 +30,28 @@ var tools = {
       return array[array.length - 1] || null
     },
     /**
-      * get first element of array or null
-      * @param {Array} array
-      * @returns {*} last element of the array or null
-      */
+     * get first element of array or null
+     * @param {Array} array
+     * @returns {*} last element of the array or null
+     */
     first: function (array) {
       return array[0]
     },
     /**
-      * check if array contains an element
-      * @param {Array} array
-      * @param {*} item
-      * @returns {Boolean}
-      */
+     * check if array contains an element
+     * @param {Array} array
+     * @param {*} item
+     * @returns {Boolean}
+     */
     contains: function (array, item) {
       return array.indexOf(item) !== -1
     },
     /**
-      * insert an item into array at index position
-      * @param {Array} array
-      * @param {number} index
-      * @param {*} item
-      */
+     * insert an item into array at index position
+     * @param {Array} array
+     * @param {number} index
+     * @param {*} item
+     */
     insert: function (array, index, item) {
       if (index > array.length) {
         index = array.length
@@ -63,11 +64,11 @@ var tools = {
       }
     },
     /**
-      * get random element from array
-      * @param {Array} array
-      * @param {*} not
-      * @returns {*} element
-      */
+     * get random element from array
+     * @param {Array} array
+     * @param {*} not
+     * @returns {*} element
+     */
     randomElement: function (array, not) {
       if (!not) {
         return array[tools.random.number(0, array.length - 1)]
@@ -93,7 +94,8 @@ var tools = {
      * empty - need to not break references
      */
     empty: function (array) {
-      while (array[0]) array.pop()
+      while (array[0])
+        array.pop()
     }
   },
   /**
@@ -106,7 +108,8 @@ var tools = {
      * @returns {number}
      */
     rnd: function (val) {
-      if (!val) return 0
+      if (!val)
+        return 0
       return Math.floor(val * (Math.random() % 1))
     },
     /**
@@ -116,7 +119,8 @@ var tools = {
      * @returns {number}
      */
     number: function (min, max) {
-      if (!max) return tools.random.rnd(min)
+      if (!max)
+        return tools.random.rnd(min)
       min = Math.floor(min)
       max = Math.floor(max)
       return min + tools.random.rnd(1 + max - min)
@@ -128,8 +132,10 @@ var tools = {
      * @returns {String}
      */
     string: function (length, set) {
-      if (!length) length = 8
-      if (!set) set = 'qwertyuiopasdfghjklzxcvbnm'
+      if (!length)
+        length = 8
+      if (!set)
+        set = 'qwertyuiopasdfghjklzxcvbnm'
       var _str = ''
       for (var i = 0; i < length; i++) {
         _str += tools.array.randomElement(set)
@@ -154,6 +160,35 @@ var tools = {
       }
     },
     /**
+     * Clone an array or an object in input
+     * @function
+     * @param {Object|Array} obj The array or the object to clone
+     * @returns {Object|Array}
+     */
+    clone: function (obj) {
+      if (obj === null || obj === undefined)
+        return obj
+      var _type = (obj instanceof Array) ? _type = 'array' : typeof obj
+      if (_type === 'object' || _type === 'array') {
+        if (obj instanceof Date) {
+          return new Date(obj.getTime())
+        } else if (typeof window !== 'undefined' && (obj instanceof File || obj instanceof Blob)) {
+          return obj
+        } else {
+          if (obj.clone)
+            return obj.clone()
+          /**
+           * @type {Array|Object}
+           */
+          var _clone = _type === 'array' ? [] : {}
+          for (var key in obj)
+            _clone[key] = tools.object.clone(obj[key])
+          return _clone
+        }
+      }
+      return obj
+    },
+    /**
      * @see http://google.github.io/closure-library/api/source/closure/goog/object/object.js.src.html#l225
      * @param {object} obj
      * @returns {Array}
@@ -173,7 +208,7 @@ var tools = {
       var _keys = tools.object.getKeys(obj)
       _keys.sort()
       var _obj = {}
-      for(var i = 0; i < _keys.length; i++)
+      for (var i = 0; i < _keys.length; i++)
         _obj[_keys[i]] = obj[_keys[i]]
       return _obj
     }
@@ -199,7 +234,7 @@ var tools = {
        */
       done: function (id) {
         tools.array.remove(__tasks, id)
-        if(__tasks.length < 1) {
+        if (__tasks.length < 1) {
           done && done()
         }
       }
@@ -240,17 +275,58 @@ var tools = {
     capitalize: function (str) {
       return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase()
     }
+  },
+  console: {
+    /**
+     * 
+     * @param {object} prm
+     * @param {number} [prm.tick=10] millisec
+     * @param {object} [prm.spinner=['.    ', '..   ', '...  ', '.... ', '.....']]
+     */
+    wait: function (prm) {
+      if (!prm)
+        prm = {}
+
+      var __wait = null
+      var __timer = 0
+      var __tick = prm.tick || 100
+      var __spin = prm.spinner || ['.    ', '..   ', '...  ', '.... ', '.....']
+      var __spinner = 0
+
+      var start = function () {
+        if (__wait)
+          return
+        __timer = 0
+        __spinner = 0
+        __wait = setInterval(function () {
+          process.stdout.write(__spin[__spinner % __spin.length] + ' ' + (__timer/1000).toFixed(2) + ' sec \r')
+          __timer += __tick
+          __spinner++
+        }, __tick)
+      }
+
+      var end = function () {
+        clearInterval(__wait)
+        __wait = null
+      }
+
+      return {
+        start: start,
+        end: end
+      }
+    }
   }
 }
-
 // compatibilty < 0.0.10 - to remove
 tools.tasks = tools.Tasks
 
 String.prototype.replaceAll = function (from, to) {
+  console.warn('String.replaceAll is deprecated, please use tools.string.replaceAll')
   return tools.string.replaceAll(this, from, to)
 }
 
 String.prototype.capitalize = function () {
+  console.warn('String.capitalize is deprecated, please use tools.string.capitalize')
   return tools.string.capitalize(this)
 }
 

@@ -3,7 +3,7 @@ var tools = require('a-toolbox')
 
 // add replaceAll in String prototype
 
-console.log('no replace all in js native code that replace all the replace'.replaceAll(' ', '_'))
+console.log(tools.string.replaceAll("no replace all in js native code that replace all the replace", ' ', '_'));
 
 // > no_replace_all_in_js_native_code_that_replace_all_the_replace
 
