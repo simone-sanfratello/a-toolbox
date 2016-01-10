@@ -141,6 +141,11 @@ var tools = {
         _str += tools.array.randomElement(set)
       }
       return _str
+    },
+    hex: function (length) {
+      if (!length)
+        length = 8
+      return tools.random.string(length, '0123456789abcdef')
     }
   },
   object: {
@@ -218,14 +223,22 @@ var tools = {
    * @constructor
    * @param {function} done callback when all tasks are completed
    */
-  Tasks: function (done) {
+  Tasks: function (done, options) {
     var __tasks = []
+    var __chronos = {}
+    if (!options)
+      options = {}
+
     return {
       /**
        * schedule what to do
        * @param {string} id
        */
       todo: function (id) {
+        if (options.chrono) {
+          __chronos[id] = new tools.time.Chrono(id)
+          __chronos[id].check()
+        }
         __tasks.push(id)
       },
       /**
@@ -236,6 +249,9 @@ var tools = {
         tools.array.remove(__tasks, id)
         if (__tasks.length < 1) {
           done && done()
+        }
+        if (options.chrono) {
+          return {chrono: __chronos[id].check()}
         }
       }
     }
@@ -276,21 +292,53 @@ var tools = {
       return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase()
     }
   },
+  time: {
+    Chrono: function (tag) {
+      if (!tag)
+        tag = 'chrono'
+
+      var __tick
+      var __time
+
+      /**
+       * return milliseconds from the last checkpoint
+       * @function
+       * @returns {string}
+       */
+      return {
+        check: function () {
+          if (!__tick) {
+            __tick = new Date()
+            return 0
+          }
+          /**
+           * @type {number}
+           */
+          __time = (new Date()).getTime() - __tick.getTime()
+          __tick = new Date()
+          return __time
+        },
+        time: function () {
+          __time
+        }
+      }
+    }
+  },
   console: {
     /**
      * 
-     * @param {object} prm
-     * @param {number} [prm.tick=10] millisec
-     * @param {object} [prm.spinner=['.    ', '..   ', '...  ', '.... ', '.....']]
+     * @param {object} options
+     * @param {number} [options.tick=10] millisec
+     * @param {object} [options.spinner=['.    ', '..   ', '...  ', '.... ', '.....']]
      */
-    wait: function (prm) {
-      if (!prm)
-        prm = {}
+    Wait: function (options) {
+      if (!options)
+        options = {}
 
       var __wait = null
       var __timer = 0
-      var __tick = prm.tick || 100
-      var __spin = prm.spinner || ['.    ', '..   ', '...  ', '.... ', '.....']
+      var __tick = options.tick || 100
+      var __spin = options.spinner || ['.    ', '..   ', '...  ', '.... ', '.....']
       var __spinner = 0
 
       var start = function () {
@@ -299,7 +347,9 @@ var tools = {
         __timer = 0
         __spinner = 0
         __wait = setInterval(function () {
-          process.stdout.write(__spin[__spinner % __spin.length] + ' ' + (__timer/1000).toFixed(2) + ' sec \r')
+          if (!__wait)
+            return
+          process.stdout.write(__spin[__spinner % __spin.length] + ' ' + (__timer / 1000).toFixed(2) + ' sec \r')
           __timer += __tick
           __spinner++
         }, __tick)
