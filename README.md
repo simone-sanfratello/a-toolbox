@@ -34,7 +34,7 @@ var tools = require('a-toolbox.js');
 
 ## Tools
 
-#### tasks (promises) async manage
+#### tasks async manage (no promises) 
 
 ```js
 
@@ -77,6 +77,17 @@ console.log('merged', _merge);
 
 //>to merge { a: 1, b: 2 }
 //>merged { a: 4, b: 2, c: { d: 8, e: 9 } }
+
+```
+
+#### object clone
+
+```js
+
+var _clone = {a: {7: 6, k: 'a'}, b: 2};
+console.log('clone', tools.object.clone(_clone));
+
+//>clone {a: {7: 6, k: 'a'}, b: 2}
 
 ```
 
