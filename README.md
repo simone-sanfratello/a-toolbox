@@ -34,6 +34,8 @@ var tools = require('a-toolbox.js');
 
 ## Tools
 
+**NOTE: missing documentation or obsolete**
+
 #### tasks async manage (no promises) 
 
 ```js

@@ -96,7 +96,15 @@ var tools = {
     empty: function (array) {
       while (array[0])
         array.pop()
+    },
+    add: function(array, item, unique) {
+      if(unique && tools.array.contains(array, item)) {
+        return
+      } else {
+        array.push(item)
+      }
     }
+
   },
   /**
    * random utils
