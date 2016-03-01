@@ -8,6 +8,8 @@
 
 [![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MRV4AM2CA9F78 "Donate using Paypal")
 
+[![NPM](https://nodei.co/npm-dl/a-toolbox.png)](https://nodei.co/npm/a-toolbox/)
+
 Javascript lightweight tools
 
 "This is my rifle. There are many others like it, but this one is mine."
