@@ -12,11 +12,13 @@
 
 Javascript lightweight tools
 
-"This is my rifle. There are many others like it, but this one is mine."
+> "This is my rifle. There are many others like it, but this one is mine."
 
 ## Npm Installation
 
-    $ npm install a-toolbox
+````
+npm install a-toolbox
+````
 
 ## Tools on Node.js
 

@@ -1,0 +1,23 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "source": {
+    "include": [ "main.js" ],
+    "includePattern": ".+\\.js(doc)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": [],
+    "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "opts": {
+    "template": "./node_modules/ink-docstrap/template",
+    "encoding": "utf8",               
+    "destination": "./doc/",          
+    "recurse": true            
+//    "tutorials": "path/to/tutorials", // same as -u path/to/tutorials
+  }
+}
