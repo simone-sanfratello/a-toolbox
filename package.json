@@ -1,9 +1,10 @@
 {
   "name": "a-toolbox",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "lightweight tools",
   "keywords": [
     "tools",
+    "log",
     "lib",
     "misc",
     "toolbox",
@@ -31,6 +32,9 @@
     "test.js"
   ],
   "main": "main",
+  "dependencies" : {
+    "colors": "x"
+  },
   "devDependencies": {
     "standard": "x",
     "istanbul": "x",
