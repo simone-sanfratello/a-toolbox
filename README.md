@@ -6,8 +6,6 @@
 [![Code Climate](https://codeclimate.com/github/simone-sanfratello/a-toolbox/badges/gpa.svg)](https://codeclimate.com/github/simone-sanfratello/a-toolbox)
 [![Test Coverage](https://codeclimate.com/github/simone-sanfratello/a-toolbox/badges/coverage.svg)](https://codeclimate.com/github/simone-sanfratello/a-toolbox/coverage)
 
-[![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MRV4AM2CA9F78 "Donate using Paypal")
-
 [![NPM](https://nodei.co/npm-dl/a-toolbox.png)](https://nodei.co/npm/a-toolbox/)
 
 Javascript lightweight tools
@@ -40,7 +38,7 @@ var tools = require('a-toolbox.js');
 
 **NOTE: missing documentation or obsolete**
 
-#### tasks async manage (no promises) 
+#### tasks async manage
 
 ```js
 

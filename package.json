@@ -1,7 +1,7 @@
 {
   "name": "a-toolbox",
-  "version": "0.0.17",
-  "description": "lightweight tools",
+  "version": "0.1.0",
+  "description": "basic lightweight tools",
   "keywords": [
     "tools",
     "log",
@@ -20,16 +20,14 @@
     "url": "git://github.com/simone-sanfratello/a-toolbox.git"
   },
   "engines": {
-    "node": ">= 0.10.x"
+    "node": ">= 4"
   },
   "scripts": {
     "test": "istanbul cover test.js -x test.js",
     "doc": "jsdoc -c jsdoc.json -R README.md"
   },
-  "tonicExampleFilename": "test.js",
   "files": [
-    "main.js",
-    "test.js"
+    "main.js"
   ],
   "main": "main",
   "dependencies" : {

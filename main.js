@@ -18,64 +18,6 @@ var tools = {
   },
 
   /**
-   * @constructor
-   * @param {Object} params
-   * @param {String[]|string} params.segments enabled segments or '*' for all
-   * @param {String[]|string} params.segments enabled level or '*' for all; levels are: info, warning, error
-   */
-  Log: function (params) {
-    var __segments
-    var __levels
-    var __browser
-    var MARKER_SUCCESS, MARKER_ERROR, MARKER_INFO, MARKER_WARNING
-
-    var __init = function (params) {
-      __segments = params.segments
-      __levels = params.levels
-      __browser = tools.core.onBrowser()
-      // @todo const __mode = params.mode console, file, email ...
-      MARKER_SUCCESS = '✔' // ✔ ✔️
-      MARKER_ERROR = '✗️'
-      MARKER_INFO = 'ℹ️'
-      MARKER_WARNING = '❗️️'
-      if (!__browser) {
-        var colors = require('colors')
-        MARKER_SUCCESS = colors.green(MARKER_SUCCESS)
-        MARKER_ERROR = colors.red(MARKER_ERROR)
-        MARKER_INFO = colors.blue(MARKER_INFO)
-        MARKER_WARNING = colors.yellow(MARKER_WARNING)
-      } else {
-      }
-    }
-
-    var verbose = function (segment, level) {
-      if ((__segments === '*' || tools.array.contains(__segments, segment)) &&
-        (__levels === '*' || tools.array.contains(__levels, level))) {
-        var _args = Array.prototype.slice.call(arguments)
-        if (level === tools.Log.level.ERROR) {
-          _args[1] = MARKER_ERROR
-          console.error.apply(console, _args)
-        } else if (level === tools.Log.level.WARNING) {
-          _args[1] = MARKER_WARNING
-          console.warn.apply(console, _args)
-        } else if (level === tools.Log.level.SUCCESS) {
-          _args[1] = MARKER_SUCCESS
-          console.log.apply(console, _args)
-        } else {
-          _args[1] = MARKER_INFO
-          console.log.apply(console, _args)
-        }
-      }
-    }
-
-    __init(params)
-
-    return {
-      verbose: verbose
-    }
-  },
-
-  /**
    * array utils, inspired to goog.array
    */
   array: {
@@ -217,7 +159,7 @@ var tools = {
     /**
      * get random string
      * @param {number} [length=8]
-     * @param {Array} [set=qwertyuiopasdfghjklzxcvbnm]
+     * @param {Array} [set=abcdefghijklmnopqrstuvwxyz]
      * @return {String}
      */
     string: function (length, set) {
@@ -225,7 +167,7 @@ var tools = {
         length = 8
       }
       if (!set) {
-        set = 'qwertyuiopasdfghjklzxcvbnm'
+        set = 'abcdefghijklmnopqrstuvwxyz'
       }
       var _str = ''
       for (var i = 0; i < length; i++) {
@@ -587,27 +529,6 @@ var tools = {
     }
   }
 
-}
-
-// enums
-tools.Log.level = {
-  ERROR: 'ERROR',
-  WARNING: 'WARNING',
-  INFO: 'INFO',
-  SUCCESS: 'SUCCESS'
-}
-
-// compatibilty < 0.0.10 - to remove
-tools.tasks = tools.Tasks
-
-String.prototype.replaceAll = function (from, to) {
-  console.warn('String.replaceAll is deprecated, please use tools.string.replaceAll')
-  return tools.string.replaceAll(this, from, to)
-}
-
-String.prototype.capitalize = function () {
-  console.warn('String.capitalize is deprecated, please use tools.string.capitalize')
-  return tools.string.capitalize(this)
 }
 
 if (typeof module !== 'undefined' && module.exports) {
