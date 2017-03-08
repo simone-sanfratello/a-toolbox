@@ -242,6 +242,9 @@ var tools = {
      * @return {Array}
      */
     getKeys: function (obj) {
+      if (Object.keys) {
+        return Object.keys(obj)
+      }
       var _keys = []
       for (var key in obj) {
         _keys.push(key)
@@ -260,6 +263,25 @@ var tools = {
         _obj[_keys[i]] = obj[_keys[i]]
       }
       return _obj
+    },
+    /**
+     * @todo properly
+     */
+    apply: function (source, destination, template) {
+      let _properties
+      if (template) {
+        switch (template) {
+          // @todo create template dir
+          case 'EventEmitter':
+            _properties = ['on', 'once', 'removeAllListeners', 'removeListener']
+        }
+      }
+      // else if template is array ..
+      _properties.forEach((property) => {
+        destination[property] = function () {
+          souce[property].apply(source, arguments)
+        }
+      })
     }
   },
 
