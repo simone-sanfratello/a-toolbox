@@ -267,10 +267,10 @@ var tools = {
     /**
      * @todo properly
      */
-    apply: function (source, destination, template) {
+    apply: function (source, destination, schema) {
       let _properties
-      if (template) {
-        switch (template) {
+      if (schema) {
+        switch (schema.template) {
           // @todo create template dir
           case 'EventEmitter':
             _properties = ['on', 'once', 'removeAllListeners', 'removeListener']
@@ -279,12 +279,11 @@ var tools = {
       // else if template is array ..
       _properties.forEach((property) => {
         destination[property] = function () {
-          souce[property].apply(source, arguments)
+          source[property].apply(source, arguments)
         }
       })
     }
   },
-
   /**
    * async parallel task manager
    * @constructor
