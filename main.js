@@ -201,7 +201,7 @@ var tools = {
     sha256: function (data) {
       return crypto.createHash('sha256')
         .update(data)
-        .digest('base64')
+        .digest('hex')
     }
   },
 
