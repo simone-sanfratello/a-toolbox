@@ -2,6 +2,21 @@
   "name": "a-toolbox",
   "version": "0.1.0",
   "description": "basic lightweight tools",
+  "main": "main.js",
+  "devDependencies": {
+    "faker": "x",
+    "tap": "x"
+  },
+  "engines": {
+    "node": ">= 4"
+  },
+  "files": [
+    "main.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/simone-sanfratello/a-toolbox.git"
+  },
   "keywords": [
     "tools",
     "log",
@@ -12,25 +27,6 @@
     "task",
     "random"
   ],
-  "url": "http://github.com/simone-sanfratello/a-toolbox",
   "author": "Simone Sanfratello <simone.sanfra@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/simone-sanfratello/a-toolbox.git"
-  },
-  "engines": {
-    "node": ">= 4"
-  },
-  "scripts": {
-    "test": "echo todo"
-  },
-  "files": [
-    "main.js"
-  ],
-  "main": "main",
-  "devDependencies": {
-    "faker": "x",
-    "tap": "x"
-  }
+  "license": "MIT"
 }
