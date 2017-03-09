@@ -109,6 +109,10 @@ console.log('random string of 8 chars, default set:', tools.random.string(8))
 var _hex = '0123456789abcdef'
 console.log('random string of 16 chars, custom set (hex)', _hex, ':', tools.random.string(16, _hex))
 
+// >random hash of 64 chars
+
+console.log('random hash of 64 chars', tools.random.hash())
+
 // >random string of 16 chars, custom set (hex) 0123456789abcdef : b4a61c1af5360fd4
 
 var data = {

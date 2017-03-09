@@ -8,7 +8,7 @@
 
 [![NPM](https://nodei.co/npm-dl/a-toolbox.png)](https://nodei.co/npm/a-toolbox/)
 
-Javascript lightweight tools
+Javascript isomorphic lightweight tools
 
 > "This is my rifle. There are many others like it, but this one is mine."
 
@@ -264,7 +264,7 @@ console.log('empty it', _array);
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2016 Simone Sanfratello
+Copyright (c) 2015-2017 Simone Sanfratello
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

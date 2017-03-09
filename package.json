@@ -23,19 +23,14 @@
     "node": ">= 4"
   },
   "scripts": {
-    "test": "istanbul cover test.js -x test.js",
-    "doc": "jsdoc -c jsdoc.json -R README.md"
+    "test": "echo todo"
   },
   "files": [
     "main.js"
   ],
   "main": "main",
-  "dependencies" : {
-    "colors": "x"
-  },
   "devDependencies": {
-    "standard": "x",
-    "istanbul": "x",
-    "ink-docstrap": "x"
+    "faker": "x",
+    "tap": "x"
   }
 }

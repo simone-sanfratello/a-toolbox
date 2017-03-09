@@ -1,5 +1,7 @@
-// standardjs
 /* global Blob File FormData $ */
+if (typeof module !== 'undefined' && module.exports) {
+  var crypto = require('crypto')
+}
 
 var tools = {
   /** low level function */
@@ -160,7 +162,7 @@ var tools = {
      * get random string
      * @param {number} [length=8]
      * @param {Array} [set=abcdefghijklmnopqrstuvwxyz]
-     * @return {String}
+     * @return {string}
      */
     string: function (length, set) {
       if (!length) {
@@ -178,13 +180,28 @@ var tools = {
     /**
      * get random hex string
      * @param {number} [length=8]
-     * @return {String}
+     * @return {string}
      */
     hex: function (length) {
       if (!length) {
         length = 8
       }
       return tools.random.string(length, '0123456789abcdef')
+    },
+    hash: function () {
+      return tools.hash.sha256(new Date().toISOString())
+    }
+  },
+
+  hash: {
+    /**
+     * @param {string} data
+     * @return {string}
+     */
+    sha256: function (data) {
+      return crypto.createHash('sha256')
+        .update(data)
+        .digest('base64')
     }
   },
 
