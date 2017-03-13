@@ -1,7 +1,5 @@
 /* global Blob File FormData $ */
-if (typeof module !== 'undefined' && module.exports) {
-  var crypto = require('crypto')
-}
+var crypto = require('crypto')
 
 var tools = {
   /** low level function */
@@ -15,7 +13,7 @@ var tools = {
     },
 
     onBrowser: function () {
-      return (typeof window !== 'undefined' && typeof module === 'undefined')
+      return typeof window === 'object' && window instanceof Window
     }
   },
 
@@ -280,6 +278,14 @@ var tools = {
         _obj[_keys[i]] = obj[_keys[i]]
       }
       return _obj
+    },
+    /**
+     * @todo check if both are objects
+     */
+    inherits: function (destination, source) {
+      Object.getOwnPropertyNames(source).forEach((property) => {
+        destination[property] = source[property]
+      })
     },
     /**
      * @todo properly
