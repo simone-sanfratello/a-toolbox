@@ -186,8 +186,8 @@ var tools = {
       }
       return tools.random.string(length, '0123456789abcdef')
     },
-    hash: function () {
-      return tools.hash.sha256(new Date().toISOString())
+    hash: function (salt) {
+      return tools.hash.sha256(new Date().toISOString() + (salt || ''))
     }
   },
 
