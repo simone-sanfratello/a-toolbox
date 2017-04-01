@@ -334,6 +334,7 @@ var tools = {
     },
     /**
      * get value in object using a flat key
+     * @todo check params
      * @param {object} obj
      * @param {string} fkey
      * @returns {object}
@@ -349,6 +350,30 @@ var tools = {
         _walk = _walk[_path[i]]
       }
       return _walk
+    },
+    /**
+     * set value in object using a flat key
+     * @todo check params
+     * @param {object} obj
+     * @param {string} fkey
+     * @param {*} val
+     * @example tools.object.setByFlatKey({}, 'a.b.c', 1) >> { a: { b: {c: 1} } }
+     */
+    setByFlatKey: function (obj, fkey, val) {
+      let _path = fkey.split('.')
+      let _walk = obj
+      for (let i = 0; i < _path.length; i++) {
+        if (!_walk[_path[i]]) {
+          // if it's the last step, add key as undefined
+          if (i === _path.length - 1) {
+            _walk[_path[i]] = undefined
+            return
+          }
+          _walk[_path[i]] = {}
+        }
+        _walk = _walk[_path[i]]
+      }
+      _walk = val
     }
   },
   /**
