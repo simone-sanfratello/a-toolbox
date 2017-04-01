@@ -305,6 +305,32 @@ var tools = {
           source[property].apply(source, arguments)
         }
       })
+    },
+    /**
+     * flat keys in object
+     * @param {object} obj
+     * @returns {object}
+     * @example { a: { a1: 1, a2: 2 }, b: 3 } >> { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
+     */
+    flat: function (obj) {
+      const _flat = {}
+
+      const _f = function (obj, base) {
+        for (const key in obj) {
+          try {
+            if (obj[key].constructor == Object) {
+              _f(obj[key], base + key + '.')
+            } else {
+              _flat[base + key] = obj[key]
+            }
+          } catch (e) {
+            _flat[base + key] = obj[key]
+          }
+        }
+      }
+      _f(obj, '')
+
+      return _flat
     }
   },
   /**
