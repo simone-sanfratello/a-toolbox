@@ -331,6 +331,24 @@ var tools = {
       _f(obj, '')
 
       return _flat
+    },
+    /**
+     * get value in object using a flat key
+     * @param {object} obj
+     * @param {string} fkey
+     * @returns {object}
+     * @example tools.object.getByFlatKey({ a: { b: {c: 1} } }, 'a.b.c') >> 1
+     */
+    getByFlatKey: function (obj, fkey) {
+      let _path = fkey.split('.')
+      let _walk = obj
+      for (let i = 0; i < _path.length; i++) {
+        if (!_walk[_path[i]]) {
+          return undefined
+        }
+        _walk = _walk[_path[i]]
+      }
+      return _walk
     }
   },
   /**
