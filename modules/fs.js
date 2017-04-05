@@ -8,7 +8,7 @@ const fs = {}
  * replace deprecated fs.exists
  * https://nodejs.org/api/fs.html#fs_fs_exists_path_callback
  */
-fs.exists = function (path) {
+fs.existsAsync = function (path) {
   return new Promise(function (resolve) {
     nodeFs.stat(path, function (err, stats) {
       if (err || !stats) {
@@ -19,6 +19,18 @@ fs.exists = function (path) {
         return
       }
       resolve(false)
+    })
+  })
+}
+
+fs.unlink = function (path, ignore) {
+  return new Promise(function (resolve, reject) {
+    nodeFs.unlink(path, function (err) {
+      if (err && !ignore) {
+        reject()
+        return
+      }
+      resolve()
     })
   })
 }
