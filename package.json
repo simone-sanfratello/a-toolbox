@@ -1,32 +1,25 @@
 {
   "name": "a-toolbox",
-  "version": "0.1.4",
-  "description": "basic lightweight tools",
-  "main": "main.js",
+  "version": "0.1.5",
+  "description": "javascript lightweight basic tools",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "devDependencies": {
-    "faker": "x",
-    "tap": "x"
+    "faker": "^x",
+    "tap": "^x"
   },
   "engines": {
     "node": ">= 4"
   },
-  "files": [
-    "main.js"
-  ],
+  "scripts": {
+    "test": "echo 'TODO tap test/*.js'"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/simone-sanfratello/a-toolbox.git"
+    "url": "git+https://simone-sanfratello@github.com/simone-sanfratello/a-toolbox.git"
   },
-  "keywords": [
-    "tools",
-    "log",
-    "lib",
-    "misc",
-    "toolbox",
-    "array",
-    "task",
-    "random"
-  ],
-  "author": "Simone Sanfratello <simone.sanfra@gmail.com>",
+  "author": "Simone Sanfratello <simone@braceslab.com>",
   "license": "MIT"
 }

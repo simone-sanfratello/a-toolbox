@@ -419,17 +419,21 @@ var tools = {
   string: {
     /**
      * replace placeholders inside graph brackets {} with obj dictionary
-     * ~ES6 template string, but safer
+     * ~ES6 template string
      * @param {string} str
-     * @param {type} obj
+     * @param {Object} obj
      * @param {bool} [remove=false] remove missing placeholders from obj
-     * @return {unresolved}
+     * @return {string}
      */
     template: function (str, obj, remove) {
+      if (!str) {
+        return ''
+      }
       return str.replace(/\{([\w]+)\}/g, function (str, key) {
         return obj[key] ? obj[key] : (remove ? '' : str)
       })
     },
+
     /**
      * trim string
      * @see http://google.github.io/closure-library/api/namespace_goog_string.html
@@ -645,5 +649,6 @@ var tools = {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
+  tools.fs = require('./modules/fs')
   module.exports = tools
 }

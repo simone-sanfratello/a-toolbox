@@ -1,7 +1,17 @@
-*.log
-*.tgz
-
+#dirs
+/build/
+/log/
+/pid/
 /node_modules/
 /.vscode/
 /coverage/
 
+# logs
+*.log
+*tgz
+
+# sys and temp files
+*Thumbs.db
+*.DS_Store
+*._*
+.*.swp
