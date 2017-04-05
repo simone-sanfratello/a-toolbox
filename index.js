@@ -429,7 +429,7 @@ var tools = {
       if (!str) {
         return ''
       }
-      return str.replace(/\{([\w]+)\}/g, function (str, key) {
+      return str.replace(/\{([\w.]+)\}/g, function (str, key) {
         return obj[key] ? obj[key] : (remove ? '' : str)
       })
     },
