@@ -1,5 +1,6 @@
 /* global Blob File FormData $ */
 var crypto = require('crypto')
+// var util = require('util')
 
 var tools = {
   /** low level function */
@@ -283,6 +284,7 @@ var tools = {
      * @todo check if both are objects
      */
     inherits: function (destination, source) {
+//      util.inherits(destination, source)
       Object.getOwnPropertyNames(source).forEach((property) => {
         destination[property] = source[property]
       })
@@ -454,6 +456,12 @@ var tools = {
     },
     capitalize: function (str) {
       return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase()
+    },
+    prependMissing: function (prefix, str) {
+      if (str.indexOf(prefix) === 0) {
+        return str
+      }
+      return prefix + str
     }
   },
 
