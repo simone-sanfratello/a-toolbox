@@ -10,7 +10,7 @@ var tools = {
      * @param {*} v
      */
     isSet: function (v) {
-      return (typeof v !== 'undefined' || v !== null)
+      return (typeof v !== 'undefined' && v !== null)
     },
 
     onBrowser: function () {
