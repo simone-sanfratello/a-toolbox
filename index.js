@@ -1,3 +1,4 @@
+'use strict'
 /* global Blob File FormData $ */
 var crypto = require('crypto')
 // var util = require('util')
@@ -121,9 +122,8 @@ var tools = {
     add: function (array, item, unique) {
       if (unique && tools.array.contains(array, item)) {
         return
-      } else {
-        array.push(item)
       }
+      array.push(item)
     }
 
   },
