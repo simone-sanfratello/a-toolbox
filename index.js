@@ -230,7 +230,7 @@ var tools = {
       if (obj === null || obj === undefined) {
         return obj
       }
-      var _type = (obj instanceof Array) ? _type = 'array' : typeof obj
+      var _type = (obj instanceof Array) ? 'array' : typeof obj
       if (_type === 'object' || _type === 'array') {
         if (obj instanceof Date) {
           return new Date(obj.getTime())
@@ -493,7 +493,7 @@ var tools = {
           return __time
         },
         time: function () {
-          __time
+          return __time
         }
       }
     }
