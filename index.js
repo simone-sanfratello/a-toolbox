@@ -284,7 +284,7 @@ var tools = {
      * @todo check if both are objects
      */
     inherits: function (destination, source) {
-//      util.inherits(destination, source)
+      //      util.inherits(destination, source)
       Object.getOwnPropertyNames(source).forEach((property) => {
         destination[property] = source[property]
       })
@@ -333,6 +333,35 @@ var tools = {
       _f(obj, '')
 
       return _flat
+    },
+    /**
+     * restore flat object
+     * @param {object} obj
+     * @returns {object}
+     * @example { 'a.a1': 1, 'a.a2': 2, 'b': 3 } >> { a: { a1: 1, a2: 2 }, b: 3 }
+     */
+    raise: function (obj) {
+      const _raise = {}
+
+      const _f = function (flat, raise) {
+        for (const path in flat) {
+          const _keys = path.split('.')
+          let _cursor = raise
+          _keys.forEach((key, i) => {
+            if (i < _keys.length - 1) {
+              if (!_cursor[key]) {
+                _cursor[key] = {}
+              }
+              _cursor = _cursor[key]
+            } else {
+              _cursor[key] = flat[path]
+            }
+          })
+        }
+      }
+      _f(obj, _raise)
+
+      return _raise
     },
     /**
      * get value in object using a flat key
