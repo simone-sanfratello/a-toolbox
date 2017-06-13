@@ -221,7 +221,13 @@ var tools = {
 
       for (var i in obj2) {
         if (typeof obj2[i] === 'object') {
-          !obj1[i] && (obj1[i] = {})
+          if (obj2[i] instanceof Array) {
+            obj1[i] = tools.object.clone(obj2[i])
+            continue
+          }
+          if (!obj1[i] || typeof obj1[i] !== 'object') {
+            obj1[i] = {}
+          }
           tools.object.merge(obj1[i], obj2[i])
         } else {
           obj1[i] = obj2[i]
