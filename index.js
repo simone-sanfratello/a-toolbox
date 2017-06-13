@@ -211,6 +211,14 @@ var tools = {
      *  @param {Object} obj2
      */
     merge: function (obj1, obj2) {
+      if (!obj1) {
+        obj1 = obj2 || {}
+        return
+      }
+      if (!obj2) {
+        return obj1
+      }
+
       for (var i in obj2) {
         if (typeof obj2[i] === 'object') {
           !obj1[i] && (obj1[i] = {})
