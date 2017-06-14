@@ -701,5 +701,6 @@ var tools = {
 
 if (typeof module !== 'undefined' && module.exports) {
   tools.fs = require('./modules/fs')
+  tools.sys = require('./modules/sys')
   module.exports = tools
 }
