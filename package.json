@@ -3,18 +3,24 @@
   "version": "0.1.15",
   "description": "javascript lightweight basic tools",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "devDependencies": {
-    "faker": "^x",
-    "tap": "^x"
+    "ink-docstrap": "^1.3.2",
+    "log-segment": "^1.x",
+    "standard": "^10.x",
+    "tap": "^10.x"
   },
   "engines": {
-    "node": ">= 4"
+    "node": ">=6"
   },
   "scripts": {
-    "test": "echo 'TODO tap test/*.js'"
+    "test": "standard && tap test/*",
+    "test-cov": "standard main.js && tap test/* --cov",
+    "doc": "jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md src/hash.js"
+  },
+  "standard": {
+    "ignore": [
+      "test/"
+    ]
   },
   "repository": {
     "type": "git",

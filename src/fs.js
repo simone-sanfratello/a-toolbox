@@ -23,6 +23,11 @@ fs.existsAsync = function (path) {
   })
 }
 
+/**
+ * alias
+ */
+fs.exists = fs.existsAsync
+
 fs.unlink = function (path, ignore) {
   return new Promise(function (resolve, reject) {
     nodeFs.unlink(path, function (err) {
@@ -34,5 +39,7 @@ fs.unlink = function (path, ignore) {
     })
   })
 }
+
+// fs.collect
 
 module.exports = fs
