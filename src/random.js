@@ -59,5 +59,23 @@
     },
     hash: function (salt) {
       return tools.hash.sha256(new Date().toISOString() + (salt || ''))
-    }
+    },
+  /**
+     * get random element from array
+     * @param {Array} array
+     * @param {*} not
+     * @return {*} element
+     */
+    randomElement: function (array, not) {
+      if (!not) {
+        return array[tools.random.number(0, array.length - 1)]
+      } else {
+        var _item
+        var i = 0
+        do {
+          _item = array.randomElement(array)
+        } while (not.indexOf(_item) !== -1 && ++i < array.length)
+        return _item
+      }
+    }    
   },

@@ -1,16 +1,16 @@
 
 const tools = {
-  // array: require('./array'),
-  // basic: require('./basic'),
-  // console: require('./console'),
-  // fs: require('./fs'),
+  array: require('./src/array'),
+  // basic: require('./src/basic'),
+  // console: require('./src/console'),
+  // fs: require('./src/fs'),
   hash: require('./src/hash'),
   object: require('./src/object'),
-  // random: require('./random'),
-  string: require('./src/string'),
-  // sys: require('./sys'),
-  // task: require('./task'),
-  // time: require('./time')
+  // random: require('./src/random'),
+  string: require('./src/string')
+  // sys: require('./src/sys'),
+  // task: require('./src/task'),
+  // time: require('./src/time')
 }
 
 module.exports = tools

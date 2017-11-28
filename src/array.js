@@ -1,7 +1,8 @@
+
   /**
    * array utils, inspired to goog.array
    */
-  array: {
+  const array = {
     /**
      * remove an element from array
      * @param {Array} array
@@ -27,7 +28,26 @@
      * @return {*} last element of the array or null
      */
     last: function (array) {
-      return array[array.length - 1] || null
+      return array[array.length - 1]
+    },
+    /**
+     * get nth element of array
+     * @param {Array} array
+     * @return {*} nth element of array; if negative, start from end: -1 = last element; null if missing
+     * @test [1,2,3], 0 > 1
+     * @test [0,1,null,3], 0 > 0
+     * @test [0,1,null,false], -1 > false
+     * @test [0,1,null,false], -2 > null
+     * @test [0,1,'0',false], -2 > '0'
+     */
+    at: function (array, p) {
+      let k
+      if (p > -1) {
+        k = array[p]
+      } else {
+        k = array[array.length + p]
+      }
+      return k !== undefined ? k : null
     },
     /**
      * get first element of array or null
@@ -63,35 +83,18 @@
         array[index] = item
       }
     },
-    /**
-     * get random element from array
-     * @param {Array} array
-     * @param {*} not
-     * @return {*} element
-     */
-    randomElement: function (array, not) {
-      if (!not) {
-        return array[tools.random.number(0, array.length - 1)]
-      } else {
-        var _item
-        var i = 0
-        do {
-          _item = tools.array.randomElement(array)
-        } while (not.indexOf(_item) !== -1 && ++i < array.length)
-        return _item
-      }
-    },
+
     /**
      * concat arrays
      * @param {...Array} arrays to chain
      * @return {Array} chained arrays
-     * @example tools.array.concat([0,1,2],[3,4,5]) > [0,1,2,3,4,5]
+     * @example array.concat([0,1,2],[3,4,5]) > [0,1,2,3,4,5]
      */
     concat: function (args) {
       return Array.prototype.concat.apply(Array.prototype, arguments)
     },
     /**
-     * empty - need to not break references
+     * empty - need to keep references
      */
     empty: function (array) {
       while (array[0]) {
@@ -99,10 +102,12 @@
       }
     },
     add: function (array, item, unique) {
-      if (unique && tools.array.contains(array, item)) {
+      if (unique && array.contains(array, item)) {
         return
       }
       array.push(item)
     }
 
-  },
+  }
+
+  module.exports = array

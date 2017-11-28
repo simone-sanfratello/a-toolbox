@@ -11,8 +11,7 @@ const string = {
    * @test 'hi {name} how are you?', {}, true > 'hi  how are you?'
    * @test '{a} one, 2 {b}', {a: 1, b: 'two', c: 3} > '1 one, 2 two'
    * @test `multiline {1}\n multiline`, {1: 'one'} > `multiline one\n multiline`
-   * @test '<div class="{color}">My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}',
-   * {name: 'Alice',year: 2014,color: 'purple'}
+   * @test '<div class="{color}">My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}', {name: 'Alice',year: 2014,color: 'purple'}
    * > '<div class="purple">My name is Alice I was born in 2014 and my favourite color is purple</div>{nothing}'
    */
   template: function (str, obj, remove = false) {
