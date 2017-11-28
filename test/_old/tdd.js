@@ -90,13 +90,6 @@ for (i in _asyncOperationTimeout) {
 // >done task # 3
 // >well done
 
-var _merge = {a: 1, b: 2}
-console.log('to merge', _merge)
-tools.object.merge(_merge, {a: 4, c: { d: 8, e: 9}})
-console.log('merged', _merge)
-
-// >to merge { a: 1, b: 2 }
-// >merged { a: 4, b: 2, c: { d: 8, e: 9 } }
 
 console.log('random number from 1 to 100:', tools.random.number(1, 100))
 
@@ -114,28 +107,3 @@ console.log('random string of 16 chars, custom set (hex)', _hex, ':', tools.rand
 console.log('random hash of 64 chars', tools.random.hash())
 
 // >random string of 16 chars, custom set (hex) 0123456789abcdef : b4a61c1af5360fd4
-
-var data = {
-  name: 'Alice',
-  year: 2014,
-  color: 'yellow'
-}
-
-var str = '<div>My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}'
-console.log('template:', tools.string.template(str, data))
-
-str = '({cut these silly brackets please)}'
-console.log('trim:', tools.string.trim(str, ['{', '}', '(', ')']))
-
-
-'use strict'
-const tools = require('../index')
-
-const samples = {
-  data: { a: { a1: 1, a2: 2 }, b: 3 }
-}
-
-let _flat = tools.object.flat(samples.data)
-let _raise = tools.object.raise(_flat)
-
-console.log(_flat, _raise)

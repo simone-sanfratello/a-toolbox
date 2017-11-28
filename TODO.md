@@ -1,6 +1,7 @@
 
 v 1.0
 
+- tdd
 - build
 - browser version > babel
 - modular load
@@ -10,7 +11,6 @@ v 1.0
 - keywords
 - readme
   + no dependencies
-  + written in unsleepy night of my newborn daughter Alice
 - check dependencies in other package > ^0.x
 
 

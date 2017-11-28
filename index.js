@@ -4,10 +4,10 @@ const tools = {
   // basic: require('./basic'),
   // console: require('./console'),
   // fs: require('./fs'),
-  hash: require('./hash'),
-  // object: require('./object'),
+  hash: require('./src/hash'),
+  object: require('./src/object'),
   // random: require('./random'),
-  // string: require('./string'),
+  string: require('./src/string'),
   // sys: require('./sys'),
   // task: require('./task'),
   // time: require('./time')
