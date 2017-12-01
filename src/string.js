@@ -72,8 +72,8 @@ const string = {
    * @param {string} prefix
    * @param {string} str
    * @return {string}
-   * @test 'Alice', 'miss ' > 'miss Alice'
-   * @test 'miss Alice', 'miss ' > 'miss Alice'
+   * @test 'miss ', 'Alice' > 'miss Alice'
+   * @test 'miss ', 'miss Alice' > 'miss Alice'
    */
   prependMissing: function (prefix, str) {
     if (str.indexOf(prefix) === 0) {

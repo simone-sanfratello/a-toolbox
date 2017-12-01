@@ -43,7 +43,7 @@ const object = {
     if (_type === 'object' || _type === 'array') {
       if (obj instanceof Date) {
         return new Date(obj.getTime())
-      } else if (typeof window !== 'undefined' && (obj instanceof File || obj instanceof Blob)) {
+      } else if (typeof window !== 'undefined') {
         return obj
       } else {
         if (obj.clone) {
@@ -54,7 +54,7 @@ const object = {
            */
         var _clone = _type === 'array' ? [] : {}
         for (var key in obj) {
-          _clone[key] = tools.object.clone(obj[key])
+          _clone[key] = object.clone(obj[key])
         }
         return _clone
       }
@@ -76,19 +76,7 @@ const object = {
     }
     return _keys
   },
-  /**
-   * @param {Object} obj
-   * @return {Object}
-   */
-  sortKeys: function (obj) {
-    var _keys = tools.object.getKeys(obj)
-    _keys.sort()
-    var _obj = {}
-    for (var i = 0; i < _keys.length; i++) {
-      _obj[_keys[i]] = obj[_keys[i]]
-    }
-    return _obj
-  },
+
   /**
    * @todo check if both are objects
    */
@@ -98,6 +86,7 @@ const object = {
       destination[property] = source[property]
     })
   },
+
   /**
    * flat keys in object
    * @param {object} obj
