@@ -3,7 +3,7 @@ const object = {
    * merge obj2 into obj1
    * @param {Object} obj1
    * @param {Object} obj2
-   * @test.case &{a: 1, b: 'ciao'}, {a: 4, c: { d: 8, e: 9}} > &{ a: 4, b: 'ciao', c: { d: 8, e: 9 } }, =
+   * @test.case {a: 1, b: 'ciao'}, {a: 4, c: { d: 8, e: 9}} > &{ a: 4, b: 'ciao', c: { d: 8, e: 9 } }
    */
   merge: function (obj1, obj2) {
     if (!obj1) {
@@ -169,8 +169,8 @@ const object = {
    * @param {object} obj
    * @param {string} fkey
    * @param {*} val
-   * @test
-   * {}, 'a.b.c', 1 > { a: { b: {c: 1} } }
+   * @test.case
+   * {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }
    */
   setByFlatKey: function (obj, fkey, val) {
     let _path = fkey.split('.')
