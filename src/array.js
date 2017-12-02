@@ -26,28 +26,35 @@
      * get last element of array or null
      * @param {Array} array
      * @return {*} last element of the array or null
+     * @test.case [1,2,3] > 3
+     * @test.case [null, 0, -1] > -1
+     * @test.case [0] > 0
+     * @test.case [] > null
+     * @test.case [1, undefined] > undefined
      */
     last: function (array) {
+      if (array.length < 1) {
+        return null
+      }
       return array[array.length - 1]
     },
     /**
      * get nth element of array
      * @param {Array} array
      * @return {*} nth element of array; if negative, start from end: -1 = last element; null if missing
-     * @test [1,2,3], 0 > 1
-     * @test [0,1,null,3], 0 > 0
-     * @test [0,1,null,false], -1 > false
-     * @test [0,1,null,false], -2 > null
-     * @test [0,1,'0',false], -2 > '0'
+     * @test.case [1,2,3], 0 > 1
+     * @test.case [0,1,null,3], 0 > 0
+     * @test.case [0,1,null,false], -1 > false
+     * @test.case [0,1,null,false], -2 > null
+     * @test.case [0,1,'0',false], -2 > '0'
+     * @test.case [undefined,'0',false], 0 > undefined
+     * @test.case [], 2 > null
      */
     at: function (array, p) {
-      let k
-      if (p > -1) {
-        k = array[p]
-      } else {
-        k = array[array.length + p]
+      if (p < 0) {
+        p = array.length + p
       }
-      return k !== undefined ? k : null
+      return array[p]
     },
     /**
      * get first element of array or null

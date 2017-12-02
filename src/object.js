@@ -3,7 +3,7 @@ const object = {
    * merge obj2 into obj1
    * @param {Object} obj1
    * @param {Object} obj2
-   * @test {a: 1, b: 2}, {a: 4, c: { d: 8, e: 9}} > { a: 4, b: 2, c: { d: 8, e: 9 } }
+   * @test.case &{a: 1, b: 'ciao'}, {a: 4, c: { d: 8, e: 9}} > &{ a: 4, b: 'ciao', c: { d: 8, e: 9 } }, =
    */
   merge: function (obj1, obj2) {
     if (!obj1) {
@@ -91,7 +91,7 @@ const object = {
    * flat keys in object
    * @param {object} obj
    * @returns {object}
-   * @test { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
+   * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
    */
   flat: function (obj) {
     const _flat = {}
@@ -118,7 +118,7 @@ const object = {
    * restore flat object
    * @param {object} obj
    * @returns {object}
-   * @test { 'a.a1': 1, 'a.a2': 2, 'b': 3 } > { a: { a1: 1, a2: 2 }, b: 3 }
+   * @test.case { 'a.a1': 1, 'a.a2': 2, 'b': 3 } > { a: { a1: 1, a2: 2 }, b: 3 }
    */
   raise: function (obj) {
     const _raise = {}
@@ -149,7 +149,7 @@ const object = {
    * @param {object} obj
    * @param {string} fkey
    * @returns {object}
-   * @test { a: { b: {c: 1} } }, 'a.b.c') > 1
+   * @test.case { a: { b: {c: 1} } }, 'a.b.c' > 1
    */
   getByFlatKey: function (obj, fkey) {
     let _path = fkey.split('.')
