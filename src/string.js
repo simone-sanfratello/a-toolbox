@@ -86,7 +86,6 @@ const string = {
    * @param {string} str
    * @param {RegExp} regexp
    * @return {string[]}
-   * @test.case 
    */
   matchAll: function (str, regexp) {
     const _matches = []
