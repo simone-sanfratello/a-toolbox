@@ -1,16 +1,20 @@
-'use strict'
-
-const nodeFs = require('fs')
+const nativeFs = require('fs')
 
 const fs = {}
 
 /**
  * replace deprecated fs.exists
+ * @param {string} path file path
+ * @return {Promise<boolean>} true if file exists - and it's a file
  * https://nodejs.org/api/fs.html#fs_fs_exists_path_callback
+ * @test.arrange async function() { return fs.touch('/tmp/file') }
+ * @test.case '/tmp/file' > true
+ * @test.case '/tmp/none' > false
+ * @test.case '/tmp' > false
  */
 fs.existsAsync = function (path) {
   return new Promise(function (resolve) {
-    nodeFs.stat(path, function (err, stats) {
+    nativeFs.stat(path, function (err, stats) {
       if (err || !stats) {
         resolve(false)
         return
@@ -24,15 +28,16 @@ fs.existsAsync = function (path) {
 }
 
 /**
- * alias
+ * delete file, optionally in safe mode
+ * @param {string} path
+ * @param {boolean=true} safe
+ * @return {Promise<>}
  */
-fs.exists = fs.existsAsync
-
-fs.unlink = function (path, ignore) {
+fs.unlink = function (path, safe) {
   return new Promise(function (resolve, reject) {
-    nodeFs.unlink(path, function (err) {
-      if (err && !ignore) {
-        reject()
+    nativeFs.unlink(path, function (err) {
+      if (err && !safe) {
+        reject(err)
         return
       }
       resolve()
@@ -41,5 +46,10 @@ fs.unlink = function (path, ignore) {
 }
 
 // fs.collect
+
+/**
+ * alias
+ */
+fs.exists = fs.existsAsync
 
 module.exports = fs

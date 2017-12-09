@@ -52,6 +52,8 @@ const string = {
    * @test.case 'abcadaeafaga', 'a', '' > 'bcdefg'
    * @test.case '112233445544', '4', '9' > '112233995599'
    * @test.case 'repeat repeat repeat', 'repeat', 'don\'t repeat' > 'don\'t repeat don\'t repeat don\'t repeat'
+   * @test.case 'no replace all in js native code that replace all the replace', ' ', '_' >
+   * 'no_replace_all_in_js_native_code_that_replace_all_the_replace'
    */
   replaceAll: function (str, from, to) {
     return str.split(from).join(to)

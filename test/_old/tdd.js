@@ -1,39 +1,3 @@
-// var tools = require('./main')
-var tools = require('a-toolbox')
-
-// add replaceAll in String prototype
-
-console.log(tools.string.replaceAll("no replace all in js native code that replace all the replace", ' ', '_'));
-
-// > no_replace_all_in_js_native_code_that_replace_all_the_replace
-
-var _array = ['very', 'annoying', 'remove', 'elements', 'in', 'js', 'arrays']
-tools.array.remove(_array, 'very')
-tools.array.remove(_array, 'annoying')
-console.log(_array)
-
-// >[ 'remove', 'elements', 'in', 'js', 'arrays' ]
-
-tools.array.removeAt(_array, 4)
-console.log(_array)
-
-// >[ 'remove', 'elements', 'in', 'arrays' ]
-
-console.log('last element is', tools.array.last(_array))
-
-// >last element is js
-
-console.log('first element is', tools.array.first(_array))
-
-// >first element is remove
-
-console.log('contains js?', tools.array.contains(_array, 'js'))
-
-// >contains js? true
-
-console.log('contains ruby?', tools.array.contains(_array, 'ruby'))
-
-// >contains ruby? false
 
 tools.array.insert(_array, 0, 'something')
 console.log('inserted something', _array)

@@ -15,7 +15,7 @@
   "scripts": {
     "test": "standard && tap test/*",
     "test-cov": "standard main.js && tap test/* --cov",
-    "doc": "jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md index.js"
+    "doc": "jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md src/hash.js"
   },
   "standard": {
     "ignore": [
