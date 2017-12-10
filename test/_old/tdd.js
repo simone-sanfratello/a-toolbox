@@ -1,33 +1,4 @@
 
-tools.array.insert(_array, 0, 'something')
-console.log('inserted something', _array)
-
-// >inserted something [ 'something', 'remove', 'elements', 'in', 'js' ]
-
-console.log('get random element:', tools.array.randomElement(_array))
-
-// >get random element element: in
-
-console.log('concat more arrays', tools.array.concat(_array, [0, 1, 2, 3], ['a', 'b', 'c']))
-
-// >concat more arrays [ 'something',
-// >  'remove',
-// >  'elements',
-// >  'in',
-// >  'js',
-// >  0,
-// >  1,
-// >  2,
-// >  3,
-// >  'a',
-// >  'b',
-// >  'c' ]
-
-tools.array.empty(_array)
-console.log('empty it', _array)
-
-// >empty it []
-
 var _tasks = new tools.Tasks(function () {
   console.log('well done')
 })
@@ -71,3 +42,5 @@ console.log('random string of 16 chars, custom set (hex)', _hex, ':', tools.rand
 console.log('random hash of 64 chars', tools.random.hash())
 
 // >random string of 16 chars, custom set (hex) 0123456789abcdef : b4a61c1af5360fd4
+
+console.log('get random element:', tools.array.randomElement(_array))

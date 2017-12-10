@@ -92,6 +92,10 @@ const array = {
    * @param {Array<*>} array
    * @param {number} index
    * @param {*} item
+   * @test.case ['john', 'alice', 'bob'], 0, 'mary' > &['mary', 'john', 'alice', 'bob']
+   * @test.case ['john', 'alice', 'bob'], 1, 'mary' > &['john', 'mary', 'alice', 'bob']
+   * @test.case ['john', 'alice', 'bob'], -1, 'mary' > &['john', 'alice', 'bob', 'mary']
+   * @test.case ['john', 'alice', 'bob'], -2, 'mary' > &['john', 'alice', 'mary', 'bob']
    */
   insert: function (array, index, item) {
     if (index > array.length) {
@@ -110,12 +114,15 @@ const array = {
    * @param {...Array<*>} arrays to chain
    * @return {Array<*>} chained arrays
    * @test.case [0,1,2],[3,4,5] > [0,1,2,3,4,5]
+   * @test.case [0, 1, 2, 3], ['a', 'b', 'c'], [{a: 2}] > [0, 1, 2, 3, 'a', 'b', 'c', {a: 2}]
    */
   concat: function (args) {
     return Array.prototype.concat.apply(Array.prototype, arguments)
   },
   /**
    * empty array - need to keep references
+   * @test.case [0,1,2] > &[]
+   * @test.case [] > &[]
    */
   empty: function (array) {
     while (array[0]) {

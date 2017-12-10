@@ -7,12 +7,15 @@ const fs = {}
  * @param {string} path file path
  * @return {Promise<boolean>} true if file exists - and it's a file
  * https://nodejs.org/api/fs.html#fs_fs_exists_path_callback
- * @test.arrange async function() { return fs.touch('/tmp/file') }
+ * @test.arrange async function(input, sandbox) {
+ *   const fs = require('a-toolbox/fs')
+ *   return fs.touch('/tmp/file')
+ * }
  * @test.case '/tmp/file' > true
  * @test.case '/tmp/none' > false
  * @test.case '/tmp' > false
  */
-fs.existsAsync = function (path) {
+fs.exists = function (path) {
   return new Promise(function (resolve) {
     nativeFs.stat(path, function (err, stats) {
       if (err || !stats) {
@@ -23,6 +26,30 @@ fs.existsAsync = function (path) {
         return
       }
       resolve(false)
+    })
+  })
+}
+
+/**
+ * create an empty file if not exists
+ * @param {string} path file path
+ * @return {Promise<>}
+ * @test.case '/none' ! Error('NOENT')
+ * @test.case '/tmp/touch-me'
+ */
+fs.touch = function (path) {
+  return new Promise(function (resolve, reject) {
+    fs.open(path, 'a', (err, fd) => {
+      if (err) {
+        reject(err)
+        return
+      }
+      fs.close(fd, (err) => {
+        if (err) {
+          reject(err)
+        }
+        resolve()
+      })
     })
   })
 }
@@ -44,12 +71,5 @@ fs.unlink = function (path, safe) {
     })
   })
 }
-
-// fs.collect
-
-/**
- * alias
- */
-fs.exists = fs.existsAsync
 
 module.exports = fs
