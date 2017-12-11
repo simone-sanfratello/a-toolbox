@@ -8,7 +8,7 @@ const fs = {}
  * @return {Promise<boolean>} true if file exists - and it's a file
  * https://nodejs.org/api/fs.html#fs_fs_exists_path_callback
  * @test.arrange async function(input, sandbox) {
- *   const fs = require('a-toolbox/fs')
+ *   const fs = require('a-toolbox').fs
  *   return fs.touch('/tmp/file')
  * }
  * @test.case '/tmp/file' > true
@@ -34,17 +34,24 @@ fs.exists = function (path) {
  * create an empty file if not exists
  * @param {string} path file path
  * @return {Promise<>}
- * @test.case '/none' ! Error('NOENT')
+ * @test.case '/none' ! new Error('EACCES')
  * @test.case '/tmp/touch-me'
+ * @test.assert async (result, input, output, sandbox) => {
+ *   if(!await tester.assert.equal(result, input, output, sandbox)) {
+ *     return false
+ *   }
+ *   const fs = require('a-toolbox').fs
+ *   return fs.exists(input[0])
+ * }
  */
 fs.touch = function (path) {
   return new Promise(function (resolve, reject) {
-    fs.open(path, 'a', (err, fd) => {
+    nativeFs.open(path, 'a', (err, fd) => {
       if (err) {
         reject(err)
         return
       }
-      fs.close(fd, (err) => {
+      nativeFs.close(fd, (err) => {
         if (err) {
           reject(err)
         }
@@ -59,6 +66,13 @@ fs.touch = function (path) {
  * @param {string} path
  * @param {boolean=true} safe
  * @return {Promise<>}
+ * @test.arrange async function(input, sandbox) {
+ *   const fs = require('a-toolbox').fs
+ *   return fs.touch('/tmp/file')
+ * }
+ * @test.case '/tmp/file'
+ * @test.case '/tmp/none', false ! new Error('EACXXCES')
+ * @test.case '/tmp/none', true
  */
 fs.unlink = function (path, safe) {
   return new Promise(function (resolve, reject) {
