@@ -15,7 +15,7 @@ const array = {
    * @test.case ['js','ruby','python'], 1 > &['js','python']
    */
   remove: function (array, item) {
-    var _index = array.indexOf(item)
+    const _index = array.indexOf(item)
     if (_index !== -1) {
       array.splice(_index, 1)
     }
