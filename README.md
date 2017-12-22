@@ -14,16 +14,14 @@ javascript lightweight basic tools
 ## Install
 
 ````bash
-npm i a-toolbox
+npm i a-toolbox --save
 ````
 
 ## Changelog
 
 v. 1.0.0
 
-- modular
-- browser version
-
+- modular loader
 
 ---
 

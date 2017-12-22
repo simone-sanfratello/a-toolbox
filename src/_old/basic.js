@@ -11,4 +11,4 @@
     onBrowser: function () {
       return typeof window === 'object' && window instanceof Window
     }
-  },
+  }
