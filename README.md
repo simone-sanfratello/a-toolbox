@@ -5,7 +5,7 @@
 
 [![JS Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-javascript lightweight basic tools
+javascript lightweight basic tools, zero dependecies
 
 ## Purpose
 
