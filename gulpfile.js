@@ -25,7 +25,7 @@ gulp.task('clean', function () {
 })
 
 gulp.task('browser', function () {
-  let _index = 'module.exports = {\n' +
+  let _index = 'window.tools={\n' +
     _files
     .filter(f => _nobrowser.indexOf(f) === -1)
     .map(f => `${f}: require('./${f}')`)
@@ -37,11 +37,12 @@ gulp.task('browser', function () {
     entries: './src/_index.js',
     debug: true
   })
+  /*
   .transform('babelify', {
     presets: ['es2015', 'env'],
     minified: true,
     comments: false
-  })
+  })*/
 
   return b.bundle()
     .pipe(source('atoolbox.min.js'))

@@ -13,6 +13,10 @@ const time = {
      * @param {?string} [tag=chrono]
      */
     set: function (tag = 'chrono') {
+      if (_chronos[tag]) {
+        console.warn('time chrono', tag, 'already set; use reset instead or start a new chrono')
+        return
+      }
       _chronos[tag] = Date.now()
     },
     /**
