@@ -1,14 +1,9 @@
-
-const tools = {
-  array: require('./src/array'),
-  fs: require('./src/fs'),
-  hash: require('./src/hash'),
-  object: require('./src/object'),
-  random: require('./src/random'),
-  string: require('./src/string'),
-  sys: require('./src/sys'),
-  task: require('./src/task'),
-  time: require('./src/time')
-}
-
-module.exports = tools
+module.exports = {array: require('./array'),
+fs: require('./fs'),
+hash: require('./hash'),
+object: require('./object'),
+random: require('./random'),
+string: require('./string'),
+sys: require('./sys'),
+task: require('./task'),
+time: require('./time')}
