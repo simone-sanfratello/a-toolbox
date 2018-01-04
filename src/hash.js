@@ -1,4 +1,4 @@
-//const crypto = require('crypto')
+const crypto = require('crypto')
 
 /**
  * @namespace tools.hash
@@ -7,8 +7,8 @@ const hash = {
   /**
    * Generate hash using sha256 in hex format
    * @method tools.hash.sha256
-   * @param {string} data any string
-   * @return {string} sha256 in hex format
+   * @param {String} data any string
+   * @return {String} sha256 in hex format
    *
    * @test
    * 'usk6fgbuygbu6' > 'ee42f619919727584b66fe25248ed4bba8e87dcfb3e62a90143ea17ba48df58e'

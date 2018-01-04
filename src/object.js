@@ -4,6 +4,7 @@
 const object = {
   /**
    * merge obj2 into obj1
+   * @method tools.object.merge
    * @param {Object} obj1
    * @param {Object} obj2
    * @test.case {a: 1, b: 'ciao'}, {a: 4, c: { d: 8, e: 9}} > &{ a: 4, b: 'ciao', c: { d: 8, e: 9 } }
@@ -32,9 +33,10 @@ const object = {
       }
     }
   },
+
   /**
    * Clone an array or an object in input
-   * @function
+   * @method tools.object.clone
    * @param {Object|Array} obj The array or the object to clone
    * @return {Object|Array}
    */
@@ -64,8 +66,10 @@ const object = {
     }
     return obj
   },
+
   /**
    * @see http://google.github.io/closure-library/api/source/closure/goog/object/object.js.src.html#l225
+   * @method tools.object.getKeys
    * @param {Object} obj
    * @return {Array}
    */
@@ -81,10 +85,10 @@ const object = {
   },
 
   /**
+   * @method tools.object.inherits
    * @todo check if both are objects
    */
   inherits: function (destination, source) {
-      //      util.inherits(destination, source)
     Object.getOwnPropertyNames(source).forEach((property) => {
       destination[property] = source[property]
     })
@@ -92,6 +96,7 @@ const object = {
 
   /**
    * empty object - need to keep references
+   * @method tools.object.empty
    * @test.case {a:0,b:1,c:2,d:[],e:{f:-1}} > &{}
    * @test.case {} > &{}
    */
@@ -103,8 +108,9 @@ const object = {
 
   /**
    * flat keys in object
-   * @param {object} obj
-   * @returns {object}
+   * @method tools.object.flat
+   * @param {Object} obj
+   * @return {Object}
    * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
    */
   flat: function (obj) {
@@ -128,10 +134,12 @@ const object = {
 
     return _flat
   },
+
   /**
    * restore flat object
-   * @param {object} obj
-   * @returns {object}
+   * @method tools.object.raise
+   * @param {Object} obj
+   * @return {Object}
    * @test.case { 'a.a1': 1, 'a.a2': 2, 'b': 3 } > { a: { a1: 1, a2: 2 }, b: 3 }
    */
   raise: function (obj) {
@@ -157,12 +165,14 @@ const object = {
 
     return _raise
   },
+
   /**
    * get value in object using a flat key
+   * @method tools.object.getByFlatKey
    * @todo check params
-   * @param {object} obj
-   * @param {string} fkey
-   * @returns {object}
+   * @param {Object} obj
+   * @param {String} fkey
+   * @return {Object}
    * @test.case { a: { b: {c: 1} } }, 'a.b.c' > 1
    */
   getByFlatKey: function (obj, fkey) {
@@ -179,9 +189,10 @@ const object = {
 
   /**
    * set value in object using a flat key
+   * @method tools.object.setByFlatKey
    * @todo check params
-   * @param {object} obj
-   * @param {string} fkey
+   * @param {Object} obj
+   * @param {String} fkey
    * @param {*} val
    * @test.case
    * {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }

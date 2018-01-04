@@ -37,12 +37,11 @@ gulp.task('browser', function () {
     entries: './src/_index.js',
     debug: true
   })
-  /*
   .transform('babelify', {
     presets: ['es2015', 'env'],
     minified: true,
     comments: false
-  })*/
+  })
 
   return b.bundle()
     .pipe(source('atoolbox.min.js'))

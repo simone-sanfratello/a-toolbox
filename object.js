@@ -32,9 +32,9 @@ const object = {
       }
     }
   },
+
   /**
    * Clone an array or an object in input
-   * @function
    * @param {Object|Array} obj The array or the object to clone
    * @return {Object|Array}
    */
@@ -64,6 +64,7 @@ const object = {
     }
     return obj
   },
+
   /**
    * @see http://google.github.io/closure-library/api/source/closure/goog/object/object.js.src.html#l225
    * @param {Object} obj
@@ -84,7 +85,6 @@ const object = {
    * @todo check if both are objects
    */
   inherits: function (destination, source) {
-      //      util.inherits(destination, source)
     Object.getOwnPropertyNames(source).forEach((property) => {
       destination[property] = source[property]
     })
@@ -103,8 +103,8 @@ const object = {
 
   /**
    * flat keys in object
-   * @param {object} obj
-   * @returns {object}
+   * @param {Object} obj
+   * @return {Object}
    * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
    */
   flat: function (obj) {
@@ -130,8 +130,8 @@ const object = {
   },
   /**
    * restore flat object
-   * @param {object} obj
-   * @returns {object}
+   * @param {Object} obj
+   * @return {Object}
    * @test.case { 'a.a1': 1, 'a.a2': 2, 'b': 3 } > { a: { a1: 1, a2: 2 }, b: 3 }
    */
   raise: function (obj) {
@@ -160,9 +160,9 @@ const object = {
   /**
    * get value in object using a flat key
    * @todo check params
-   * @param {object} obj
-   * @param {string} fkey
-   * @returns {object}
+   * @param {Object} obj
+   * @param {String} fkey
+   * @return {Object}
    * @test.case { a: { b: {c: 1} } }, 'a.b.c' > 1
    */
   getByFlatKey: function (obj, fkey) {
@@ -180,8 +180,8 @@ const object = {
   /**
    * set value in object using a flat key
    * @todo check params
-   * @param {object} obj
-   * @param {string} fkey
+   * @param {Object} obj
+   * @param {String} fkey
    * @param {*} val
    * @test.case
    * {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }

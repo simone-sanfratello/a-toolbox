@@ -4,11 +4,12 @@
 const string = {
   /**
    * replace placeholders inside graph brackets {} with obj dictionary
-   * ~ES6 template string
-   * @param {string} str
+   * ~ES6 template string without $
+   * @method tools.string.template
+   * @param {String} str
    * @param {Object} obj
-   * @param {boolean=} remove missing placeholders from obj, default false
-   * @return {string}
+   * @param {boolean} [remove=false] missing placeholders from obj, default false
+   * @return {String}
    *
    * @test.case 'hi {name} how are you?', {name: 'Alice'} > 'hi Alice how are you?'
    * @test.case 'hi {name} how are you?', {}, true > 'hi  how are you?'
@@ -29,9 +30,10 @@ const string = {
   /**
    * trim string
    * @see http://google.github.io/closure-library/api/namespace_goog_string.html
-   * @param {string} str
+   * @method tools.string.trim
+   * @param {String} str
    * @param {?string[]} cuts
-   * @return {string}
+   * @return {String}
    *
    * @test.case ' regular trim      ' > 'regular trim'
    * @test.case ' trim,no,. : \n    ', [',','.',' ', ':', '\n'] > 'trim,no'
@@ -48,10 +50,11 @@ const string = {
   },
 
   /**
-   * @param {string} str
-   * @param {string} from
-   * @param {string} to
-   * @return {string}
+   * @method tools.string.replaceAll
+   * @param {String} str
+   * @param {String} from
+   * @param {String} to
+   * @return {String}
    * @test.case 'abcadaeafaga', 'a', '' > 'bcdefg'
    * @test.case '112233445544', '4', '9' > '112233995599'
    * @test.case 'repeat repeat repeat', 'repeat', 'don\'t repeat' > 'don\'t repeat don\'t repeat don\'t repeat'
@@ -63,8 +66,9 @@ const string = {
   },
 
   /**
-   * @param {string} str
-   * @return {string}
+   * @method tools.string.capitalize
+   * @param {String} str
+   * @return {String}
    * @test.case 'alice' > 'Alice'
    * @test.case 'alice smith' > 'Alice smith'
    * @test.case 'alice-smith' > 'Alice-smith'
@@ -74,9 +78,10 @@ const string = {
   },
 
   /**
-   * @param {string} prefix
-   * @param {string} str
-   * @return {string}
+   * @method tools.string.prependMissing
+   * @param {String} prefix
+   * @param {String} str
+   * @return {String}
    * @test.case 'miss ', 'Alice' > 'miss Alice'
    * @test.case 'miss ', 'miss Alice' > 'miss Alice'
    */
@@ -88,9 +93,10 @@ const string = {
   },
 
   /**
-   * @param {string} str
+   * @method tools.string.matchAll
+   * @param {String} str
    * @param {RegExp} regexp
-   * @return {string[]}
+   * @return {String[]}
    */
   matchAll: function (str, regexp) {
     const _matches = []

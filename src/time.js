@@ -6,11 +6,12 @@ const object = require('./object')
 
 const time = {
   /**
-   * can use across modules using same tag
+   * @namespace tools.time.chrono
    */
   chrono: {
     /**
-     * @param {?string} [tag=chrono]
+     * @method tools.time.chrono.set
+     * @param {String} [tag=chrono]
      */
     set: function (tag = 'chrono') {
       if (_chronos[tag]) {
@@ -20,19 +21,22 @@ const time = {
       _chronos[tag] = Date.now()
     },
     /**
-     * @param {?string} [tag=chrono]
+     * @method tools.time.chrono.reset
+     * @param {String} [tag=chrono]
      */
     reset: function (tag = 'chrono') {
       _chronos[tag] = Date.now()
     },
     /**
-     * @param {?string} [tag=chrono]
+     * @method tools.time.chrono.clear
+     * @param {String} [tag=chrono]
      */
     clear: function (tag = 'chrono') {
       delete _chronos[tag]
     },
     /**
-     * @param {?string} [tag=chrono]
+     * @method tools.time.chrono.get
+     * @param {String} [tag=chrono]
      * @return {number} ms
      */
     get: function (tag = 'chrono') {
@@ -44,6 +48,7 @@ const time = {
   /**
    * clear counters
    * if you care about memory leaks
+   * @method tools.time.chrono.gc
    */
   gc: function () {
     object.empty(_chronos)

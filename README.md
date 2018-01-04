@@ -22,6 +22,7 @@ npm i a-toolbox --save
 v. 1.0.0
 
 - modular loader
+- browser version
 
 ---
 

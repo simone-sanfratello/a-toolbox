@@ -36,7 +36,7 @@ const random = {
    * @method tools.random.number
    * @param {number} [length=8]
    * @param {Array} [set=abcdefghijklmnopqrstuvwxyz]
-   * @return {string}
+   * @return {String}
    */
   string: function (length = 8, set = 'abcdefghijklmnopqrstuvwxyz') {
     let _str = ''
@@ -49,7 +49,7 @@ const random = {
    * get random hex string
    * @method tools.random.hex
    * @param {number} [length=8]
-   * @return {string}
+   * @return {String}
    */
   hex: function (length = 8) {
     return random.string(length, '0123456789abcdef')
@@ -58,7 +58,7 @@ const random = {
    * get random hash string
    * @method tools.random.hash
    * @param {?string} salt
-   * @return {string}
+   * @return {String}
    */
   hash: function (salt = '') {
     return hash.sha256(new Date().toISOString() + salt)

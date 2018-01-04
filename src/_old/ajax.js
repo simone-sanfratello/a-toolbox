@@ -7,7 +7,7 @@
      * @param {Object} args.options $.ajax options -> @see http://api.jquery.com/jquery.ajax/
      *   default: { type: 'POST', dataType: 'json', cache: false, xhrFields: { withCredentials: true } }}
      * @param {Object} args.data
-     * @param {string} args.url
+     * @param {String} args.url
      * @param {boolean} args.cache
      * @param {boolean} args.upload
      * @param {boolean} args.xhr return the xhr object, for call "abort" (especially for upload)
