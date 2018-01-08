@@ -17,12 +17,25 @@ javascript lightweight basic tools, zero dependecies
 npm i a-toolbox --save
 ````
 
+## API
+
+documentation in progress
+
 ## Changelog
 
 v. 1.0.0
 
+- general review
 - modular loader
 - browser version
+
+---
+
+## TODO
+
+- [ ] doc (readme, api)
+- [ ] tdd via tollo
+- [ ] keywords in github and package.json
 
 ---
 
@@ -30,7 +43,7 @@ v. 1.0.0
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2017, [braces lab](https://braceslab.com)
+Copyright (c) 2015-2018, [braces lab](https://braceslab.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
