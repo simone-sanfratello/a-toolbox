@@ -4,8 +4,8 @@
  */
 const array = {
   /**
-   * @method tools.array.remove
    * remove an element from array, only once
+   * @method tools.array.remove
    * @todo item=object, date, regexp ...
    * @todo remove all item, not only first
    * @param {Array<*>} array
@@ -20,8 +20,10 @@ const array = {
       array.splice(_index, 1)
     }
   },
+
   /**
    * remove an element from array at position
+   * @method tools.array.removeAt
    * @param {Array<*>} array
    * @param {number} index
    * @test.case [1,2,3], 0 > &[2,3]
@@ -32,8 +34,10 @@ const array = {
   removeAt: function (array, index) {
     return Array.prototype.splice.call(array, index, 1).length === 1
   },
+
   /**
    * get last element of array or undefined
+   * @method tools.array.last
    * @param {Array<*>} array
    * @return {*} last element of the array or undefined
    * @test.case [1,2,3] > 3
@@ -46,8 +50,10 @@ const array = {
   last: function (array) {
     return array[array.length - 1]
   },
+
   /**
    * get nth element of array
+   * @method tools.array.at
    * @param {Array<*>} array
    * @return {*} nth element of array; if negative, start from end: -1 = last element; undefined if missing
    * @test.case [1,2,3], 0 > 1
@@ -64,8 +70,10 @@ const array = {
     }
     return array[p]
   },
+
   /**
    * get first element of array or undefined
+   * @method tools.array.first
    * @param {Array<*>} array
    * @return {*} first element of the array or undefined
    * @test.case [1,2,3] > 1
@@ -78,8 +86,10 @@ const array = {
   first: function (array) {
     return array[0]
   },
+
   /**
    * check if array contains an element
+   * @method tools.array.contains
    * @param {Array<*>} array
    * @param {*} item
    * @return {boolean}
@@ -87,8 +97,10 @@ const array = {
   contains: function (array, item) {
     return array.indexOf(item) !== -1
   },
+
   /**
    * insert an item into array at index position
+   * @method tools.array.insert
    * @param {Array<*>} array
    * @param {number} index
    * @param {*} item
@@ -111,6 +123,7 @@ const array = {
 
   /**
    * concat arrays
+   * @method tools.array.concat
    * @param {...Array<*>} arrays to chain
    * @return {Array<*>} chained arrays
    * @test.case [0,1,2],[3,4,5] > [0,1,2,3,4,5]
@@ -119,8 +132,10 @@ const array = {
   concat: function (args) {
     return Array.prototype.concat.apply(Array.prototype, arguments)
   },
+
   /**
    * empty array - need to keep references
+   * @method tools.array.empty
    * @test.case [0,1,2] > &[]
    * @test.case [] > &[]
    */
@@ -129,8 +144,10 @@ const array = {
       array.pop()
     }
   },
+
   /**
    * push item into array, optionally check if already exists
+   * @method tools.array.add
    */
   add: function (array, item, unique) {
     if (unique && array.contains(array, item)) {

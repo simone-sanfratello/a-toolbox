@@ -5,9 +5,10 @@ const string = {
   /**
    * replace placeholders inside graph brackets {} with obj dictionary
    * ~ES6 template string without $
+   * @method tools.string.template
    * @param {String} str
    * @param {Object} obj
-   * @param {boolean=} remove missing placeholders from obj, default false
+   * @param {boolean} [remove=false] missing placeholders from obj, default false
    * @return {String}
    *
    * @test.case 'hi {name} how are you?', {name: 'Alice'} > 'hi Alice how are you?'
@@ -29,6 +30,7 @@ const string = {
   /**
    * trim string
    * @see http://google.github.io/closure-library/api/namespace_goog_string.html
+   * @method tools.string.trim
    * @param {String} str
    * @param {?string[]} cuts
    * @return {String}
@@ -48,6 +50,7 @@ const string = {
   },
 
   /**
+   * @method tools.string.replaceAll
    * @param {String} str
    * @param {String} from
    * @param {String} to
@@ -63,6 +66,7 @@ const string = {
   },
 
   /**
+   * @method tools.string.capitalize
    * @param {String} str
    * @return {String}
    * @test.case 'alice' > 'Alice'
@@ -74,6 +78,7 @@ const string = {
   },
 
   /**
+   * @method tools.string.prependMissing
    * @param {String} prefix
    * @param {String} str
    * @return {String}
@@ -88,6 +93,7 @@ const string = {
   },
 
   /**
+   * @method tools.string.matchAll
    * @param {String} str
    * @param {RegExp} regexp
    * @return {String[]}

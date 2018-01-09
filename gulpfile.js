@@ -15,7 +15,8 @@ const _files = [
   'string',
   'sys',
   'task',
-  'time'
+  'time',
+  'util'
 ]
 const _nobrowser = ['sys', 'fs']
 
