@@ -29,6 +29,7 @@ tools.string.trim('({cut these brackets please)}', ['{', '}', '(', ')'])
 
 ### On browser
 
+````html
 <script src="node_modules/a-toolbox/dist/atoolbox.min.js"></script>
 <script>
 var data = {
@@ -42,6 +43,7 @@ console.log('template:', tools.string.template(str, data));
 
 //> template: <div>My name is Alice I was born in 2014 and my favourite color is purple</div>{nothing}
 </script>
+````
 
 ## API
 
