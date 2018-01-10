@@ -1,4 +1,13 @@
 <script src="../dist/atoolbox.min.js"></script>
 <script>
-  console.log('tools', tools)
+var data = {
+  name: 'Alice',
+  year: 2014,
+  color: 'purple'
+};
+
+var str = '<div>My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}';
+console.log('template:', tools.string.template(str, data));
+
+//> template: <div>My name is Alice I was born in 2014 and my favourite color is purple</div>{nothing}
 </script>

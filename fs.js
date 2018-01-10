@@ -8,7 +8,7 @@ const fs = {}
 /**
  * replace deprecated fs.exists
  * @method tools.fs.exists
- * @param {String} path (filePath) file path
+ * @param {string} path (filePath) file path
  * @return {Promise.<boolean>} true if file exists - and it's a file
  * https://nodejs.org/api/fs.html#fs_fs_exists_path_callback
  * @test.arrange async function(input, sandbox) {
@@ -37,10 +37,10 @@ fs.exists = function (path) {
 /**
  * create an empty file if not exists
  * @method tools.fs.touch
- * @param {String} path (filePath) file path
+ * @param {string} path (filePath) file path
  * @return {Promise.<void>}
- * @test.case '/none' ! new Error('EACCES')
  * @test.case '/tmp/touch-me'
+ * @test.case '/none' ! new Error('EACCES')
  * @test.assert async (result, input, output, sandbox) => {
  *   if(!await tester.assert.equal(result, input, output, sandbox)) {
  *     return false
@@ -69,8 +69,8 @@ fs.touch = function (path) {
 /**
  * delete file, optionally in safe mode
  * @method tools.fs.unlink
- * @param {String} path (filePath) file path
- * @param {boolean} [safe=true]
+ * @param {string} path (filePath) file path
+ * @param {boolean} [safe=true] if safe do not throw exception
  * @return {Promise.<void>}
  * @test.arrange async function(input, sandbox) {
  *   const fs = require('a-toolbox').fs

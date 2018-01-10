@@ -1,12 +1,17 @@
 const util = {
-/**
- * check if v is setted, means it's not null or undefined
- * @param {*} v
- */
-  isSet: function (v) {
-    return (typeof v !== 'undefined' && v !== null)
+  /**
+   * check if ``val`` is setted, means it's not ``null`` or ``undefined``
+   * @param {*} val
+   * @return {bool}
+   */
+  isSet: function (val) {
+    return (typeof val !== 'undefined' && val !== null)
   },
 
+  /**
+   * check if you are on browser or not
+   * @return {bool}
+   */
   onBrowser: function () {
     return (typeof window === 'object' && window instanceof Window)
   }

@@ -44,7 +44,12 @@ const string = {
     if (!cuts) {
       return str.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '')
     } else {
-      var _cuts = cuts.join()
+      const _cuts = cuts.map(c => {
+        if (c === '[' || c === ']') {
+          return '\\' + c
+        }
+        return c
+      }).join()
       return str.replace(new RegExp('^[' + _cuts + ']+|[' + _cuts + ']+$', 'gm'), '')
     }
   },
