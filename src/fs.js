@@ -38,6 +38,7 @@ fs.exists = function (path) {
  * create an empty file if not exists
  * @method tools.fs.touch
  * @param {string} path (filePath) file path
+ * @param {number} [mode=0o666]
  * @return {Promise.<void>}
  * @test.case '/tmp/touch-me'
  * @test.case '/none' ! new Error('EACCES')
@@ -49,9 +50,9 @@ fs.exists = function (path) {
  *   return fs.exists(input[0])
  * }
  */
-fs.touch = function (path) {
+fs.touch = function (path, mode = 0o666) {
   return new Promise(function (resolve, reject) {
-    nativeFs.open(path, 'a', (err, fd) => {
+    nativeFs.open(path, 'a', mode, (err, fd) => {
       if (err) {
         reject(err)
         return

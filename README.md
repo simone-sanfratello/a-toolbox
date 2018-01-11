@@ -71,6 +71,7 @@ documentation in progress
 - [time](#time)
 
 ### fs
+note: not available on browser
 
 #### fs.exists(path)  
 - _path_ \<string\> file path 
