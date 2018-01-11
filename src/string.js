@@ -8,7 +8,7 @@ const string = {
    * @method tools.string.template
    * @param {string} str
    * @param {Object} obj
-   * @param {boolean} [remove=false] missing placeholders from obj, default false
+   * @param {boolean} [remove=false] remove missing placeholders from obj, default false
    * @return {string}
    *
    * @test.case 'hi {name} how are you?', {name: 'Alice'} > 'hi Alice how are you?'
@@ -32,7 +32,7 @@ const string = {
    * @see http://google.github.io/closure-library/api/namespace_goog_string.html
    * @method tools.string.trim
    * @param {string} str
-   * @param {?string[]} cuts
+   * @param {Array<string>} cuts
    * @return {string}
    *
    * @test.case ' regular trim      ' > 'regular trim'

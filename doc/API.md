@@ -383,3 +383,146 @@ check if ``val`` is setted, means it's not ``null`` or ``undefined``
 
 check if you are on browser or not  
 
+
+
+---
+
+### string
+
+#### string.template(str, obj, [remove=false])  
+- _str_ \<string\>  
+- _obj_ \<Object\>  
+- _[remove=false]_ \<boolean\> remove missing placeholders from obj, default false 
+- _return:_ string   
+
+replace placeholders inside graph brackets {} with obj dictionary\n~ES6 template string without $  
+
+_Example_
+
+````js
+
+tools.string.template('hi {name} how are you?', {name: 'Alice'})
+// > 'hi Alice how are you?'
+````
+
+#### string.trim(str, cuts)  
+- _str_ \<string\>  
+- _cuts_ \<Array<string>\>  
+- _return:_ string   
+
+trim string  
+
+_Example_
+
+````js
+
+tools.string.trim(' regular trim      ')
+// > 'regular trim'
+````
+
+#### string.replaceAll(str, from, to)  
+- _str_ \<string\>  
+- _from_ \<string\>  
+- _to_ \<string\>  
+- _return:_ string   
+
+  
+
+_Example_
+
+````js
+
+tools.string.replaceAll('abcadaeafaga', 'a', '')
+// > 'bcdefg'
+````
+
+#### string.capitalize(str)  
+- _str_ \<string\>  
+- _return:_ string   
+
+  
+
+_Example_
+
+````js
+
+tools.string.capitalize('alice')
+// > 'Alice'
+````
+
+#### string.prependMissing(prefix, str)  
+- _prefix_ \<string\>  
+- _str_ \<string\>  
+- _return:_ string   
+
+  
+
+_Example_
+
+````js
+
+tools.string.prependMissing('miss ', 'Alice')
+// > 'miss Alice'
+````
+
+
+---
+
+### random
+
+#### random.rnd(max)  
+- _max_ \<number\>  
+- _return:_ number   
+
+get random int from 0 to max  
+
+
+#### random.number(min, max)  
+- _min_ \<number\>  
+- _max_ \<number\>  
+- _return:_ number   
+
+get random int from min to max  
+
+
+#### random.string([length=8], [set=abcdefghijklmnopqrstuvwxyz])  
+- _[length=8]_ \<number\>  
+- _[set=abcdefghijklmnopqrstuvwxyz]_ \<Array\>  
+- _return:_ string   
+
+get random string  
+
+
+#### random.hex([length=8])  
+- _[length=8]_ \<number\>  
+- _return:_ string   
+
+get random hex string  
+
+
+#### random.hash(salt)  
+- _salt_ \<?string\>  
+- _return:_ string   
+
+get random hash string  
+
+
+#### random.element(array, not)  
+- _array_ \<Array<*>\>  
+- _not_ \<Array<*>\>  
+- _return:_ * element  
+
+get random element from array  
+
+
+
+---
+
+### sys
+
+#### sys.isRoot()  
+
+- _return:_ bool is root or not  
+
+check if running user is root  
+

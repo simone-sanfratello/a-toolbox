@@ -481,9 +481,8 @@ v. 1.0.0
 
 ## TODO
 
-- [ ] doc (readme, api)
+- [ ] doc
 - [ ] tdd via tollo
-- [ ] keywords in github and package.json
 
 ---
 
