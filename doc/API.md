@@ -1,51 +1,3 @@
-### fs
-
-#### fs.exists(path)  
-- _path_ \<string\> file path 
-- _return:_ Promise.\<boolean\> true if file exists - and it's a file  
-
-replace deprecated fs.exists  
-
-_Example_
-
-````js
-
-tools.fs.exists('/tmp/file')
-// > true
-````
-
-#### fs.touch(path)  
-- _path_ \<string\> file path 
-- _return:_ Promise.\<void\>   
-
-create an empty file if not exists  
-
-_Example_
-
-````js
-
-tools.fs.touch('/tmp/touch-me')
-
-````
-
-#### fs.unlink(path, [safe=true])  
-- _path_ \<string\> file path 
-- _[safe=true]_ \<boolean\> if safe do not throw exception 
-- _return:_ Promise.\<void\>   
-
-delete file, optionally in safe mode  
-
-_Example_
-
-````js
-
-tools.fs.unlink('/tmp/file')
-
-````
-
-
----
-
 ### array
 
 #### array.remove(array, item)  
@@ -198,6 +150,55 @@ tools.array.add(a, 3, true)
 
 ---
 
+### fs
+
+#### fs.exists(path)  
+- _path_ \<string\> file path 
+- _return:_ Promise.\<boolean\> true if file exists - and it's a file  
+
+replace deprecated fs.exists  
+
+_Example_
+
+````js
+
+tools.fs.exists('/tmp/file')
+// > true
+````
+
+#### fs.touch(path, [mode=0o666])  
+- _path_ \<string\> file path 
+- _[mode=0o666]_ \<number\>  
+- _return:_ Promise.\<void\>   
+
+create an empty file if not exists  
+
+_Example_
+
+````js
+
+tools.fs.touch('/tmp/touch-me')
+
+````
+
+#### fs.unlink(path, [safe=true])  
+- _path_ \<string\> file path 
+- _[safe=true]_ \<boolean\> if safe do not throw exception 
+- _return:_ Promise.\<void\>   
+
+delete file, optionally in safe mode  
+
+_Example_
+
+````js
+
+tools.fs.unlink('/tmp/file')
+
+````
+
+
+---
+
 ### hash
 
 #### hash.sha256(data)  
@@ -212,6 +213,155 @@ _Example_
 
 tools.hash.sha256('usk6fgbuygbu6')
 // > 'ee42f619919727584b66fe25248ed4bba8e87dcfb3e62a90143ea17ba48df58e'
+````
+
+
+---
+
+### object
+
+#### object.merge(obj1, obj2)  
+- _obj1_ \<Object\>  
+- _obj2_ \<Object\>  
+  
+
+merge obj2 into obj1  
+
+_Example_
+
+````js
+let a = {a:1,b:'ciao'}
+tools.object.merge(a, {a:4,c:{d:8,e:9}})
+// > a = { a: 4, b: 'ciao', c: { d: 8, e: 9 } }
+````
+
+#### object.clone(obj)  
+- _obj_ \<Object|Array\> The array or the object to clone 
+- _return:_ Object|Array   
+
+Clone an array or an object in input  
+
+_Example_
+
+````js
+
+tools.object.clone({a: 1, b: 'ciao'})
+// > {a: 1, b: 'ciao'}
+````
+
+#### object.getKeys(obj)  
+- _obj_ \<Object\>  
+- _return:_ Array   
+
+  
+
+
+#### object.inherits()  
+
+  
+
+  
+
+
+#### object.empty()  
+
+  
+
+empty object - need to keep references  
+
+_Example_
+
+````js
+let a = {a:0,b:1,c:2,d:[],e:{f:-1}}
+tools.object.empty(a)
+// > a = {}
+````
+
+#### _f.flat(obj)  
+- _obj_ \<Object\>  
+- _return:_ Object   
+
+flat keys in object  
+
+_Example_
+
+````js
+
+tools.object.flat({ a: { a1: 1, a2: 2 }, b: 3 })
+// > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
+````
+
+#### object.flat(obj)  
+- _obj_ \<Object\>  
+- _return:_ Object   
+
+flat keys in object  
+
+_Example_
+
+````js
+
+tools.object.flat({ a: { a1: 1, a2: 2 }, b: 3 })
+// > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
+````
+
+#### _f.raise(obj)  
+- _obj_ \<Object\>  
+- _return:_ Object   
+
+restore flat object  
+
+_Example_
+
+````js
+
+tools.object.raise({ 'a.a1': 1, 'a.a2': 2, 'b': 3 })
+// > { a: { a1: 1, a2: 2 }, b: 3 }
+````
+
+#### object.raise(obj)  
+- _obj_ \<Object\>  
+- _return:_ Object   
+
+restore flat object  
+
+_Example_
+
+````js
+
+tools.object.raise({ 'a.a1': 1, 'a.a2': 2, 'b': 3 })
+// > { a: { a1: 1, a2: 2 }, b: 3 }
+````
+
+#### object.getByFlatKey(obj, fkey)  
+- _obj_ \<Object\>  
+- _fkey_ \<string\>  
+- _return:_ Object   
+
+get value in object using a flat key  
+
+_Example_
+
+````js
+
+tools.object.getByFlatKey({ a: { b: {c: 1} } }, 'a.b.c')
+// > 1
+````
+
+#### object.setByFlatKey(obj, fkey, val)  
+- _obj_ \<Object\>  
+- _fkey_ \<string\>  
+- _val_ \<*\>  
+  
+
+set value in object using a flat key  
+
+_Example_
+
+````js
+let a = {}
+tools.object.setByFlatKey(a, 'a.b.c', 1)
+// > a = { a: { b: {c: 1} } }
 ````
 
 

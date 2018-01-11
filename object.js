@@ -39,6 +39,9 @@ const object = {
    * @method tools.object.clone
    * @param {Object|Array} obj The array or the object to clone
    * @return {Object|Array}
+   * @test.case {a: 1, b: 'ciao'} > {a: 1, b: 'ciao'}
+   * @test.case {a: 4, c: { d: 8, e: 9}} > {a: 4, c: { d: 8, e: 9}}
+   * @test.case {a: 4, b: 'ciao', c: { d: 8, e: 9 }} > {a: 4, b: 'ciao', c: { d: 8, e: 9 }}
    */
   clone: function (obj) {
     if (obj === null || obj === undefined) {
