@@ -15,4 +15,8 @@ str = 'usk6fgbuygbu6'
 console.log('sha256:', tools.hash.sha256(str))
 //> sha256: ee42f619919727584b66fe25248ed4bba8e87dcfb3e62a90143ea17ba48df58e
 
+var a = {}
+tools.object.inherits(a, {f0: function() { }, p1: 1, p2: 'ciao'})
+console.log('inherits:', a)
+
 </script>

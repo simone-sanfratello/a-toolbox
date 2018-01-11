@@ -75,6 +75,7 @@ documentation in progress
 - [time](#time)
   todo
 
+
 ### array
 
 #### array.remove(array, item)  
@@ -228,6 +229,7 @@ tools.array.add(a, 3, true)
 ---
 
 ### fs
+note: not available on browser
 
 #### fs.exists(path)  
 - _path_ \<string\> file path 
@@ -297,12 +299,26 @@ tools.hash.sha256('usk6fgbuygbu6')
 
 ### object
 
-#### object.merge(obj1, obj2)  
-- _obj1_ \<Object\>  
-- _obj2_ \<Object\>  
+#### object.flat(obj)  
+- _obj_ \<Object\>  
+- _return:_ Object   
+
+flat keys in object  
+
+_Example_
+
+````js
+
+tools.object.flat({ a: { a1: 1, a2: 2 }, b: 3 })
+// > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
+````
+
+#### object.merge(a, b)  
+- _a_ \<Object\>  
+- _b_ \<Object\>  
   
 
-merge obj2 into obj1  
+merge b into a  
 
 _Example_
 
@@ -328,20 +344,35 @@ tools.object.clone({a: 1, b: 'ciao'})
 
 #### object.getKeys(obj)  
 - _obj_ \<Object\>  
-- _return:_ Array   
+- _return:_ Array\<string\>   
 
   
 
+_Example_
 
-#### object.inherits()  
+````js
 
+tools.object.getKeys({a: () => { }, b: 1, c: 'ciao'})
+// > ['a','b','c']
+````
+
+#### object.inherits(destination, source)  
+- _destination_ \<Object\>  
+- _source_ \<Object\>  
   
 
-  
+it use ``Object.getOwnPropertyNames`` to inherits child from parent, without prototype  
 
+_Example_
 
-#### object.empty()  
+````js
+let a = {}
+tools.object.inherits(a, {f0:() => { },p1:1,p2:'ciao'})
+// > a = {f0: () => { }, p1: 1, p2: 'ciao'}
+````
 
+#### object.empty(obj)  
+- _obj_ \<Object\>  
   
 
 empty object - need to keep references  
@@ -352,34 +383,6 @@ _Example_
 let a = {a:0,b:1,c:2,d:[],e:{f:-1}}
 tools.object.empty(a)
 // > a = {}
-````
-
-#### _f.flat(obj)  
-- _obj_ \<Object\>  
-- _return:_ Object   
-
-flat keys in object  
-
-_Example_
-
-````js
-
-tools.object.flat({ a: { a1: 1, a2: 2 }, b: 3 })
-// > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
-````
-
-#### object.flat(obj)  
-- _obj_ \<Object\>  
-- _return:_ Object   
-
-flat keys in object  
-
-_Example_
-
-````js
-
-tools.object.flat({ a: { a1: 1, a2: 2 }, b: 3 })
-// > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
 ````
 
 #### _f.raise(obj)  

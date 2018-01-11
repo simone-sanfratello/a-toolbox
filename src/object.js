@@ -3,33 +3,60 @@
  */
 const object = {
   /**
-   * merge obj2 into obj1
+   * flat keys in object
+   * @method tools.object.flat
+   * @param {Object} obj
+   * @return {Object}
+   * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
+   */
+  flat: function (obj) {
+    const _obj = {}
+    return object._rflat(obj, '', _obj)
+  },
+
+  _rflat: function (obj, base, flat) {
+    for (const key in obj) {
+      try {
+        // eslint-disable-next-line eqeqeq
+        if (obj[key].constructor == Object) {
+          object._rflat(obj[key], base + key + '.', flat)
+        } else {
+          flat[base + key] = obj[key]
+        }
+      } catch (e) {
+        flat[base + key] = obj[key]
+      }
+    }
+  },
+
+  /**
+   * merge b into a
    * @method tools.object.merge
-   * @param {Object} obj1
-   * @param {Object} obj2
+   * @param {Object} a
+   * @param {Object} b
    * @test.case {a: 1, b: 'ciao'}, {a: 4, c: { d: 8, e: 9}} > &{ a: 4, b: 'ciao', c: { d: 8, e: 9 } }
    */
-  merge: function (obj1, obj2) {
-    if (!obj1) {
-      obj1 = obj2 || {}
+  merge: function (a, b) {
+    if (!a) {
+      a = b || {}
       return
     }
-    if (!obj2) {
-      return obj1
+    if (!b) {
+      return a
     }
 
-    for (var i in obj2) {
-      if (typeof obj2[i] === 'object') {
-        if (obj2[i] instanceof Array) {
-          obj1[i] = object.clone(obj2[i])
+    for (var i in b) {
+      if (typeof b[i] === 'object') {
+        if (b[i] instanceof Array) {
+          a[i] = object.clone(b[i])
           continue
         }
-        if (!obj1[i] || typeof obj1[i] !== 'object') {
-          obj1[i] = {}
+        if (!a[i] || typeof a[i] !== 'object') {
+          a[i] = {}
         }
-        object.merge(obj1[i], obj2[i])
+        object.merge(a[i], b[i])
       } else {
-        obj1[i] = obj2[i]
+        a[i] = b[i]
       }
     }
   },
@@ -74,7 +101,8 @@ const object = {
    * @see http://google.github.io/closure-library/api/source/closure/goog/object/object.js.src.html#l225
    * @method tools.object.getKeys
    * @param {Object} obj
-   * @return {Array}
+   * @return {Array<string>}
+   * @test.case {a: () => { }, b: 1, c: 'ciao'} > ['a','b','c']
    */
   getKeys: function (obj) {
     if (Object.keys) {
@@ -88,8 +116,12 @@ const object = {
   },
 
   /**
+   * it use ``Object.getOwnPropertyNames`` to inherits child from parent, without prototype
    * @method tools.object.inherits
    * @todo check if both are objects
+   * @param {Object} destination
+   * @param {Object} source
+   * @test.case {}, {f0: () => { }, p1: 1, p2: 'ciao'} > &{f0: () => { }, p1: 1, p2: 'ciao'}
    */
   inherits: function (destination, source) {
     Object.getOwnPropertyNames(source).forEach((property) => {
@@ -100,6 +132,7 @@ const object = {
   /**
    * empty object - need to keep references
    * @method tools.object.empty
+   * @param {Object} obj
    * @test.case {a:0,b:1,c:2,d:[],e:{f:-1}} > &{}
    * @test.case {} > &{}
    */
@@ -107,35 +140,6 @@ const object = {
     for (const i in obj) {
       delete obj[i]
     }
-  },
-
-  /**
-   * flat keys in object
-   * @method tools.object.flat
-   * @param {Object} obj
-   * @return {Object}
-   * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
-   */
-  flat: function (obj) {
-    const _flat = {}
-
-    const _f = function (obj, base) {
-      for (const key in obj) {
-        try {
-          // eslint-disable-next-line eqeqeq
-          if (obj[key].constructor == Object) {
-            _f(obj[key], base + key + '.')
-          } else {
-            _flat[base + key] = obj[key]
-          }
-        } catch (e) {
-          _flat[base + key] = obj[key]
-        }
-      }
-    }
-    _f(obj, '')
-
-    return _flat
   },
 
   /**
