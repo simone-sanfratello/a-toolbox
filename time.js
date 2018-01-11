@@ -11,7 +11,7 @@ const time = {
   chrono: {
     /**
      * @method tools.time.chrono.set
-     * @param {String} [tag=chrono]
+     * @param {string} [tag=chrono]
      */
     set: function (tag = 'chrono') {
       if (_chronos[tag]) {
@@ -22,21 +22,21 @@ const time = {
     },
     /**
      * @method tools.time.chrono.reset
-     * @param {String} [tag=chrono]
+     * @param {string} [tag=chrono]
      */
     reset: function (tag = 'chrono') {
       _chronos[tag] = Date.now()
     },
     /**
      * @method tools.time.chrono.clear
-     * @param {String} [tag=chrono]
+     * @param {string} [tag=chrono]
      */
     clear: function (tag = 'chrono') {
       delete _chronos[tag]
     },
     /**
      * @method tools.time.chrono.get
-     * @param {String} [tag=chrono]
+     * @param {string} [tag=chrono]
      * @return {number} ms
      */
     get: function (tag = 'chrono') {

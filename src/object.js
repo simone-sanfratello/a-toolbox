@@ -171,7 +171,7 @@ const object = {
    * @method tools.object.getByFlatKey
    * @todo check params
    * @param {Object} obj
-   * @param {String} fkey
+   * @param {string} fkey
    * @return {Object}
    * @test.case { a: { b: {c: 1} } }, 'a.b.c' > 1
    */
@@ -192,7 +192,7 @@ const object = {
    * @method tools.object.setByFlatKey
    * @todo check params
    * @param {Object} obj
-   * @param {String} fkey
+   * @param {string} fkey
    * @param {*} val
    * @test.case
    * {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }

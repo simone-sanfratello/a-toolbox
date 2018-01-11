@@ -6,10 +6,10 @@ const string = {
    * replace placeholders inside graph brackets {} with obj dictionary
    * ~ES6 template string without $
    * @method tools.string.template
-   * @param {String} str
+   * @param {string} str
    * @param {Object} obj
    * @param {boolean} [remove=false] missing placeholders from obj, default false
-   * @return {String}
+   * @return {string}
    *
    * @test.case 'hi {name} how are you?', {name: 'Alice'} > 'hi Alice how are you?'
    * @test.case 'hi {name} how are you?', {}, true > 'hi  how are you?'
@@ -31,9 +31,9 @@ const string = {
    * trim string
    * @see http://google.github.io/closure-library/api/namespace_goog_string.html
    * @method tools.string.trim
-   * @param {String} str
+   * @param {string} str
    * @param {?string[]} cuts
-   * @return {String}
+   * @return {string}
    *
    * @test.case ' regular trim      ' > 'regular trim'
    * @test.case ' trim,no,. : \n    ', [',','.',' ', ':', '\n'] > 'trim,no'
@@ -56,10 +56,10 @@ const string = {
 
   /**
    * @method tools.string.replaceAll
-   * @param {String} str
-   * @param {String} from
-   * @param {String} to
-   * @return {String}
+   * @param {string} str
+   * @param {string} from
+   * @param {string} to
+   * @return {string}
    * @test.case 'abcadaeafaga', 'a', '' > 'bcdefg'
    * @test.case '112233445544', '4', '9' > '112233995599'
    * @test.case 'repeat repeat repeat', 'repeat', 'don\'t repeat' > 'don\'t repeat don\'t repeat don\'t repeat'
@@ -72,8 +72,8 @@ const string = {
 
   /**
    * @method tools.string.capitalize
-   * @param {String} str
-   * @return {String}
+   * @param {string} str
+   * @return {string}
    * @test.case 'alice' > 'Alice'
    * @test.case 'alice smith' > 'Alice smith'
    * @test.case 'alice-smith' > 'Alice-smith'
@@ -84,9 +84,9 @@ const string = {
 
   /**
    * @method tools.string.prependMissing
-   * @param {String} prefix
-   * @param {String} str
-   * @return {String}
+   * @param {string} prefix
+   * @param {string} str
+   * @return {string}
    * @test.case 'miss ', 'Alice' > 'miss Alice'
    * @test.case 'miss ', 'miss Alice' > 'miss Alice'
    */
@@ -99,7 +99,7 @@ const string = {
 
   /**
    * @method tools.string.matchAll
-   * @param {String} str
+   * @param {string} str
    * @param {RegExp} regexp
    * @return {String[]}
    */

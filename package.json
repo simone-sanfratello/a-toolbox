@@ -1,7 +1,7 @@
 {
   "name": "a-toolbox",
-  "version": "1.1.2",
-  "description": "javascript lightweight basic tools, zero dependecies, isomorphic",
+  "version": "1.2.0",
+  "description": "javascript lightweight basic tools, isomorphic",
   "main": "index.js",
   "devDependencies": {
     "babel": "^6.x",
@@ -29,7 +29,7 @@
     "build": "gulp",
     "clean": "gulp clean",
     "doxdox": "mkdir -p doc/doxdox; doxdox './src/*.js' --layout markdown --output ./doc/README.md",
-    "jsdoc": "jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md src/*.js"
+    "jsdoc": "jsdoc -c doc/jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md src/*.js"
   },
   "standard": {
     "ignore": [
@@ -39,8 +39,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://simone-sanfratello@github.com/simone-sanfratello/a-toolbox.git"
+    "url": "git+https://github.com/braceslab/a-toolbox.git"
   },
   "author": "Simone Sanfratello <simone@braceslab.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "library",
+    "toolkit",
+    "toolbox",
+    "array",
+    "fs",
+    "object",
+    "hash",
+    "task",
+    "async",
+    "random",
+    "string"
+  ],
+  "dependencies": {
+    "hash.js": "^1.1.3"
+  }
 }

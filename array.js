@@ -4,15 +4,16 @@
  */
 const array = {
   /**
-   * remove an element from array, only once
+   * remove an element from array
+   * it removes only the first occurrence
    * @method tools.array.remove
    * @todo item=object, date, regexp ...
-   * @todo remove all item, not only first
+   * @todo remove all item, not only the first one
    * @param {Array<*>} array
    * @param {*} item
+   * @test.case ['js','ruby','python'], 'ruby' > &['js','python']
    * @test.case [1,2,3], 2 > &[1,3]
    * @test.case [1,2,3], 3 > &[1,2]
-   * @test.case ['js','ruby','python'], 1 > &['js','python']
    */
   remove: function (array, item) {
     const _index = array.indexOf(item)
@@ -93,6 +94,8 @@ const array = {
    * @param {Array<*>} array
    * @param {*} item
    * @return {boolean}
+   * @test.case [1,2,3], 1 > true
+   * @test.case [1,2,3], 4 > false
    */
   contains: function (array, item) {
     return array.indexOf(item) !== -1
@@ -148,9 +151,13 @@ const array = {
   /**
    * push item into array, optionally check if already exists
    * @method tools.array.add
+   * @param {Array<*>} array
+   * @param {*} item
+   * @param {boolean} [unique=false]
+   * @test.case [0,1,2,3], 3, true > &[0,1,2,3]
    */
   add: function (array, item, unique) {
-    if (unique && array.contains(array, item)) {
+    if (!!unique && array.contains(array, item)) {
       return
     }
     array.push(item)

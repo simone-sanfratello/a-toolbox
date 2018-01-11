@@ -1,4 +1,4 @@
-const crypto = require('crypto')
+const lib = require('hash.js')
 
 /**
  * @namespace tools.hash
@@ -7,8 +7,8 @@ const hash = {
   /**
    * Generate hash using sha256 in hex format
    * @method tools.hash.sha256
-   * @param {String} data any string
-   * @return {String} sha256 in hex format
+   * @param {string} data any string
+   * @return {string} sha256 in hex format
    *
    * @test
    * 'usk6fgbuygbu6' > 'ee42f619919727584b66fe25248ed4bba8e87dcfb3e62a90143ea17ba48df58e'
@@ -17,7 +17,7 @@ const hash = {
    * > '18d18c26ed98c0e88d9121132be48f42596e899ac50f15f854c9d0a82b9f2cb5'
    */
   sha256: function (data) {
-    return crypto.createHash('sha256')
+    return lib.sha256()
       .update(data)
       .digest('hex')
   }

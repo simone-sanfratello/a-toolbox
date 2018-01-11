@@ -7,7 +7,12 @@ var data = {
 };
 
 var str = '<div>My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}';
-console.log('template:', tools.string.template(str, data));
+console.log('template:', tools.string.template(str, data))
 
 //> template: <div>My name is Alice I was born in 2014 and my favourite color is purple</div>{nothing}
+
+str = 'usk6fgbuygbu6'
+console.log('sha256:', tools.hash.sha256(str))
+//> sha256: ee42f619919727584b66fe25248ed4bba8e87dcfb3e62a90143ea17ba48df58e
+
 </script>
