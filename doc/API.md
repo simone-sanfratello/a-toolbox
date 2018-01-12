@@ -476,6 +476,13 @@ tools.string.prependMissing('miss ', 'Alice')
 
 get random int from 0 to max  
 
+_Example_
+
+````js
+
+tools.random.rnd(10)
+
+````
 
 #### random.number(min, max)  
 - _min_ \<number\>  
@@ -484,6 +491,13 @@ get random int from 0 to max
 
 get random int from min to max  
 
+_Example_
+
+````js
+
+tools.random.number(10, 20)
+
+````
 
 #### random.string([length=8], [set=abcdefghijklmnopqrstuvwxyz])  
 - _[length=8]_ \<number\>  
@@ -492,6 +506,13 @@ get random int from min to max
 
 get random string  
 
+_Example_
+
+````js
+
+tools.random.number(8)
+
+````
 
 #### random.hex([length=8])  
 - _[length=8]_ \<number\>  
@@ -499,6 +520,13 @@ get random string
 
 get random hex string  
 
+_Example_
+
+````js
+
+tools.random.hex(8)
+
+````
 
 #### random.hash(salt)  
 - _salt_ \<?string\>  
@@ -506,6 +534,13 @@ get random hex string
 
 get random hash string  
 
+_Example_
+
+````js
+
+tools.random.hash()
+
+````
 
 #### random.element(array, not)  
 - _array_ \<Array<*>\>  
@@ -514,6 +549,13 @@ get random hash string
 
 get random element from array  
 
+_Example_
+
+````js
+
+tools.random.element([1,2,3,4,5])
+
+````
 
 
 ---

@@ -1,4 +1,5 @@
 /**
+ * note: not available on browser
  * @namespace tools.sys
  */
 const sys = {

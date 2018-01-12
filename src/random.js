@@ -9,6 +9,13 @@ const random = {
    * @method tools.random.rnd
    * @param {number} max
    * @return {number}
+   * @test.case 10
+   * @test.case 100
+   * @test.case 2
+   * @test.case 99
+   * @test.assert async (result, input, output, sandbox) => {
+   *   return result >= 0 && result <= input[0]
+   * }
    */
   rnd: function (max) {
     if (!max) {
@@ -22,6 +29,12 @@ const random = {
    * @param {number} min
    * @param {number} max
    * @return {number}
+   * @test.case 10, 20
+   * @test.case 1, 100
+   * @test.case 0, 10
+   * @test.assert async (result, input, output, sandbox) => {
+   *   return result >= input[0] && result <= input[1]
+   * }
    */
   number: function (min, max) {
     if (!max) {
@@ -31,12 +44,34 @@ const random = {
     max = Math.floor(max)
     return min + random.rnd(1 + max - min)
   },
+
   /**
    * get random string
    * @method tools.random.number
    * @param {number} [length=8]
    * @param {Array} [set=abcdefghijklmnopqrstuvwxyz]
    * @return {string}
+   * @test.case 8
+   * @test.case 1, '1234567890'
+   * @test.case 0
+   * @test.case -1
+   * @test.assert async (result, input, output, sandbox) => {
+   *   if(!input[0] && input[0] !== 0) {
+   *     input[0] = 8
+   *   }
+   *   if(!input[1]) {
+   *     input[1] = 'abcdefghijklmnopqrstuvwxyz'
+   *   }
+   *
+   *   if(result.length !== input[0])
+   *
+   *   for (let i = 0; i < input[0]; i++) {
+   *     if(input[1].indexOf(result[i]) === -1) {
+   *       return false
+   *     }
+   *   }
+   *   return true
+   * }
    */
   string: function (length = 8, set = 'abcdefghijklmnopqrstuvwxyz') {
     let _str = ''
@@ -45,30 +80,66 @@ const random = {
     }
     return _str
   },
+
   /**
    * get random hex string
    * @method tools.random.hex
    * @param {number} [length=8]
    * @return {string}
+   * @test.case 8
+   * @test.case 16
+   * @test.case 0
+   * @test.case -1
+   * @test.assert async (result, input, output, sandbox) => {
+   *   if(!input[0] && input[0] !== 0) {
+   *     input[0] = 8
+   *   }
+   *
+   *   if(result.length !== input[0])
+   *
+   *   for (let i = 0; i < input[0]; i++) {
+   *     if('0123456789abcdef'.indexOf(result[i]) === -1) {
+   *       return false
+   *     }
+   *   }
+   *   return true
+   * }
    */
   hex: function (length = 8) {
     return random.string(length, '0123456789abcdef')
   },
+
   /**
    * get random hash string
    * @method tools.random.hash
    * @param {?string} salt
    * @return {string}
+   * @test.case
+   * @test.assert async (result, input, output, sandbox) => {
+   *   return result.length === 64
+   * }
    */
   hash: function (salt = '') {
     return hash.sha256(new Date().toISOString() + salt)
   },
+
   /**
    * get random element from array
-   * @method tools.random.hash
+   * @method tools.random.element
    * @param {Array<*>} array
    * @param {Array<*>} not
    * @return {*} element
+   * @test.case [1,2,3,4,5]
+   * @test.case [1,2,3,4,5], 5
+   * @test.case [1,2,3,4,5], 6
+   * @test.assert async (result, input, output, sandbox) => {
+   *   if(input[1]) {
+   *     if(result === input[1]) {
+   *       return false
+   *     }
+   *   }
+   *   return input[0].indexOf(result)
+   * }
    */
   element: function (array, not) {
     if (!not) {

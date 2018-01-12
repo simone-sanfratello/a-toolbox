@@ -1,6 +1,7 @@
 const nativeFs = require('fs')
 
 /**
+ * note: not available on browser
  * @namespace tools.fs
  */
 const fs = {}

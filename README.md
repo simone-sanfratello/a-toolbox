@@ -65,11 +65,8 @@ documentation in progress
 - [object](#object)
 - [util](#util)
 - [random](#random)
-  todo
 - [string](#string)
-  todo
 - [sys](#sys)
-  todo
 - [task](#task)
   todo
 - [time](#time)
@@ -463,13 +460,199 @@ check if ``val`` is setted, means it's not ``null`` or ``undefined``
 check if you are on browser or not  
 
 
+
+---
+
+### string
+
+#### string.template(str, obj, [remove=false])  
+- _str_ \<string\>  
+- _obj_ \<Object\>  
+- _[remove=false]_ \<boolean\> remove missing placeholders from obj, default false 
+- _return:_ string   
+
+replace placeholders inside graph brackets {} with obj dictionary\n~ES6 template string without $  
+
+_Example_
+
+````js
+
+tools.string.template('hi {name} how are you?', {name: 'Alice'})
+// > 'hi Alice how are you?'
+````
+
+#### string.trim(str, cuts)  
+- _str_ \<string\>  
+- _cuts_ \<Array<string>\>  
+- _return:_ string   
+
+trim string  
+
+_Example_
+
+````js
+
+tools.string.trim(' regular trim      ')
+// > 'regular trim'
+````
+
+#### string.replaceAll(str, from, to)  
+- _str_ \<string\>  
+- _from_ \<string\>  
+- _to_ \<string\>  
+- _return:_ string   
+
+  
+
+_Example_
+
+````js
+
+tools.string.replaceAll('abcadaeafaga', 'a', '')
+// > 'bcdefg'
+````
+
+#### string.capitalize(str)  
+- _str_ \<string\>  
+- _return:_ string   
+
+  
+
+_Example_
+
+````js
+
+tools.string.capitalize('alice')
+// > 'Alice'
+````
+
+#### string.prependMissing(prefix, str)  
+- _prefix_ \<string\>  
+- _str_ \<string\>  
+- _return:_ string   
+
+  
+
+_Example_
+
+````js
+
+tools.string.prependMissing('miss ', 'Alice')
+// > 'miss Alice'
+````
+
+
+---
+
+### random
+
+#### random.rnd(max)  
+- _max_ \<number\>  
+- _return:_ number   
+
+get random int from 0 to max  
+
+_Example_
+
+````js
+
+tools.random.rnd(10)
+
+````
+
+#### random.number(min, max)  
+- _min_ \<number\>  
+- _max_ \<number\>  
+- _return:_ number   
+
+get random int from min to max  
+
+_Example_
+
+````js
+
+tools.random.number(10, 20)
+
+````
+
+#### random.string([length=8], [set=abcdefghijklmnopqrstuvwxyz])  
+- _[length=8]_ \<number\>  
+- _[set=abcdefghijklmnopqrstuvwxyz]_ \<Array\>  
+- _return:_ string   
+
+get random string  
+
+_Example_
+
+````js
+
+tools.random.number(8)
+
+````
+
+#### random.hex([length=8])  
+- _[length=8]_ \<number\>  
+- _return:_ string   
+
+get random hex string  
+
+_Example_
+
+````js
+
+tools.random.hex(8)
+
+````
+
+#### random.hash(salt)  
+- _salt_ \<?string\>  
+- _return:_ string   
+
+get random hash string  
+
+_Example_
+
+````js
+
+tools.random.hash()
+
+````
+
+#### random.element(array, not)  
+- _array_ \<Array<*>\>  
+- _not_ \<Array<*>\>  
+- _return:_ * element  
+
+get random element from array  
+
+_Example_
+
+````js
+
+tools.random.element([1,2,3,4,5])
+
+````
+
+
+---
+
+### sys
+note: not available on browser
+
+#### sys.isRoot()  
+
+- _return:_ bool is root or not  
+
+check if running user is root  
+
+
 ---
 
 ## Changelog
 
 v. 1.2.0
 
-- use [hash.js](https://github.com/indutny/hash.js) instead of ``crypto``
+- use [hash.js](https://github.com/indutny/hash.js) instead of ``crypto`` (for browser)
 
 v. 1.0.0
 

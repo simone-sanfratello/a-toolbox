@@ -16,7 +16,7 @@ const Tasks = function (options = {}) {
 
   /**
    * add task
-   * @param {!String} id
+   * @param {!string} id
    */
   this.todo = function (id) {
     if (options.chrono) {
