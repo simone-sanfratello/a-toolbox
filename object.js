@@ -10,8 +10,9 @@ const object = {
    * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
    */
   flat: function (obj) {
-    const _obj = {}
-    return object._rflat(obj, '', _obj)
+    const _flat = {}
+    object._rflat(obj, '', _flat)
+    return _flat
   },
 
   _rflat: function (obj, base, flat) {
@@ -84,9 +85,9 @@ const object = {
         if (obj.clone) {
           return obj.clone()
         }
-          /**
-           * @type {Array|Object}
-           */
+        /**
+         * @type {Array|Object}
+         */
         var _clone = _type === 'array' ? [] : {}
         for (var key in obj) {
           _clone[key] = object.clone(obj[key])
@@ -145,30 +146,27 @@ const object = {
   /**
    * restore flat object
    * @method tools.object.raise
-   * @param {Object} obj
+   * @param {Object} flat
    * @return {Object}
    * @test.case { 'a.a1': 1, 'a.a2': 2, 'b': 3 } > { a: { a1: 1, a2: 2 }, b: 3 }
    */
-  raise: function (obj) {
+  raise: function (flat) {
     const _raise = {}
 
-    const _f = function (flat, raise) {
-      for (const path in flat) {
-        const _keys = path.split('.')
-        let _cursor = raise
-        _keys.forEach((key, i) => {
-          if (i < _keys.length - 1) {
-            if (!_cursor[key]) {
-              _cursor[key] = {}
-            }
-            _cursor = _cursor[key]
-          } else {
-            _cursor[key] = flat[path]
+    for (const path in flat) {
+      const _keys = path.split('.')
+      let _cursor = _raise
+      _keys.forEach((key, i) => {
+        if (i < _keys.length - 1) {
+          if (!_cursor[key]) {
+            _cursor[key] = {}
           }
-        })
-      }
+          _cursor = _cursor[key]
+        } else {
+          _cursor[key] = flat[path]
+        }
+      })
     }
-    _f(obj, _raise)
 
     return _raise
   },
@@ -209,7 +207,7 @@ const object = {
     let _walk = obj
     for (let i = 0; i < _path.length; i++) {
       if (!_walk[_path[i]]) {
-          // if it's the last step, add key as undefined
+        // if it's the last step, add key as undefined
         if (i === _path.length - 1) {
           _walk[_path[i]] = undefined
           return
