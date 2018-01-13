@@ -557,7 +557,7 @@ _Example_
 ````js
 
 tools.random.rnd(10)
-
+// > 5
 ````
 
 #### random.number(min, max)  
@@ -572,7 +572,7 @@ _Example_
 ````js
 
 tools.random.number(10, 20)
-
+// > 11
 ````
 
 #### random.string([length=8], [set=abcdefghijklmnopqrstuvwxyz])  
@@ -586,8 +586,8 @@ _Example_
 
 ````js
 
-tools.random.number(8)
-
+tools.random.string(8)
+// > 'ajdsfchakwt'
 ````
 
 #### random.hex([length=8])  
@@ -601,7 +601,7 @@ _Example_
 ````js
 
 tools.random.hex(8)
-
+// > '1bc956bf'
 ````
 
 #### random.hash(salt)  
@@ -615,7 +615,7 @@ _Example_
 ````js
 
 tools.random.hash()
-
+// > '1f8a690b7366a2323e2d5b045120da7e93896f471f8a690b731f8a690b739ab5'
 ````
 
 #### random.element(array, not)  
@@ -630,9 +630,8 @@ _Example_
 ````js
 
 tools.random.element([1,2,3,4,5])
-
+// > 1
 ````
-
 
 ---
 

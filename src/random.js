@@ -47,7 +47,7 @@ const random = {
 
   /**
    * get random string
-   * @method tools.random.number
+   * @method tools.random.string
    * @param {number} [length=8]
    * @param {Array} [set=abcdefghijklmnopqrstuvwxyz]
    * @return {string}
