@@ -9,10 +9,10 @@ const random = {
    * @method tools.random.rnd
    * @param {number} max
    * @return {number}
-   * @test.case 10
-   * @test.case 100
-   * @test.case 2
-   * @test.case 99
+   * @test.case 10 > (5)
+   * @test.case 100 > (42)
+   * @test.case 2 > (1)
+   * @test.case 99 > (44)
    * @test.assert async (result, input, output, sandbox) => {
    *   return result >= 0 && result <= input[0]
    * }
@@ -29,9 +29,9 @@ const random = {
    * @param {number} min
    * @param {number} max
    * @return {number}
-   * @test.case 10, 20
-   * @test.case 1, 100
-   * @test.case 0, 10
+   * @test.case 10, 20 > (11)
+   * @test.case 1, 100 > (14)
+   * @test.case 0, 10 > (8)
    * @test.assert async (result, input, output, sandbox) => {
    *   return result >= input[0] && result <= input[1]
    * }
@@ -51,10 +51,10 @@ const random = {
    * @param {number} [length=8]
    * @param {Array} [set=abcdefghijklmnopqrstuvwxyz]
    * @return {string}
-   * @test.case 8
-   * @test.case 1, '1234567890'
-   * @test.case 0
-   * @test.case -1
+   * @test.case 8 > ('ajdsfchakwt')
+   * @test.case 1, '1234567890' > ('9')
+   * @test.case 0 > ''
+   * @test.case -1 > ''
    * @test.assert async (result, input, output, sandbox) => {
    *   if(!input[0] && input[0] !== 0) {
    *     input[0] = 8
@@ -86,16 +86,18 @@ const random = {
    * @method tools.random.hex
    * @param {number} [length=8]
    * @return {string}
-   * @test.case 8
+   * @test.case 8 > ('1bc956bf')
    * @test.case 16
-   * @test.case 0
-   * @test.case -1
+   * @test.case 0 > ''
+   * @test.case -1 > ''
    * @test.assert async (result, input, output, sandbox) => {
    *   if(!input[0] && input[0] !== 0) {
    *     input[0] = 8
    *   }
    *
-   *   if(result.length !== input[0])
+   *   if(result.length !== input[0]) {
+   *     return false
+   *   }
    *
    *   for (let i = 0; i < input[0]; i++) {
    *     if('0123456789abcdef'.indexOf(result[i]) === -1) {
@@ -114,7 +116,7 @@ const random = {
    * @method tools.random.hash
    * @param {?string} salt
    * @return {string}
-   * @test.case
+   * @test.case > ('1f8a690b7366a2323e2d5b045120da7e93896f471f8a690b731f8a690b739ab5')
    * @test.assert async (result, input, output, sandbox) => {
    *   return result.length === 64
    * }
@@ -129,9 +131,9 @@ const random = {
    * @param {Array<*>} array
    * @param {Array<*>} not
    * @return {*} element
-   * @test.case [1,2,3,4,5]
-   * @test.case [1,2,3,4,5], 5
-   * @test.case [1,2,3,4,5], 6
+   * @test.case [1,2,3,4,5] > (1)
+   * @test.case [1,2,3,4,5], 5 > (2)
+   * @test.case [1,2,3,4,5], 6 > (3)
    * @test.assert async (result, input, output, sandbox) => {
    *   if(input[1]) {
    *     if(result === input[1]) {

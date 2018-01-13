@@ -1,7 +1,7 @@
-random: add exsample output
-fs, sys note: not available on browser
+random: add example output
 task
 time
+fs, sys note: not available on browser
 
 #### tasks async manage
 
