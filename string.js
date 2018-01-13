@@ -67,6 +67,9 @@ const string = {
    * 'no_replace_all_in_js_native_code_that_replace_all_the_replace'
    */
   replaceAll: function (str, from, to) {
+    if (!str) {
+      return ''
+    }
     return str.split(from).join(to)
   },
 

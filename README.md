@@ -382,22 +382,8 @@ tools.object.empty(a)
 // > a = {}
 ````
 
-#### _f.raise(obj)  
-- _obj_ \<Object\>  
-- _return:_ Object   
-
-restore flat object  
-
-_Example_
-
-````js
-
-tools.object.raise({ 'a.a1': 1, 'a.a2': 2, 'b': 3 })
-// > { a: { a1: 1, a2: 2 }, b: 3 }
-````
-
-#### object.raise(obj)  
-- _obj_ \<Object\>  
+#### object.raise(flat)  
+- _flat_ \<Object\>  
 - _return:_ Object   
 
 restore flat object  
