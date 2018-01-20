@@ -67,9 +67,8 @@ documentation in progress
 - [random](#random)
 - [string](#string)
 - [sys](#sys)
-- [task](#task)
-  todo
 - [time](#time)
+- [task](#task)
   todo
 
 
@@ -629,6 +628,67 @@ note: not available on browser
 - _return:_ bool is root or not  
 
 check if running user is root  
+
+---
+
+### time
+
+#### time.chrono.set([tag=chrono])  
+- _[tag=chrono]_ \<string\>  
+
+start a timer identified by tag  
+
+_Example_
+
+````js
+
+tools.time.chrono.set('query')
+
+````
+
+#### time.chrono.reset([tag=chrono])  
+- _[tag=chrono]_ \<string\>  
+
+reset the timer identified by tag  
+
+_Example_
+
+````js
+
+tools.time.chrono.reset('query')
+
+````
+
+#### time.chrono.clear([tag=chrono])  
+- _[tag=chrono]_ \<string\>  
+
+discard the timer identified by tag  
+
+_Example_
+
+````js
+
+tools.time.chrono.clear('query')
+
+````
+
+#### time.chrono.get([tag=chrono])  
+- _[tag=chrono]_ \<string\>  
+- _return:_ number ms
+
+get the timer in ms from start (or reset) identified by tag  
+
+_Example_
+
+````js
+
+tools.time.chrono.get('query')
+// > 11
+````
+
+#### time.gc()  
+
+clear timers (if you care about memory)  
 
 
 ---
