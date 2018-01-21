@@ -4,14 +4,14 @@ const array = require('./array')
 /**
  * @namespace tools.task
  */
-
-/**
- * simple parallel tasks manager
- * @param {Object} options
- * @param {function} options.done callback when all tasks are completed
- */
-const Tasks = function (options = {}) {
-  const __tasks = []
+const task = {
+  /**
+   * simple parallel tasks manager
+   * @param {Object} options
+   * @param {function} options.done callback when all tasks are completed
+   */
+  Worker: function (options = {}) {
+    const __tasks = []
 
   /**
    * add task
@@ -19,12 +19,12 @@ const Tasks = function (options = {}) {
    * @param {!string} id
    * @test.case 'task#1'
    */
-  this.todo = function (id) {
-    if (options.chrono) {
-      time.chrono.set(id)
+    this.todo = function (id) {
+      if (options.chrono) {
+        time.chrono.set(id)
+      }
+      __tasks.push(id)
     }
-    __tasks.push(id)
-  }
 
   /**
    * declare task it's done
@@ -32,19 +32,20 @@ const Tasks = function (options = {}) {
    * @param {!string} id
    * @test.case 'task#1'
    */
-  this.done = function (id) {
-    array.remove(__tasks, id)
-    if (__tasks.length < 1) {
-      if (options.done) {
-        options.done()
+    this.done = function (id) {
+      array.remove(__tasks, id)
+      if (__tasks.length < 1) {
+        if (options.done) {
+          options.done()
+        }
       }
-    }
-    if (options.chrono) {
-      const _time = time.chrono.get(id)
-      time.chrono.clear(id)
-      return {chrono: _time}
+      if (options.chrono) {
+        const _time = time.chrono.get(id)
+        time.chrono.clear(id)
+        return {chrono: _time}
+      }
     }
   }
 }
 
-module.exports = Tasks
+module.exports = task

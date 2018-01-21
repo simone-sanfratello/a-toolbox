@@ -489,8 +489,6 @@ tools.string.trim(' regular trim      ')
 - _to_ \<string\>  
 - _return:_ string   
 
-  
-
 _Example_
 
 ````js
@@ -692,6 +690,61 @@ tools.time.chrono.get('query')
 
 clear timers (if you care about memory)  
 
+---
+
+### task
+
+#### class Tasks(options, options.done)  
+- _options_ \<Object\>  
+- _options.done_ \<function\> callback when all tasks are completed 
+simple parallel tasks manager  
+
+_Example_
+
+````js
+
+const tasks = new tools.task.Worker({done: function() { console.log('well done') }})
+
+const _asyncOperationTimeout = [500, 1000, 200, 1500, 100];
+
+for (const i in _asyncOperationTimeout) {
+  _tasks.todo('task#' + i);
+}
+
+for (const i in _asyncOperationTimeout) {
+  setTimeout(function (i) {
+    return function () {
+      console.log('done task #', i);
+      _tasks.done('task#' + i);
+    };
+  }(i), _asyncOperationTimeout[i]);
+}
+
+````
+
+#### Tasks.todo()  
+
+add task  
+
+_Example_
+
+````js
+
+tasks.todo('task#1')
+
+````
+
+#### Tasks.done()  
+
+declare task it's done  
+
+_Example_
+
+````js
+
+tasks.todo('task#1')
+
+````
 
 ---
 
@@ -711,7 +764,6 @@ v. 1.0.0
 
 ## TODO
 
-- [ ] doc
 - [ ] unit test via tollo
 
 ---

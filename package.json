@@ -1,6 +1,6 @@
 {
   "name": "a-toolbox",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "javascript lightweight basic tools, isomorphic",
   "main": "index.js",
   "dependencies": {
