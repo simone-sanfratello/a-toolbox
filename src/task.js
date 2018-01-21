@@ -6,8 +6,7 @@ const array = require('./array')
  */
 
 /**
- * simple async parallel task manager
- * @class
+ * simple parallel tasks manager
  * @param {Object} options
  * @param {function} options.done callback when all tasks are completed
  */
@@ -16,7 +15,9 @@ const Tasks = function (options = {}) {
 
   /**
    * add task
+   * @method Tasks.todo
    * @param {!string} id
+   * @test.case 'task#1'
    */
   this.todo = function (id) {
     if (options.chrono) {
@@ -27,7 +28,9 @@ const Tasks = function (options = {}) {
 
   /**
    * declare task it's done
-   * @param {!String} id
+   * @method Tasks.todo
+   * @param {!string} id
+   * @test.case 'task#1'
    */
   this.done = function (id) {
     array.remove(__tasks, id)

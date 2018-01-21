@@ -79,7 +79,8 @@ documentation in progress
 - _item_ \<*\>  
   
 
-remove an element from array\nit removes only the first occurrence  
+remove an element from array
+it removes only the first occurrence  
 
 _Example_
 
@@ -456,7 +457,8 @@ check if you are on browser or not
 - _[remove=false]_ \<boolean\> remove missing placeholders from obj, default false 
 - _return:_ string   
 
-replace placeholders inside graph brackets {} with obj dictionary\n~ES6 template string without $  
+replace placeholders inside graph brackets {} with obj dictionary
+~ES6 template string without $  
 
 _Example_
 
@@ -710,7 +712,7 @@ v. 1.0.0
 ## TODO
 
 - [ ] doc
-- [ ] tdd via tollo
+- [ ] unit test via tollo
 
 ---
 
