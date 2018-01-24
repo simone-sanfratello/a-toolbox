@@ -157,7 +157,7 @@ const array = {
    * @test.case [0,1,2,3], 3, true > &[0,1,2,3]
    */
   add: function (array, item, unique) {
-    if (!!unique && array.contains(array, item)) {
+    if (!!unique && array.indexOf(item) !== -1) {
       return
     }
     array.push(item)
