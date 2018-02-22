@@ -5,6 +5,7 @@ const fs = require('fs-extra')
 const buffer = require('gulp-buffer')
 const source = require('vinyl-source-stream')
 const sourcemaps = require('gulp-sourcemaps')
+const exec = require('child_process').exec
 
 const _files = [
   'array',
@@ -18,6 +19,7 @@ const _files = [
   'time',
   'util'
 ]
+
 const _nobrowser = ['sys', 'fs']
 
 gulp.task('clean', function () {
@@ -28,9 +30,9 @@ gulp.task('clean', function () {
 gulp.task('browser', function () {
   let _index = 'window.tools={\n' +
     _files
-    .filter(f => _nobrowser.indexOf(f) === -1)
-    .map(f => `${f}: require('./${f}')`)
-    .join(',\n') + '\n}'
+      .filter(f => _nobrowser.indexOf(f) === -1)
+      .map(f => `${f}: require('./${f}')`)
+      .join(',\n') + '\n}'
   fs.ensureDirSync('./dist')
   fs.writeFileSync('./src/_index.js', _index)
 
@@ -38,11 +40,11 @@ gulp.task('browser', function () {
     entries: './src/_index.js',
     debug: true
   })
-  .transform('babelify', {
-    presets: ['es2015', 'env'],
-    minified: true,
-    comments: false
-  })
+    .transform('babelify', {
+      presets: ['es2015', 'env'],
+      minified: true,
+      comments: false
+    })
 
   return b.bundle()
     .pipe(source('atoolbox.min.js'))
@@ -62,6 +64,7 @@ gulp.task('default', ['browser', 'post-build'], function () {
     _files.map(f => `${f}: require('./${f}')`).join(',\n') +
     '}'
   fs.writeFileSync('./index.js', _index)
+  exec('standard --fix ./index.js')
   return gulp.src('src/**.js')
     .pipe(gulp.dest('./'))
 })

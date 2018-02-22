@@ -1,4 +1,4 @@
-const tester = require('../../../tollo-full/index.js').tester
+const tester = require('tollo')
 const instance = require('../../src/array.js')
 
 module.exports = {
@@ -8,16 +8,16 @@ module.exports = {
     act: instance.remove,
     cases: [
       {
+        input: [[\'js\',\'ruby\',\'python\'], \'ruby\'],
+        output: [\'js\',\'python\']
+      },
+      {
         input: [[1,2,3], 2],
         output: [1,3]
       },
       {
         input: [[1,2,3], 3],
         output: [1,2]
-      },
-      {
-        input: [['js','ruby','python'], 1],
-        output: ['js','python']
       }
     ],
     assert: tester.assert.mutation
@@ -100,11 +100,11 @@ module.exports = {
         output: null
       },
       {
-        input: [[0,1,'0',false], -2],
-        output: '0'
+        input: [[0,1,\'0\',false], -2],
+        output: \'0\'
       },
       {
-        input: [[undefined,'0',false], 0],
+        input: [[undefined,\'0\',false], 0],
         output: undefined
       },
       {
@@ -136,7 +136,7 @@ module.exports = {
         output: null
       },
       {
-        input: [[undefined,'0',false]],
+        input: [[undefined,\'0\',false]],
         output: undefined
       },
       {
@@ -151,6 +151,14 @@ module.exports = {
     mode: tester.mode.SYNC,
     act: instance.contains,
     cases: [
+      {
+        input: [[1,2,3], 1],
+        output: true
+      },
+      {
+        input: [[1,2,3], 4],
+        output: false
+      }
     ],
     assert: tester.assert.equal
   },
@@ -160,20 +168,20 @@ module.exports = {
     act: instance.insert,
     cases: [
       {
-        input: [['john', 'alice', 'bob'], 0, 'mary'],
-        output: ['mary', 'john', 'alice', 'bob']
+        input: [[\'john\', \'alice\', \'bob\'], 0, \'mary\'],
+        output: [\'mary\', \'john\', \'alice\', \'bob\']
       },
       {
-        input: [['john', 'alice', 'bob'], 1, 'mary'],
-        output: ['john', 'mary', 'alice', 'bob']
+        input: [[\'john\', \'alice\', \'bob\'], 1, \'mary\'],
+        output: [\'john\', \'mary\', \'alice\', \'bob\']
       },
       {
-        input: [['john', 'alice', 'bob'], -1, 'mary'],
-        output: ['john', 'alice', 'bob', 'mary']
+        input: [[\'john\', \'alice\', \'bob\'], -1, \'mary\'],
+        output: [\'john\', \'alice\', \'bob\', \'mary\']
       },
       {
-        input: [['john', 'alice', 'bob'], -2, 'mary'],
-        output: ['john', 'alice', 'mary', 'bob']
+        input: [[\'john\', \'alice\', \'bob\'], -2, \'mary\'],
+        output: [\'john\', \'alice\', \'mary\', \'bob\']
       }
     ],
     assert: tester.assert.mutation
@@ -188,8 +196,8 @@ module.exports = {
         output: [0,1,2,3,4,5]
       },
       {
-        input: [[0, 1, 2, 3], ['a', 'b', 'c'], [{a: 2}]],
-        output: [0, 1, 2, 3, 'a', 'b', 'c', {a: 2}]
+        input: [[0, 1, 2, 3], [\'a\', \'b\', \'c\'], [{a: 2}]],
+        output: [0, 1, 2, 3, \'a\', \'b\', \'c\', {a: 2}]
       }
     ],
     assert: tester.assert.equal
@@ -215,7 +223,11 @@ module.exports = {
     mode: tester.mode.SYNC,
     act: instance.add,
     cases: [
+      {
+        input: [[0,1,2,3], 3, true],
+        output: [0,1,2,3]
+      }
     ],
-    assert: tester.assert.equal
+    assert: tester.assert.mutation
   }
 }

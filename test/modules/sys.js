@@ -1,4 +1,4 @@
-const tester = require('../../../tollo-full/index.js').tester
+const tester = require('tollo')
 const instance = require('../../src/sys.js')
 
 module.exports = {

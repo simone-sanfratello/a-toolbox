@@ -1,36 +1,49 @@
-const tester = require('../../../tollo-full/index.js').tester
+const tester = require('tollo')
 const instance = require('../../src/time.js')
 
 module.exports = {
-  'time.set': {
+  'chrono.set': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.set,
     cases: [
+      {
+        input: [  'query']
+      }
     ],
     assert: tester.assert.equal
   },
-  'time.reset': {
+  'chrono.reset': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.reset,
     cases: [
+      {
+        input: [  'query']
+      }
     ],
     assert: tester.assert.equal
   },
-  'time.clear': {
+  'chrono.clear': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.clear,
     cases: [
+      {
+        input: [  'query']
+      }
     ],
     assert: tester.assert.equal
   },
-  'time.get': {
+  'chrono.get': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.get,
     cases: [
+      {
+        input: ['query'],
+        could: '11'
+      }
     ],
     assert: tester.assert.equal
   },

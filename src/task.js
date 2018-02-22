@@ -13,7 +13,7 @@ const task = {
   Worker: function (options = {}) {
     const __tasks = []
 
-  /**
+    /**
    * add task
    * @method Tasks.todo
    * @param {!string} id
@@ -26,12 +26,12 @@ const task = {
       __tasks.push(id)
     }
 
-  /**
-   * declare task it's done
-   * @method Tasks.todo
-   * @param {!string} id
-   * @test.case 'task#1'
-   */
+    /**
+     * declare task it's done
+     * @method Tasks.todo
+     * @param {!string} id
+     * @test.case 'task#1'
+     */
     this.done = function (id) {
       array.remove(__tasks, id)
       if (__tasks.length < 1) {

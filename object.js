@@ -70,6 +70,7 @@ const object = {
    * @test.case {a: 1, b: 'ciao'} > {a: 1, b: 'ciao'}
    * @test.case {a: 4, c: { d: 8, e: 9}} > {a: 4, c: { d: 8, e: 9}}
    * @test.case {a: 4, b: 'ciao', c: { d: 8, e: 9 }} > {a: 4, b: 'ciao', c: { d: 8, e: 9 }}
+   * @test.case {a: [4, function() { console.log('hi') }, {a1: 0, a2: null}], b: 'ciao', c: { d: 8, e: 9 }} > {a: [4, function() { console.log('hi') }, {a1: 0, a2: null}], b: 'ciao', c: { d: 8, e: 9 }}
    */
   clone: function (obj) {
     if (obj === null || obj === undefined) {

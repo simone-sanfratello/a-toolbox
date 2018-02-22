@@ -1,6 +1,6 @@
 {
   "name": "a-toolbox",
-  "version": "1.2.10",
+  "version": "1.2.12",
   "description": "javascript lightweight basic tools, isomorphic",
   "main": "index.js",
   "dependencies": {
@@ -19,26 +19,33 @@
     "gulp-clean": "^0.3.x",
     "gulp-sourcemaps": "^2.6.x",
     "ink-docstrap": "^1.x",
-    "standard": "^10.x",
+    "pre-commit": "^1.x",
+    "standard": "^11.x",
     "tap": "^10.x",
+    "tollo": "^0.0.3-dev",
     "vinyl-source-stream": "^1.x"
   },
-  "engines": {
-    "node": ">=6"
-  },
+  "pre-commit": [
+    "test",
+    "build"
+  ],
   "scripts": {
     "test": "standard && tap test/tdd.js",
     "test-cov": "standard && tap test/tdd.js --cov",
     "build": "gulp",
     "clean": "gulp clean",
-    "doxdox": "mkdir -p doc/doxdox; doxdox './src/*.js' --layout markdown --output ./doc/README.md",
-    "jsdoc": "jsdoc -c doc/jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md src/*.js"
+    "_doxdox": "mkdir -p doc/doxdox; doxdox './src/*.js' --layout markdown --output ./doc/README.md",
+    "_jsdoc": "jsdoc -c doc/jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md src/*.js"
   },
   "standard": {
     "ignore": [
       "test/",
-      "src/_old/"
+      "_test/",
+      "src/_*"
     ]
+  },
+  "engines": {
+    "node": ">=6"
   },
   "repository": {
     "type": "git",

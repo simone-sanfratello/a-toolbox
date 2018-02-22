@@ -1,8 +1,8 @@
-const tester = require('../../../tollo-full/index.js').tester
+const tester = require('tollo')
 const instance = require('../../src/task.js')
 
 module.exports = {
-  'Tasks.todo': {
+  'task.todo': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.todo,
@@ -10,7 +10,7 @@ module.exports = {
     ],
     assert: tester.assert.equal
   },
-  'Tasks.done': {
+  'task.done': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.done,
@@ -18,10 +18,10 @@ module.exports = {
     ],
     assert: tester.assert.equal
   },
-  'Tasks.Tasks': {
+  'task.Worker': {
     describe: '',
-    mode: tester.mode.SYNC,
-    act: instance.Tasks,
+    mode: tester.mode.CLASS,
+    act: instance.Worker,
     cases: [
     ]
   }

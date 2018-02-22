@@ -57,8 +57,6 @@ console.log('template:', tools.string.template(str, data));
 
 ## API
 
-documentation in progress
-
 - [array](#array)
 - [fs](#fs)
 - [hash](#hash)
@@ -69,8 +67,6 @@ documentation in progress
 - [sys](#sys)
 - [time](#time)
 - [task](#task)
-  todo
-
 
 ### array
 
@@ -765,6 +761,9 @@ v. 1.0.0
 ## TODO
 
 - [ ] unit test via tollo
+- [ ] pre-commit: ``npm test && npm run build``
+- [ ] travis CI / node, browser
+- [ ] coverage badge / coverage 100%
 
 ---
 

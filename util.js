@@ -13,6 +13,7 @@ const util = {
    * @return {bool}
    */
   onBrowser: function () {
+    // eslint-disable-next-line no-undef
     return (typeof window === 'object' && window instanceof Window)
   }
 }

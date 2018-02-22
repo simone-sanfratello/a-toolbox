@@ -1,15 +1,34 @@
-const tester = require('../../../tollo-full/index.js').tester
+const tester = require('tollo')
 const instance = require('../../src/object.js')
 
 module.exports = {
+  'object.flat': {
+    describe: '',
+    mode: tester.mode.SYNC,
+    act: instance.flat,
+    cases: [
+      {
+        input: [{ a: { a1: 1, a2: 2 }, b: 3 }],
+        output: { \'a.a1\': 1, \'a.a2\': 2, \'b\': 3 }
+      }
+    ],
+    assert: tester.assert.equal
+  },
+  'object._rflat': {
+    describe: '',
+    mode: tester.mode.SYNC,
+    act: instance._rflat,
+    cases: [
+    ]
+  },
   'object.merge': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.merge,
     cases: [
       {
-        input: [{a: 1, b: 'ciao'}, {a: 4, c: { d: 8, e: 9}}],
-        output: { a: 4, b: 'ciao', c: { d: 8, e: 9 } }
+        input: [{a: 1, b: \'ciao\'}, {a: 4, c: { d: 8, e: 9}}],
+        output: { a: 4, b: \'ciao\', c: { d: 8, e: 9 } }
       }
     ],
     assert: tester.assert.mutation
@@ -19,6 +38,22 @@ module.exports = {
     mode: tester.mode.SYNC,
     act: instance.clone,
     cases: [
+      {
+        input: [{a: 1, b: \'ciao\'}],
+        output: {a: 1, b: \'ciao\'}
+      },
+      {
+        input: [{a: 4, c: { d: 8, e: 9}}],
+        output: {a: 4, c: { d: 8, e: 9}}
+      },
+      {
+        input: [{a: 4, b: \'ciao\', c: { d: 8, e: 9 }}],
+        output: {a: 4, b: \'ciao\', c: { d: 8, e: 9 }}
+      },
+      {
+        input: [{a: [4, function() { console.log(\'hi\') }, {a1: 0, a2: null}], b: \'ciao\', c: { d: 8, e: 9 }}],
+        could: '{a: [4, function() { console.log(\'hi\') }, {a1: 0, a2: null}], b: \'ciao\', c: { d: 8, e: 9 }}'
+      }
     ],
     assert: tester.assert.equal
   },
@@ -27,6 +62,10 @@ module.exports = {
     mode: tester.mode.SYNC,
     act: instance.getKeys,
     cases: [
+      {
+        input: [{a: () => { }, b: 1, c: \'ciao\'}],
+        output: [\'a\',\'b\',\'c\']
+      }
     ],
     assert: tester.assert.equal
   },
@@ -35,8 +74,12 @@ module.exports = {
     mode: tester.mode.SYNC,
     act: instance.inherits,
     cases: [
+      {
+        input: [{}, {f0: () => { }, p1: 1, p2: \'ciao\'}],
+        output: {f0: () => { }, p1: 1, p2: \'ciao\'}
+      }
     ],
-    assert: tester.assert.equal
+    assert: tester.assert.mutation
   },
   'object.empty': {
     describe: '',
@@ -54,49 +97,13 @@ module.exports = {
     ],
     assert: tester.assert.mutation
   },
-  '_f.flat': {
-    describe: '',
-    mode: tester.mode.SYNC,
-    act: instance.flat,
-    cases: [
-      {
-        input: [{ a: { a1: 1, a2: 2 }, b: 3 }],
-        output: { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
-      }
-    ],
-    assert: tester.assert.equal
-  },
-  'object.flat': {
-    describe: '',
-    mode: tester.mode.SYNC,
-    act: instance.flat,
-    cases: [
-      {
-        input: [{ a: { a1: 1, a2: 2 }, b: 3 }],
-        output: { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
-      }
-    ],
-    assert: tester.assert.equal
-  },
-  '_f.raise': {
-    describe: '',
-    mode: tester.mode.SYNC,
-    act: instance.raise,
-    cases: [
-      {
-        input: [{ 'a.a1': 1, 'a.a2': 2, 'b': 3 }],
-        output: { a: { a1: 1, a2: 2 }, b: 3 }
-      }
-    ],
-    assert: tester.assert.equal
-  },
   'object.raise': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.raise,
     cases: [
       {
-        input: [{ 'a.a1': 1, 'a.a2': 2, 'b': 3 }],
+        input: [{ \'a.a1\': 1, \'a.a2\': 2, \'b\': 3 }],
         output: { a: { a1: 1, a2: 2 }, b: 3 }
       }
     ],
@@ -108,7 +115,7 @@ module.exports = {
     act: instance.getByFlatKey,
     cases: [
       {
-        input: [{ a: { b: {c: 1} } }, 'a.b.c'],
+        input: [{ a: { b: {c: 1} } }, \'a.b.c\'],
         output: 1
       }
     ],
@@ -120,7 +127,7 @@ module.exports = {
     act: instance.setByFlatKey,
     cases: [
       {
-        input: [@test.case {}, 'a.b.c', 1],
+        input: [{}, \'a.b.c\', 1],
         output: { a: { b: {c: 1} } }
       }
     ],
