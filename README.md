@@ -760,8 +760,7 @@ v. 1.0.0
 
 ## TODO
 
-- [ ] unit test via tollo
-- [ ] pre-commit: ``npm test && npm run build``
+- [ ] object.walk test, doc
 - [ ] travis CI / node, browser
 - [ ] coverage badge / coverage 100%
 

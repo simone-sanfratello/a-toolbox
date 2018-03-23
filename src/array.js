@@ -161,6 +161,25 @@ const array = {
       return
     }
     array.push(item)
+  },
+
+  /**
+   * creates a new array with all sub-array elements concatted into it recursively up to the specified depth
+   * ~ proposal Array.prototype.flatten()
+   * @method tools.array.flat
+   * @param {Array<*>} array
+   * @test.case [0,[1,2],[3]] > [0,1,2,3]
+   */
+  flat: function (array) {
+    let _flat = []
+    array.map((i) => {
+      if (i instanceof Array) {
+        _flat = _flat.concat(array.flat(i))
+        return
+      }
+      _flat.push(i)
+    })
+    return _flat
   }
 
 }

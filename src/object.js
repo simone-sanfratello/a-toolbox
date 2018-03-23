@@ -3,34 +3,6 @@
  */
 const object = {
   /**
-   * flat keys in object
-   * @method tools.object.flat
-   * @param {Object} obj
-   * @return {Object}
-   * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
-   */
-  flat: function (obj) {
-    const _flat = {}
-    object._rflat(obj, '', _flat)
-    return _flat
-  },
-
-  _rflat: function (obj, base, flat) {
-    for (const key in obj) {
-      try {
-        // eslint-disable-next-line eqeqeq
-        if (obj[key].constructor == Object) {
-          object._rflat(obj[key], base + key + '.', flat)
-        } else {
-          flat[base + key] = obj[key]
-        }
-      } catch (e) {
-        flat[base + key] = obj[key]
-      }
-    }
-  },
-
-  /**
    * merge b into a
    * @method tools.object.merge
    * @param {Object} a
@@ -170,6 +142,52 @@ const object = {
     }
 
     return _raise
+  },
+
+  /**
+   * flat keys in object
+   * @method tools.object.flat
+   * @param {Object} obj
+   * @return {Object}
+   * @test.case { a: { a1: 1, a2: 2 }, b: 3 } > { 'a.a1': 1, 'a.a2': 2, 'b': 3 }
+   */
+  flat: function (obj) {
+    const _flat = {}
+    object._rflat(obj, '', _flat)
+    return _flat
+  },
+
+  _rflat: function (obj, base, flat) {
+    for (const key in obj) {
+      try {
+        // eslint-disable-next-line eqeqeq
+        if (obj[key].constructor == Object) {
+          object._rflat(obj[key], base + key + '.', flat)
+        } else {
+          flat[base + key] = obj[key]
+        }
+      } catch (e) {
+        flat[base + key] = obj[key]
+      }
+    }
+  },
+
+  /**
+   * walk object to path
+   * @method tools.object.walk
+   * @param {Object} obj
+   * @param {string} path
+   * @return {Object}
+   * @test.case { a: { a1: 1, a2: 2 }, b: 3 }, 'a.a1' > 1
+   * @test.case { a: { a1: { a2: 2 } }, b: 3 }, 'a.a1.a2' > 2
+   */
+  walk: function (obj, path) {
+    const _steps = path.split('.')
+    let _cursor = obj
+    for (const _step of _steps) {
+      _cursor = _cursor[_step]
+    }
+    return _cursor
   },
 
   /**

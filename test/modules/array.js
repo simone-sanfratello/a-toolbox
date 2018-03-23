@@ -229,5 +229,21 @@ module.exports = {
       }
     ],
     assert: tester.assert.mutation
+  },
+  'array.flat': {
+    describe: '',
+    mode: tester.mode.SYNC,
+    act: instance.flat,
+    cases: [
+      {
+        input: [0,[1,2],[3]],
+        output: [0,1,2,3]
+      },
+      {
+        input: [0,[1,2],[3,[4,5,[6,7]]]],
+        output: [0,1,2,3,4,5,6,7]
+      }
+    ],
+    assert: tester.assert.mutation
   }
 }
