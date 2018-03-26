@@ -234,6 +234,34 @@ tools.array.flat(a)
 // > [0,1,2,3]
 ````
 
+#### array.sortingInsert(array_, item)  
+- _array__ \<Array<*>\>  
+- _item_ \<*\>  
+insert an element in a sorted array, keeping sorted  
+
+_Example_
+
+````js
+let a = [0,1,2,10,11,20]
+tools.array.sortingInsert(a, 15)
+// > a = [0,1,2,10,11,15,20]
+````
+
+#### array.binaryIndexOf(array, item)  
+- _array_ \<Array<*>\>  
+- _item_ \<*\>  
+
+- _return:_ number index of element of -1
+like Array.indexOf but perform binary search (array should be sorted)  
+
+_Example_
+
+````js
+
+tools.array.binaryIndexOf([0,1,2,3], 0)
+// > 0
+````
+
 ---
 
 ### fs

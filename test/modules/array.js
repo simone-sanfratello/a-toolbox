@@ -8,8 +8,8 @@ module.exports = {
     act: instance.remove,
     cases: [
       {
-        input: [[\'js\',\'ruby\',\'python\'], \'ruby\'],
-        output: [\'js\',\'python\']
+        input: [['js','ruby','python'], 'ruby'],
+        output: ['js','python']
       },
       {
         input: [[1,2,3], 2],
@@ -100,11 +100,11 @@ module.exports = {
         output: null
       },
       {
-        input: [[0,1,\'0\',false], -2],
-        output: \'0\'
+        input: [[0,1,'0',false], -2],
+        output: '0'
       },
       {
-        input: [[undefined,\'0\',false], 0],
+        input: [[undefined,'0',false], 0],
         output: undefined
       },
       {
@@ -136,7 +136,7 @@ module.exports = {
         output: null
       },
       {
-        input: [[undefined,\'0\',false]],
+        input: [[undefined,'0',false]],
         output: undefined
       },
       {
@@ -168,20 +168,20 @@ module.exports = {
     act: instance.insert,
     cases: [
       {
-        input: [[\'john\', \'alice\', \'bob\'], 0, \'mary\'],
-        output: [\'mary\', \'john\', \'alice\', \'bob\']
+        input: [['john', 'alice', 'bob'], 0, 'mary'],
+        output: ['mary', 'john', 'alice', 'bob']
       },
       {
-        input: [[\'john\', \'alice\', \'bob\'], 1, \'mary\'],
-        output: [\'john\', \'mary\', \'alice\', \'bob\']
+        input: [['john', 'alice', 'bob'], 1, 'mary'],
+        output: ['john', 'mary', 'alice', 'bob']
       },
       {
-        input: [[\'john\', \'alice\', \'bob\'], -1, \'mary\'],
-        output: [\'john\', \'alice\', \'bob\', \'mary\']
+        input: [['john', 'alice', 'bob'], -1, 'mary'],
+        output: ['john', 'alice', 'bob', 'mary']
       },
       {
-        input: [[\'john\', \'alice\', \'bob\'], -2, \'mary\'],
-        output: [\'john\', \'alice\', \'mary\', \'bob\']
+        input: [['john', 'alice', 'bob'], -2, 'mary'],
+        output: ['john', 'alice', 'mary', 'bob']
       }
     ],
     assert: tester.assert.mutation
@@ -196,8 +196,8 @@ module.exports = {
         output: [0,1,2,3,4,5]
       },
       {
-        input: [[0, 1, 2, 3], [\'a\', \'b\', \'c\'], [{a: 2}]],
-        output: [0, 1, 2, 3, \'a\', \'b\', \'c\', {a: 2}]
+        input: [[0, 1, 2, 3], ['a', 'b', 'c'], [{a: 2}]],
+        output: [0, 1, 2, 3, 'a', 'b', 'c', {a: 2}]
       }
     ],
     assert: tester.assert.equal
@@ -236,14 +236,54 @@ module.exports = {
     act: instance.flat,
     cases: [
       {
-        input: [0,[1,2],[3]],
+        input: [[0,[1,2],[3]]],
         output: [0,1,2,3]
+      }
+    ],
+    assert: tester.assert.equal
+  },
+  'array.sortingInsert': {
+    describe: '',
+    mode: tester.mode.SYNC,
+    act: instance.sortingInsert,
+    cases: [
+      {
+        input: [[0,1,2,10,11,20], 15],
+        output: [0,1,2,10,11,15,20]
       },
       {
-        input: [0,[1,2],[3,[4,5,[6,7]]]],
-        output: [0,1,2,3,4,5,6,7]
+        input: [[0,1,2,10,11,20], 25],
+        output: [0,1,2,10,11,20,25]
+      },
+      {
+        input: [[0,1,2,10,11,20], 0],
+        output: [0,0,1,2,10,11,20]
+      },
+      {
+        input: [[1,2,10,11,20], 0],
+        output: [0,1,2,10,11,20]
       }
     ],
     assert: tester.assert.mutation
+  },
+  'array.binaryIndexOf': {
+    describe: '',
+    mode: tester.mode.SYNC,
+    act: instance.binaryIndexOf,
+    cases: [
+      {
+        input: [[0,1,2,3], 0],
+        output: 0
+      },
+      {
+        input: [[0,1,2,3,19,20,100], 19],
+        output: 4
+      },
+      {
+        input: [[0,1,2,3,19,20,100,999], 11],
+        output: -1
+      }
+    ],
+    assert: tester.assert.equal
   }
 }

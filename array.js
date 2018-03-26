@@ -167,19 +167,86 @@ const array = {
    * creates a new array with all sub-array elements concatted into it recursively up to the specified depth
    * ~ proposal Array.prototype.flatten()
    * @method tools.array.flat
-   * @param {Array<*>} array
+   * @param {Array<*>} array_
    * @test.case [0,[1,2],[3]] > [0,1,2,3]
    */
-  flat: function (array) {
+  flat: function (array_) {
     let _flat = []
-    array.map((i) => {
-      if (i instanceof Array) {
-        _flat = _flat.concat(array.flat(i))
+    for (let i = 0; i < array_.length; i++) {
+      const _e = array_[i]
+      if (_e instanceof Array) {
+        _flat = _flat.concat(array.flat(_e))
+      } else {
+        _flat.push(_e)
+      }
+    }
+    return _flat
+  },
+
+  /**
+   * insert an element in a sorted array, keeping sorted
+   * @method tools.array.sortingInsert
+   * @param {Array<*>} array_
+   * @param {*} item
+   * @test.case [0,1,2,10,11,20], 15 > &[0,1,2,10,11,15,20]
+   * @test.case [0,1,2,10,11,20], 25 > &[0,1,2,10,11,20,25]
+   * @test.case [0,1,2,10,11,20], 0 > &[0,0,1,2,10,11,20]
+   * @test.case [1,2,10,11,20], 0 > &[0,1,2,10,11,20]
+   */
+  sortingInsert: function (array_, item) {
+    let _end = array_.length - 1
+    let _start = 0
+    let i, _element
+
+    while (_start <= _end) {
+      i = (_start + _end) / 2 | 0
+      _element = array_[i]
+      if (_element < item) {
+        _start = i + 1
+      } else if (_element > item) {
+        _end = i - 1
+      } else {
+        array.insert(array_, i, item)
         return
       }
-      _flat.push(i)
-    })
-    return _flat
+    }
+
+    if (_end < array_.length - 1) {
+      array.insert(array_, _end + 1, item)
+    } else if (_start > 0) {
+      array.insert(array_, _start, item)
+    } else {
+      array_.push(item)
+    }
+  },
+
+  /**
+   * like Array.indexOf but perform binary search (array should be sorted)
+   * @method tools.array.binaryIndexOf
+   * @param {Array<*>} array
+   * @param {*} item
+   * @return {number} index of element of -1
+   * @test.case [0,1,2,3], 0 > 0
+   * @test.case [0,1,2,3,19,20,100], 19 > 4
+   * @test.case [0,1,2,3,19,20,100,999], 11 > -1
+   */
+  binaryIndexOf: function (array, item) {
+    let _end = array.length - 1
+    let _start = 0
+    let i, _element
+
+    while (_start <= _end) {
+      i = (_start + _end) / 2 | 0
+      _element = array[i]
+      if (_element < item) {
+        _start = i + 1
+      } else if (_element > item) {
+        _end = i - 1
+      } else {
+        return i
+      }
+    }
+    return -1
   }
 
 }
