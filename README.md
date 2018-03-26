@@ -218,6 +218,21 @@ tools.array.add(a, 3, true)
 // > a = [0,1,2,3]
 ````
 
+#### array.flat(array)    
+- _array_ \<Array<*>\>  
+- _return:_ Array\<*\> flatten array  
+  
+
+creates a new array with all sub-array elements concatted into it recursively up to the specified depth, as ``Array.prototype.flatten()``
+
+
+_Example_
+
+````js
+let a = [0,[1,2],[3]] >
+tools.array.flat(a)
+// > [0,1,2,3]
+````
 
 ---
 
