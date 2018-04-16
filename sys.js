@@ -9,7 +9,8 @@ const sys = {
    * @return {bool} is root or not
    */
   isRoot: function () {
-    return process.env.USER === 'root'
+    return process.env.USER === 'root' ||
+    (process.getuid && process.getuid() === 0)
   }
 }
 
