@@ -33,7 +33,7 @@
     "test": "standard && tap test/tdd.js",
     "test-cov": "standard && tap test/tdd.js --cov",
     "build": "gulp",
-    "clean": "gulp clean",
+    "clear": "gulp clear",
     "_doxdox": "mkdir -p doc/doxdox; doxdox './src/*.js' --layout markdown --output ./doc/README.md",
     "_jsdoc": "jsdoc -c doc/jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md src/*.js"
   },

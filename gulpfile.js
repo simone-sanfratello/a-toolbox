@@ -22,7 +22,7 @@ const _files = [
 
 const _nobrowser = ['sys', 'fs']
 
-gulp.task('clean', function () {
+gulp.task('clear', function () {
   return gulp.src(_files.map(f => `./${f}.js`).concat(['./index.js', './dist/*']))
     .pipe(clean({force: true}))
 })
