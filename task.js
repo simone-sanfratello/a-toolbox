@@ -14,11 +14,11 @@ const task = {
     const __tasks = []
 
     /**
-   * add task
-   * @method Tasks.todo
-   * @param {!string} id
-   * @test.case 'task#1'
-   */
+     * add task
+     * @method Worker.todo
+     * @param {!string} id
+     * @test.case 'task#1'
+     */
     this.todo = function (id) {
       if (options.chrono) {
         time.chrono.set(id)
@@ -28,7 +28,7 @@ const task = {
 
     /**
      * declare task it's done
-     * @method Tasks.todo
+     * @method Worker.done
      * @param {!string} id
      * @test.case 'task#1'
      */
