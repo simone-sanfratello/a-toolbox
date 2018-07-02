@@ -12,6 +12,7 @@ const _files = [
   'fs',
   'hash',
   'object',
+  'event',
   'random',
   'string',
   'sys',
