@@ -1,35 +1,18 @@
 /**
  * @namespace tools.event
-  https://nodejs.org/api/events.html
-  Event: 'newListener'
-  Event: 'removeListener'
-  EventEmitter.listenerCount(emitter, eventName)
-  EventEmitter.defaultMaxListeners
-  emitter.addListener(eventName, listener)
-  emitter.emit(eventName[, ...args])
-  emitter.eventNames()
-  emitter.getMaxListeners()
-  emitter.listenerCount(eventName)
-  emitter.listeners(eventName)
-  emitter.off(eventName, listener)
-  emitter.on(eventName, listener)
-  emitter.once(eventName, listener)
-  emitter.prependListener(eventName, listener)
-  emitter.prependOnceListener(eventName, listener)
-  emitter.removeAllListeners([eventName])
-  emitter.removeListener(eventName, listener)
-  emitter.setMaxListeners(n)
-  emitter.rawListeners(eventName)
  */
 const event = {
+  /**
+   * @class
+   */
   Emitter: function () {
     const __listners = {}
     const __onceListeners = {}
 
     /**
-   * @param {string} name event name
-   * @param {...*} args
-   */
+     * @param {string} name event name
+     * @param {...*} args
+     */
     const emit = function (name, ...args) {
       if (__listners[name]) {
         for (const _listener of __listners[name]) {
@@ -45,9 +28,9 @@ const event = {
     }
 
     /**
-   * @param {string} name event name
-   * @param {function} callback
-   */
+     * @param {string} name event name
+     * @param {function} callback
+     */
     const on = function (name, callback) {
       if (!__listners[name]) {
         __listners[name] = []
@@ -56,9 +39,9 @@ const event = {
     }
 
     /**
-   * @param {string} name event name
-   * @param {function} callback
-   */
+     * @param {string} name event name
+     * @param {function} callback
+     */
     const once = function (name, callback) {
       if (!__onceListeners[name]) {
         __onceListeners[name] = []
@@ -67,9 +50,9 @@ const event = {
     }
 
     /**
-   * @param {string} name event name
-   * @param {string} id listener id
-   */
+     * @param {string} name event name
+     * @param {string} id listener id
+     */
     const off = function (name, id) {
       delete __listners[name]
       delete __onceListeners[name]
