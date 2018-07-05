@@ -1,43 +1,28 @@
 /**
  * @namespace tools.event
-  https://nodejs.org/api/events.html
-  Event: 'newListener'
-  Event: 'removeListener'
-  EventEmitter.listenerCount(emitter, eventName)
-  EventEmitter.defaultMaxListeners
-  emitter.addListener(eventName, listener)
-  emitter.emit(eventName[, ...args])
-  emitter.eventNames()
-  emitter.getMaxListeners()
-  emitter.listenerCount(eventName)
-  emitter.listeners(eventName)
-  emitter.off(eventName, listener)
-  emitter.on(eventName, listener)
-  emitter.once(eventName, listener)
-  emitter.prependListener(eventName, listener)
-  emitter.prependOnceListener(eventName, listener)
-  emitter.removeAllListeners([eventName])
-  emitter.removeListener(eventName, listener)
-  emitter.setMaxListeners(n)
-  emitter.rawListeners(eventName)
  */
 const event = {
+  /**
+   * simple event emitter
+   * @class
+   */
   Emitter: function () {
     const __listners = {}
     const __onceListeners = {}
 
     /**
-   * @param {string} name event name
-   * @param {...*} args
-   */
-    const emit = function (name, ...args) {
+     * emit and event
+     * @param {string} name event name
+     * @param {...*} values values to pass to the event listener
+     */
+    const emit = function (name, ...values) {
       if (__listners[name]) {
         for (const _listener of __listners[name]) {
-          _listener.apply(null, args)
+          _listener.apply(null, values)
         }
         if (__onceListeners[name]) {
           for (const _listener of __onceListeners[name]) {
-            _listener.apply(null, args)
+            _listener.apply(null, values)
           }
           delete __onceListeners[name]
         }
@@ -45,9 +30,10 @@ const event = {
     }
 
     /**
-   * @param {string} name event name
-   * @param {function} callback
-   */
+     * listen to an event
+     * @param {string} name event name
+     * @param {function} callback
+     */
     const on = function (name, callback) {
       if (!__listners[name]) {
         __listners[name] = []
@@ -56,9 +42,10 @@ const event = {
     }
 
     /**
-   * @param {string} name event name
-   * @param {function} callback
-   */
+     * listen to an event only once
+     * @param {string} name event name
+     * @param {function} callback
+     */
     const once = function (name, callback) {
       if (!__onceListeners[name]) {
         __onceListeners[name] = []
@@ -67,10 +54,10 @@ const event = {
     }
 
     /**
-   * @param {string} name event name
-   * @param {string} id listener id
-   */
-    const off = function (name, id) {
+     * stop listening to an event
+     * @param {string} name event name
+     */
+    const off = function (name) {
       delete __listners[name]
       delete __onceListeners[name]
     }

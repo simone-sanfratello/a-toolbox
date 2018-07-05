@@ -3,6 +3,7 @@
  */
 const event = {
   /**
+   * simple event emitter
    * @class
    */
   Emitter: function () {
@@ -10,17 +11,18 @@ const event = {
     const __onceListeners = {}
 
     /**
+     * emit and event
      * @param {string} name event name
-     * @param {...*} args
+     * @param {...*} values values to pass to the event listener
      */
-    const emit = function (name, ...args) {
+    const emit = function (name, ...values) {
       if (__listners[name]) {
         for (const _listener of __listners[name]) {
-          _listener.apply(null, args)
+          _listener.apply(null, values)
         }
         if (__onceListeners[name]) {
           for (const _listener of __onceListeners[name]) {
-            _listener.apply(null, args)
+            _listener.apply(null, values)
           }
           delete __onceListeners[name]
         }
@@ -28,6 +30,7 @@ const event = {
     }
 
     /**
+     * listen to an event
      * @param {string} name event name
      * @param {function} callback
      */
@@ -39,6 +42,7 @@ const event = {
     }
 
     /**
+     * listen to an event only once
      * @param {string} name event name
      * @param {function} callback
      */
@@ -50,10 +54,10 @@ const event = {
     }
 
     /**
+     * stop listening to an event
      * @param {string} name event name
-     * @param {string} id listener id
      */
-    const off = function (name, id) {
+    const off = function (name) {
       delete __listners[name]
       delete __onceListeners[name]
     }

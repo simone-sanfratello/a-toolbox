@@ -67,6 +67,7 @@ console.log('template:', tools.string.template(str, data));
 - [sys](#sys)
 - [time](#time)
 - [task](#task)
+- [event](#event)
 
 ### array
 
@@ -733,7 +734,7 @@ clear timers (if you care about memory)
 
 ### task
 
-#### class Tasks(options, options.done)  
+#### class task.Worker(options)  
 - _options_ \<Object\>  
 - _options.done_ \<function\> callback when all tasks are completed 
 simple parallel tasks manager  
@@ -742,7 +743,7 @@ _Example_
 
 ````js
 
-const tasks = new tools.task.Worker({done: function() { console.log('well done') }})
+const tasks = new tools.task.Worker({done: () => { console.log('well done') }})
 
 const _asyncOperationTimeout = [500, 1000, 200, 1500, 100];
 
@@ -761,7 +762,7 @@ for (const i in _asyncOperationTimeout) {
 
 ````
 
-#### Tasks.todo()  
+#### Worker.todo()  
 
 add task  
 
@@ -773,7 +774,7 @@ tasks.todo('task#1')
 
 ````
 
-#### Tasks.done()  
+#### Worker.done()  
 
 declare task it's done  
 
@@ -787,7 +788,100 @@ tasks.todo('task#1')
 
 ---
 
+### event
+
+#### class event.Emitter()  
+simple event emitter  
+
+_Example_
+
+````js
+
+const emitter = new tools.event.Emitter()
+
+emitter.on('event#0', (value0, value1) => {
+  console.log('event #0 appened with', value0, value1)
+})
+
+emitter.once('event#0', (value0, value1) => {
+  console.log('event #0 appened (once) with', value0, value1)
+})
+
+emitter.emit('event#0', 1, 2)
+emitter.emit('event#0', 3, 4)
+
+emitter.off('event#0')
+
+````
+
+#### Emitter.emit(name, ...values)   
+- _name_ \<string\> event name  
+- _...values_ \<*\> values to pass to the event listener  
+
+emit and event  
+
+_Example_
+
+````js
+
+event.emit('event#0', 'a value', 99, {another: 'VALUE'})
+
+````
+
+#### Emitter.on(name, callback)   
+- _name_ \<string\> event name  
+- _callback_ \<function\> 
+
+listen to an event  
+
+_Example_
+
+````js
+
+emitter.on('event#0', (value0, value1) => {
+  console.log('event #0 appened (once) with', value0, value1)
+})
+
+````
+
+#### Emitter.once(name, callback)   
+- _name_ \<string\> event name  
+- _callback_ \<function\> 
+
+listen to an event only once  
+
+_Example_
+
+````js
+
+emitter.once('event#0', (value0, value1) => {
+  console.log('event #0 appened (once) with', value0, value1)
+})
+
+````
+
+#### Emitter.off(name)   
+- _name_ \<string\> event name  
+
+stop listening to an event  
+
+_Example_
+
+````js
+
+emitter.off('event#0')
+
+````
+
+---
+
+
+
 ## Changelog
+
+v. 1.5.0
+
+- add ``event.Emitter`` (simple event emitter, for browser)
 
 v. 1.2.0
 

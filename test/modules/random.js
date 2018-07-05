@@ -57,11 +57,11 @@ return result >= input[0] && result <= input[1]
     cases: [
       {
         input: [8],
-        could: '\'ajdsfchakwt\''
+        could: '"ajdsfchakwt"'
       },
       {
         input: [1, '1234567890'],
-        could: '\'9\''
+        could: '"9"'
       },
       {
         input: [0],
@@ -95,7 +95,7 @@ return true
     cases: [
       {
         input: [8],
-        could: '\'1bc956bf\''
+        could: '"1bc956bf"'
       },
       {
         input: [  16]
@@ -131,7 +131,7 @@ return true
     cases: [
       {
         input: [],
-        could: '\'1f8a690b7366a2323e2d5b045120da7e93896f471f8a690b731f8a690b739ab5\''
+        could: '"1f8a690b7366a2323e2d5b045120da7e93896f471f8a690b731f8a690b739ab5"'
       }
     ],
     assert:   async (result, input, output, sandbox) => {

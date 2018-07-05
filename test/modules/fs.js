@@ -8,15 +8,15 @@ module.exports = {
     act: instance.exists,
     cases: [
       {
-        input: [\'/tmp/file\'],
+        input: ['/tmp/file'],
         output: true
       },
       {
-        input: [\'/tmp/none\'],
+        input: ['/tmp/none'],
         output: false
       },
       {
-        input: [\'/tmp\'],
+        input: ['/tmp'],
         output: false
       }
     ],
@@ -35,11 +35,11 @@ return fs.touch('/tmp/file')
     act: instance.touch,
     cases: [
       {
-        input: [\'/tmp/touch-me\']
+        input: ['/tmp/touch-me']
       },
       {
-        input: [\'/none\'],
-        could: 'new Error(\'EACCES\''
+        input: ['/none'],
+        could: 'new Error("EACCES")'
       }
     ],
     assert: async (result, input, output, sandbox) => {
@@ -59,14 +59,14 @@ return fs.exists(input[0])
     act: instance.unlink,
     cases: [
       {
-        input: [\'/tmp/file\']
+        input: ['/tmp/file']
       },
       {
-        input: [\'/tmp/none\', false],
-        could: 'new Error(\'EACCES\''
+        input: ['/tmp/none', false],
+        could: 'new Error("EACCES")'
       },
       {
-        input: [\'/tmp/none\', true]
+        input: ['/tmp/none', true]
       }
     ],
     arrange: async function(input, sandbox) {
