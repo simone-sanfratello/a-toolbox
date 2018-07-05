@@ -1,7 +1,7 @@
 {
   "name": "a-toolbox",
   "version": "1.5.0",
-  "description": "javascript lightweight basic tools, isomorphic",
+  "description": "isomorphic javascript lightweight basic tools",
   "main": "index.js",
   "dependencies": {
     "hash.js": "^1.1.3"
