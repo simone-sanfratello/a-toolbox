@@ -11,7 +11,7 @@ const event = {
     const __onceListeners = {}
 
     /**
-     * emit and event
+     * emit an event
      * @param {string} name event name
      * @param {...*} values values to pass to the event listener
      */

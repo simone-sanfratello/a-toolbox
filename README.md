@@ -800,11 +800,11 @@ _Example_
 const emitter = new tools.event.Emitter()
 
 emitter.on('event#0', (value0, value1) => {
-  console.log('event #0 appened with', value0, value1)
+  console.log('event #0 happened with', value0, value1)
 })
 
 emitter.once('event#0', (value0, value1) => {
-  console.log('event #0 appened (once) with', value0, value1)
+  console.log('event #0 happened (once) with', value0, value1)
 })
 
 emitter.emit('event#0', 1, 2)
@@ -818,7 +818,7 @@ emitter.off('event#0')
 - _name_ \<string\> event name  
 - _...values_ \<*\> values to pass to the event listener  
 
-emit and event  
+emit an event  
 
 _Example_
 
@@ -839,7 +839,7 @@ _Example_
 ````js
 
 emitter.on('event#0', (value0, value1) => {
-  console.log('event #0 appened (once) with', value0, value1)
+  console.log('event #0 happened (once) with', value0, value1)
 })
 
 ````
@@ -855,7 +855,7 @@ _Example_
 ````js
 
 emitter.once('event#0', (value0, value1) => {
-  console.log('event #0 appened (once) with', value0, value1)
+  console.log('event #0 happened (once) with', value0, value1)
 })
 
 ````
