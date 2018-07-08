@@ -31,7 +31,7 @@ const task = {
     /**
      * add task
      * @method Worker.todo
-     * @param {!string} id
+     * @param {!string} id task identifier
      * @test.mode EVENT
      * @test.case 'task#1'
      */
@@ -45,7 +45,7 @@ const task = {
     /**
      * declare task done
      * @method Worker.done
-     * @param {!string} id
+     * @param {!string} id task identifier
      * @return {Object|null} if options.chrono is enabled, return elapsed time as {chrono: time ms}
      * @test.case 'task#1'
      */
