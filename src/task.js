@@ -8,7 +8,22 @@ const task = {
   /**
    * simple parallel tasks manager
    * @param {Object} options
+   * @param {bool} options.chrono measure time, default false
    * @param {function} options.done callback when all tasks are completed
+   * @example
+   * const tasks = new tools.task.Worker({done: () => { console.log('well done') }})
+   * const _asyncOperationTimeout = [500, 1000, 200, 1500, 100];
+   * for (const i in _asyncOperationTimeout) {
+   *   _tasks.todo('task#' + i);
+   * }
+   * for (const i in _asyncOperationTimeout) {
+   *   setTimeout(function (i) {
+   *     return function () {
+   *       console.log('done task #', i);
+   *       _tasks.done('task#' + i);
+   *     };
+   *   }(i), _asyncOperationTimeout[i]);
+   * }
    */
   Worker: function (options = {}) {
     const __tasks = []
@@ -16,7 +31,8 @@ const task = {
     /**
      * add task
      * @method Worker.todo
-     * @param {!string} id
+     * @param {!string} id task identifier
+     * @test.mode EVENT
      * @test.case 'task#1'
      */
     this.todo = function (id) {
@@ -27,9 +43,10 @@ const task = {
     }
 
     /**
-     * declare task it's done
+     * declare task done
      * @method Worker.done
-     * @param {!string} id
+     * @param {!string} id task identifier
+     * @return {Object|null} if options.chrono is enabled, return elapsed time as {chrono: time ms}
      * @test.case 'task#1'
      */
     this.done = function (id) {
