@@ -1,3 +1,6 @@
+const tools = {
+  array: require('./array')
+}
 /**
  * @namespace tools.object
  */
@@ -222,20 +225,31 @@ const object = {
    * {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }
    */
   setByFlatKey: function (obj, fkey, val) {
-    let _path = fkey.split('.')
+    console.log(fkey)
+    let _path = fkey
+      .split('.')
+      .map((path) => {
+        if (path.indexOf('[') === -1) {
+          return {t: '{}', s: path}
+        }
+        const _array = path.substr(0, path.length - 1).split('[')
+        return [{t: '{}', s: _array[0]}, {t: '[]', s: _array[1]}]
+      })
+    _path = tools.array.flat(_path)
     let _walk = obj
     for (let i = 0; i < _path.length; i++) {
-      if (!_walk[_path[i]]) {
-        // if it's the last step, add key as undefined
-        if (i === _path.length - 1) {
-          _walk[_path[i]] = undefined
-          return
-        }
-        _walk[_path[i]] = {}
+      let _step = _path[i]
+      if (i === _path.length - 1) {
+        _walk[_step.s] = val
+        return
       }
-      _walk = _walk[_path[i]]
+      if (!_walk[_step.s]) {
+        _walk[_step.s] = _step.t === '{}' ? {} : []
+      }
+      _walk = _walk[_step.s]
     }
     _walk = val
+    console.log(obj)
   }
 }
 
