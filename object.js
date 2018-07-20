@@ -223,6 +223,8 @@ const object = {
    * @param {*} val
    * @test.case
    * {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }
+   * {}, 'a', 2 > &{ a: 2 }
+   * {}, 'ann[0].b[1].cic', 1 > &{ ann: [{ b: [null, {cic: 1}] }] }
    */
   setByFlatKey: function (obj, fkey, val) {
     console.log(fkey)
@@ -233,7 +235,7 @@ const object = {
           return {t: '{}', s: path}
         }
         const _array = path.substr(0, path.length - 1).split('[')
-        return [{t: '{}', s: _array[0]}, {t: '[]', s: _array[1]}]
+        return [{t: '{}', s: _array[0]}, {t: '[]', s: parseInt(_array[1])}]
       })
     _path = tools.array.flat(_path)
     let _walk = obj
@@ -244,7 +246,7 @@ const object = {
         return
       }
       if (!_walk[_step.s]) {
-        _walk[_step.s] = _step.t === '{}' ? {} : []
+        _walk[_step.s] = _path[i + 1].t === '{}' ? {} : []
       }
       _walk = _walk[_step.s]
     }
