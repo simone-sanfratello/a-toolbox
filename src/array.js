@@ -164,7 +164,7 @@ const array = {
   },
 
   /**
-   * creates a new array with all sub-array elements concatted into it recursively up to the specified depth
+   * creates a new array with all sub-array elements concatted into it recursively
    * ~ proposal Array.prototype.flatten()
    * @method tools.array.flat
    * @param {Array<*>} array_

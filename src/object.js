@@ -52,8 +52,6 @@ const object = {
     if (_type === 'object' || _type === 'array') {
       if (obj instanceof Date) {
         return new Date(obj.getTime())
-      } else if (typeof window !== 'undefined') {
-        return obj
       } else {
         if (obj.clone) {
           return obj.clone()
