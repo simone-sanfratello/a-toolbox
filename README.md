@@ -224,7 +224,7 @@ tools.array.add(a, 3, true)
 - _return:_ Array\<*\> flatten array  
   
 
-creates a new array with all sub-array elements concatted into it recursively up to the specified depth, as ``Array.prototype.flatten()``
+creates a new array with all sub-array elements concatted into it recursively like ``Array.prototype.flatten()``
 
 
 _Example_
@@ -878,6 +878,10 @@ emitter.off('event#0')
 
 
 ## Changelog
+
+v. 1.5.1
+
+- ``object.setByFlatKey`` support also Array
 
 v. 1.5.0
 
