@@ -22,7 +22,7 @@
     "pre-commit": "^1",
     "standard": "^11",
     "tap": "^11",
-    "tollo": "0.0.3-dev",
+    "tollo": "0.0.5-dev",
     "vinyl-source-stream": "^1"
   },
   "pre-commit": [
