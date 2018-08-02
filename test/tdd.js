@@ -9,6 +9,7 @@ tollo.end = async function () {
   // console.log('end')
 }
 
+tollo.bulk(require('./modules/array.js'))
 tollo.bulk(require('./modules/fs.js'))
 
 tollo.run()

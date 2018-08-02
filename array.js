@@ -109,15 +109,15 @@ const array = {
    * @param {*} item
    * @test.case ['john', 'alice', 'bob'], 0, 'mary' > &['mary', 'john', 'alice', 'bob']
    * @test.case ['john', 'alice', 'bob'], 1, 'mary' > &['john', 'mary', 'alice', 'bob']
-   * @test.case ['john', 'alice', 'bob'], -1, 'mary' > &['john', 'alice', 'mary', 'bob']
-   * @test.case ['john', 'alice', 'bob'], -2, 'mary' > &['john', 'mary', 'alice', 'bob']
+   * @test.case ['john', 'alice', 'bob'], -1, 'mary' > &['john', 'alice', 'bob', 'mary']
+   * @test.case ['john', 'alice', 'bob'], -2, 'mary' > &['john', 'alice', 'mary', 'bob']
    */
   insert: function (array, index, item) {
     if (index > array.length) {
       index = array.length
     }
 
-    if (array.length > index) {
+    if (array[index]) {
       array.splice(index, 0, item)
     } else {
       array[index] = item
@@ -143,7 +143,7 @@ const array = {
    * @test.case [] > &[]
    */
   empty: function (array) {
-    while (array.length > 0) {
+    while (array[0]) {
       array.pop()
     }
   },

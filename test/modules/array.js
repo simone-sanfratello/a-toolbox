@@ -1,10 +1,10 @@
-const tester = require('tollo')
+const tollo = require('tollo')
 const instance = require('../../src/array.js')
 
 module.exports = {
   'array.remove': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.remove,
     cases: [
       {
@@ -20,11 +20,11 @@ module.exports = {
         output: [1,2]
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'array.removeAt': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.removeAt,
     cases: [
       {
@@ -44,11 +44,11 @@ module.exports = {
         output: [1,2,3]
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'array.last': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.last,
     cases: [
       {
@@ -79,7 +79,7 @@ module.exports = {
   },
   'array.at': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.at,
     cases: [
       {
@@ -114,7 +114,7 @@ module.exports = {
   },
   'array.first': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.first,
     cases: [
       {
@@ -145,7 +145,7 @@ module.exports = {
   },
   'array.contains': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.contains,
     cases: [
       {
@@ -160,7 +160,7 @@ module.exports = {
   },
   'array.insert': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.insert,
     cases: [
       {
@@ -173,18 +173,18 @@ module.exports = {
       },
       {
         input: [['john', 'alice', 'bob'], -1, 'mary'],
-        output: ['john', 'alice', 'bob', 'mary']
+        output: ['john', 'alice', 'mary', 'bob']
       },
       {
         input: [['john', 'alice', 'bob'], -2, 'mary'],
-        output: ['john', 'alice', 'mary', 'bob']
+        output: ['john', 'mary', 'alice', 'bob']
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'array.concat': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.concat,
     cases: [
       {
@@ -199,7 +199,7 @@ module.exports = {
   },
   'array.empty': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.empty,
     cases: [
       {
@@ -211,11 +211,11 @@ module.exports = {
         output: []
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'array.add': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.add,
     cases: [
       {
@@ -223,11 +223,11 @@ module.exports = {
         output: [0,1,2,3]
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'array.flat': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.flat,
     cases: [
       {
@@ -238,7 +238,7 @@ module.exports = {
   },
   'array.sortingInsert': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.sortingInsert,
     cases: [
       {
@@ -258,11 +258,11 @@ module.exports = {
         output: [0,1,2,10,11,20]
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'array.binaryIndexOf': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.binaryIndexOf,
     cases: [
       {
