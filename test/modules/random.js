@@ -1,10 +1,10 @@
-const tester = require('tollo')
+const tollo = require('tollo')
 const instance = require('../../src/random.js')
 
 module.exports = {
   'random.rnd': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.rnd,
     cases: [
       {
@@ -30,7 +30,7 @@ return result >= 0 && result <= input[0]
   },
   'random.number': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.number,
     cases: [
       {
@@ -52,7 +52,7 @@ return result >= input[0] && result <= input[1]
   },
   'random.string': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.string,
     cases: [
       {
@@ -90,7 +90,7 @@ return true
   },
   'random.hex': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.hex,
     cases: [
       {
@@ -126,7 +126,7 @@ return true
   },
   'random.hash': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.hash,
     cases: [
       {
@@ -140,7 +140,7 @@ return result.length === 64
   },
   'random.element': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.element,
     cases: [
       {

@@ -13,5 +13,6 @@ tollo.bulk(require('./modules/array.js'))
 tollo.bulk(require('./modules/fs.js'))
 tollo.bulk(require('./modules/object.js'))
 tollo.bulk(require('./modules/string.js'))
+tollo.bulk(require('./modules/hash.js'))
 
 tollo.run()

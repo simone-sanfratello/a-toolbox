@@ -1,10 +1,10 @@
-const tester = require('tollo')
+const tollo = require('tollo')
 const instance = require('../../src/hash.js')
 
 module.exports = {
   'hash.sha256': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.sha256,
     cases: [
       {
