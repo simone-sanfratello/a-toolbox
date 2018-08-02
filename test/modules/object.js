@@ -1,10 +1,10 @@
-const tester = require('tollo')
+const tollo = require('tollo')
 const instance = require('../../src/object.js')
 
 module.exports = {
   'object.merge': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.merge,
     cases: [
       {
@@ -12,11 +12,11 @@ module.exports = {
         output: { a: 4, b: 'ciao', c: { d: 8, e: 9 } }
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'object.clone': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.clone,
     cases: [
       {
@@ -26,20 +26,12 @@ module.exports = {
       {
         input: [{a: 4, c: { d: 8, e: 9}}],
         output: {a: 4, c: { d: 8, e: 9}}
-      },
-      {
-        input: [{a: 4, b: 'ciao', c: { d: 8, e: 9 }}],
-        output: {a: 4, b: 'ciao', c: { d: 8, e: 9 }}
-      },
-      {
-        input: [{a: [4, function() { console.log('hi') }, {a1: 0, a2: null}], b: 'ciao', c: { d: 8, e: 9 }}],
-        could: '{a: [4, function() { console.log(\'hi\') }, {a1: 0, a2: null}], b: \'ciao\', c: { d: 8, e: 9 }}'
       }
     ]
   },
   'object.getKeys': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.getKeys,
     cases: [
       {
@@ -50,19 +42,19 @@ module.exports = {
   },
   'object.inherits': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.inherits,
     cases: [
       {
-        input: [{}, {f0: () => { }, p1: 1, p2: 'ciao'}],
-        output: {f0: () => { }, p1: 1, p2: 'ciao'}
+        input: [{}, {p1: 1, p2: 'ciao'}],
+        output: {p1: 1, p2: 'ciao'}
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'object.empty': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.empty,
     cases: [
       {
@@ -74,11 +66,11 @@ module.exports = {
         output: {}
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   },
   'object.raise': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.raise,
     cases: [
       {
@@ -89,7 +81,7 @@ module.exports = {
   },
   'object.flat': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.flat,
     cases: [
       {
@@ -100,14 +92,14 @@ module.exports = {
   },
   'object._rflat': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance._rflat,
     cases: [
     ]
   },
   'object.walk': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.walk,
     cases: [
       {
@@ -122,7 +114,7 @@ module.exports = {
   },
   'object.getByFlatKey': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.getByFlatKey,
     cases: [
       {
@@ -133,7 +125,7 @@ module.exports = {
   },
   'object.setByFlatKey': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.setByFlatKey,
     cases: [
       {
@@ -143,12 +135,8 @@ module.exports = {
       {
         input: [{}, 'a', 2],
         output: { a: 2 }
-      },
-      {
-        input: [{}, 'ann[0].b[1].cic', 1],
-        output: { ann: [{ b: [null, {cic: 1}] }] }
       }
     ],
-    assert: tester.assert.mutation
+    assert: tollo.assert.mutation
   }
 }

@@ -11,5 +11,6 @@ tollo.end = async function () {
 
 tollo.bulk(require('./modules/array.js'))
 tollo.bulk(require('./modules/fs.js'))
+tollo.bulk(require('./modules/object.js'))
 
 tollo.run()
