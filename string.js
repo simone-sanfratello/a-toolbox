@@ -39,19 +39,30 @@ const string = {
    * @test.case ' trim,no,. : \n    ', [',','.',' ', ':', '\n'] > 'trim,no'
    * @test.case ' trim string naneno', ['na','ne','no', ' '] > 'trim string'
    * @test.case '({cut these silly brackets please)}', ['{', '}', '(', ')'] > 'cut these silly brackets please'
+   * @test.case 'multiple words <li>Aliquam</li> to trim', ['multiple', 'words', 'to', 'trim', ' '] > '<li>Aliquam</li>'
    * @test.case '<p><ul><li>Aliquam.</li></ul></p>', ['<p>', '</p>'] > '<ul><li>Aliquam.</li></ul>'
    */
   trim: function (str, cuts) {
     if (!cuts) {
       return str.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '')
     } else {
+      let _words
       const _cuts = cuts.map(c => {
+        if (c.length > 1) {
+          _words = true
+          return c
+        }
         if (c === '[' || c === ']') {
           return '\\' + c
         }
         return c
-      }).join()
-      return str.replace(new RegExp('^[' + _cuts + ']+|[' + _cuts + ']+$', 'gm'), '')
+      })
+      if (_words) {
+        const _subexpression = _cuts.join('|')
+        return str.replace(new RegExp('^(' + _subexpression + ')+|(' + _subexpression + ')+$', 'gm'), '')
+      }
+      const _subexpression = _cuts.join()
+      return str.replace(new RegExp('^[' + _subexpression + ']+|[' + _subexpression + ']+$', 'gm'), '')
     }
   },
 

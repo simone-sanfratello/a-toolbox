@@ -1,10 +1,10 @@
-const tester = require('tollo')
+const tollo = require('tollo')
 const instance = require('../../src/string.js')
 
 module.exports = {
   'string.template': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.template,
     cases: [
       {
@@ -31,7 +31,7 @@ module.exports = {
   },
   'string.trim': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.trim,
     cases: [
       {
@@ -51,6 +51,10 @@ module.exports = {
         output: 'cut these silly brackets please'
       },
       {
+        input: ['multiple words <li>Aliquam</li> to trim', ['multiple', 'words', 'to', 'trim', ' ']],
+        output: '<li>Aliquam</li>'
+      },
+      {
         input: ['<p><ul><li>Aliquam.</li></ul></p>', ['<p>', '</p>']],
         output: '<ul><li>Aliquam.</li></ul>'
       }
@@ -58,7 +62,7 @@ module.exports = {
   },
   'string.replaceAll': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.replaceAll,
     cases: [
       {
@@ -81,7 +85,7 @@ module.exports = {
   },
   'string.capitalize': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.capitalize,
     cases: [
       {
@@ -100,7 +104,7 @@ module.exports = {
   },
   'string.prependMissing': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.prependMissing,
     cases: [
       {
@@ -115,7 +119,7 @@ module.exports = {
   },
   'string.matchAll': {
     describe: '',
-    mode: tester.mode.SYNC,
+    mode: tollo.mode.SYNC,
     act: instance.matchAll,
     cases: [
     ]

@@ -42,10 +42,10 @@ const object = {
    * @method tools.object.clone
    * @param {Object|Array} obj The array or the object to clone
    * @return {Object|Array}
+   * @todo test.case {a: 4, b: 'ciao', c: { d: 8, e: 9 }} > {a: 4, b: 'ciao', c: { d: 8, e: 9 }}
+   * @todo test.case {a: [4, function() { console.log('hi') }, {a1: 0, a2: null}], b: 'ciao', c: { d: 8, e: 9 }} > {a: [4, function() { console.log('hi') }, {a1: 0, a2: null}], b: 'ciao', c: { d: 8, e: 9 }}
    * @test.case {a: 1, b: 'ciao'} > {a: 1, b: 'ciao'}
    * @test.case {a: 4, c: { d: 8, e: 9}} > {a: 4, c: { d: 8, e: 9}}
-   * @test.case {a: 4, b: 'ciao', c: { d: 8, e: 9 }} > {a: 4, b: 'ciao', c: { d: 8, e: 9 }}
-   * @test.case {a: [4, function() { console.log('hi') }, {a1: 0, a2: null}], b: 'ciao', c: { d: 8, e: 9 }} > {a: [4, function() { console.log('hi') }, {a1: 0, a2: null}], b: 'ciao', c: { d: 8, e: 9 }}
    */
   clone: function (obj) {
     if (obj === null || obj === undefined) {
@@ -91,14 +91,19 @@ const object = {
   },
 
   /**
-   * it use ``Object.getOwnPropertyNames`` to inherits child from parent, without prototype
+   * perform ``Object.assign`` if native or copy object using ``Object.getOwnPropertyNames`` to inherits child from parent, without prototype
    * @method tools.object.inherits
    * @todo check if both are objects
    * @param {Object} destination
    * @param {Object} source
-   * @test.case {}, {f0: () => { }, p1: 1, p2: 'ciao'} > &{f0: () => { }, p1: 1, p2: 'ciao'}
+   * @todo fix checkv isEqual test.case {}, {f0: () => { }, p1: 1, p2: 'ciao'} > &{f0: () => { }, p1: 1, p2: 'ciao'}
+   * @test.case {}, {p1: 1, p2: 'ciao'} > &{p1: 1, p2: 'ciao'}
    */
   inherits: function (destination, source) {
+    if (Object.assign) {
+      Object.assign(destination, source)
+      return
+    }
     Object.getOwnPropertyNames(source).forEach((property) => {
       destination[property] = source[property]
     })
@@ -219,9 +224,9 @@ const object = {
    * @param {Object} obj
    * @param {string} fkey
    * @param {*} val
+   * @todo checkv.isEqual fail test.case {}, 'ann[0].b[1].cic', 1 > &{ ann: [{ b: [null, {cic: 1}] }] }
    * @test.case {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }
    * @test.case {}, 'a', 2 > &{ a: 2 }
-   * @test.case {}, 'ann[0].b[1].cic', 1 > &{ ann: [{ b: [null, {cic: 1}] }] }
    */
   setByFlatKey: function (obj, fkey, val) {
     console.log(fkey)
