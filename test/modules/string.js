@@ -2,30 +2,6 @@ const tester = require('tollo')
 const instance = require('../../src/string.js')
 
 module.exports = {
-  'string.replaceAll': {
-    describe: '',
-    mode: tester.mode.SYNC,
-    act: instance.replaceAll,
-    cases: [
-      {
-        input: ['repeat repeat repeat', 'repeat', 'don\'t repeat'],
-        output: 'don\'t repeat don\'t repeat don\'t repeat'
-      },
-      {
-        input: ['abcadaeafaga', 'a', ''],
-        output: 'bcdefg'
-      },
-      {
-        input: ['112233445544', '4', '9'],
-        output: '112233995599'
-      },
-      {
-        input: ['no replace all in js native code that replace all the replace', ' ', '_'],
-        output: 'no_replace_all_in_js_native_code_that_replace_all_the_replace'
-      }
-    ],
-    assert: tester.assert.equal
-  },
   'string.template': {
     describe: '',
     mode: tester.mode.SYNC,
@@ -51,8 +27,7 @@ module.exports = {
         input: ['<div class="{color}">My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}', {name: 'Alice',year: 2014,color: 'purple'}],
         output: '<div class="purple">My name is Alice I was born in 2014 and my favourite color is purple</div>{nothing}'
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'string.trim': {
     describe: '',
@@ -74,9 +49,35 @@ module.exports = {
       {
         input: ['({cut these silly brackets please)}', ['{', '}', '(', ')']],
         output: 'cut these silly brackets please'
+      },
+      {
+        input: ['<p><ul><li>Aliquam.</li></ul></p>', ['<p>', '</p>']],
+        output: '<ul><li>Aliquam.</li></ul>'
       }
-    ],
-    assert: tester.assert.equal
+    ]
+  },
+  'string.replaceAll': {
+    describe: '',
+    mode: tester.mode.SYNC,
+    act: instance.replaceAll,
+    cases: [
+      {
+        input: ['abcadaeafaga', 'a', ''],
+        output: 'bcdefg'
+      },
+      {
+        input: ['112233445544', '4', '9'],
+        output: '112233995599'
+      },
+      {
+        input: ['repeat repeat repeat', 'repeat', 'don\'t repeat'],
+        output: 'don\'t repeat don\'t repeat don\'t repeat'
+      },
+      {
+        input: ['no replace all in js native code that replace all the replace', ' ', '_'],
+        output: 'no_replace_all_in_js_native_code_that_replace_all_the_replace'
+      }
+    ]
   },
   'string.capitalize': {
     describe: '',
@@ -95,8 +96,7 @@ module.exports = {
         input: ['alice-smith'],
         output: 'Alice-smith'
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'string.prependMissing': {
     describe: '',
@@ -111,15 +111,13 @@ module.exports = {
         input: ['miss ', 'miss Alice'],
         output: 'miss Alice'
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'string.matchAll': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.matchAll,
     cases: [
-    ],
-    assert: tester.assert.equal
+    ]
   }
 }

@@ -13,7 +13,7 @@ const fs = {}
  * @return {Promise.<boolean>} true if file exists - and it's a file
  * https://nodejs.org/api/fs.html#fs_fs_exists_path_callback
  * @test.arrange async function(input, sandbox) {
- *   const fs = require('a-toolbox').fs
+ *   const fs = require('../../src/fs')
  *   return fs.touch('/tmp/file')
  * }
  * @test.case '/tmp/file' > true
@@ -42,12 +42,12 @@ fs.exists = function (path) {
  * @param {number} [mode=0o666]
  * @return {Promise.<void>}
  * @test.case '/tmp/touch-me'
- * @test.case '/none' ! new Error('EACCES')
+ * @test.case '/none' ! new tollo.Error({code: 'EACCES'})
  * @test.assert async (result, input, output, sandbox) => {
- *   if(!await tester.assert.equal(result, input, output, sandbox)) {
- *     return false
+ *   if(result) {
+ *     return result.code === output.code
  *   }
- *   const fs = require('a-toolbox').fs
+ *   const fs = require('../../src/fs')
  *   return fs.exists(input[0])
  * }
  */
@@ -75,11 +75,11 @@ fs.touch = function (path, mode = 0o666) {
  * @param {boolean} [safe=true] if safe do not throw exception
  * @return {Promise.<void>}
  * @test.arrange async function(input, sandbox) {
- *   const fs = require('a-toolbox').fs
+ *   const fs = require('../../src/fs')
  *   return fs.touch('/tmp/file')
  * }
  * @test.case '/tmp/file'
- * @test.case '/tmp/none', false ! new Error('EACCES')
+ * @test.case '/tmp/none', false ! new tollo.Error({code: 'ENOENT'})
  * @test.case '/tmp/none', true
  */
 fs.unlink = function (path, safe) {

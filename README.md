@@ -5,7 +5,7 @@
 
 [![JS Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-javascript lightweight basic tools, isomorphic
+javascript lightweight basic tools for node.js and browser
 
 ## Purpose
 

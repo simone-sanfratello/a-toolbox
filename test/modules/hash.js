@@ -15,7 +15,6 @@ module.exports = {
         input: ['lorem ipsum %1283770tv8gv 6c6fgw ucthv iy'],
         output: '18d18c26ed98c0e88d9121132be48f42596e899ac50f15f854c9d0a82b9f2cb5'
       }
-    ],
-    assert: tester.assert.equal
+    ]
   }
 }

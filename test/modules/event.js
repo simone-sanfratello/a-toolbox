@@ -1,11 +1,11 @@
 const tester = require('tollo')
-const instance = require('../../src/sys.js')
+const instance = require('../../src/event.js')
 
 module.exports = {
-  'sys.isRoot': {
+  'event.Emitter': {
     describe: '',
     mode: tester.mode.SYNC,
-    act: instance.isRoot,
+    act: instance.Emitter,
     cases: [
     ]
   }

@@ -1,10 +1,10 @@
-const tester = require('tollo')
+const tollo = require('tollo')
 const instance = require('../../src/fs.js')
 
 module.exports = {
   'fs.exists': {
     describe: '',
-    mode: tester.mode.PROMISE,
+    mode: tollo.mode.PROMISE,
     act: instance.exists,
     cases: [
       {
@@ -20,33 +20,32 @@ module.exports = {
         output: false
       }
     ],
-    arrange: async function(input, sandbox) {
-const fs = require('a-toolbox').fs
+    arrange:   async function(input, sandbox) {
+const fs = require('../../src/fs')
 return fs.touch('/tmp/file')
 },
-    assert: tester.assert.equal,
     mocks: {
       path: 'filePath'
     }
   },
   'fs.touch': {
     describe: '',
-    mode: tester.mode.PROMISE,
+    mode: tollo.mode.PROMISE,
     act: instance.touch,
     cases: [
       {
-        input: ['/tmp/touch-me']
+        input: [  '/tmp/touch-me']
       },
       {
         input: ['/none'],
-        could: 'new Error("EACCES")'
+        throw: new tollo.Error({code: 'EACCES'})
       }
     ],
-    assert: async (result, input, output, sandbox) => {
-if(!await tester.assert.equal(result, input, output, sandbox)) {
-return false
+    assert:   async (result, input, output, sandbox) => {
+if(result) {
+return result.code === output.code
 }
-const fs = require('a-toolbox').fs
+const fs = require('../../src/fs')
 return fs.exists(input[0])
 },
     mocks: {
@@ -55,25 +54,24 @@ return fs.exists(input[0])
   },
   'fs.unlink': {
     describe: '',
-    mode: tester.mode.PROMISE,
+    mode: tollo.mode.PROMISE,
     act: instance.unlink,
     cases: [
       {
-        input: ['/tmp/file']
+        input: [  '/tmp/file']
       },
       {
         input: ['/tmp/none', false],
-        could: 'new Error("EACCES")'
+        throw: new tollo.Error({code: 'ENOENT'})
       },
       {
-        input: ['/tmp/none', true]
+        input: [  '/tmp/none', true]
       }
     ],
-    arrange: async function(input, sandbox) {
-const fs = require('a-toolbox').fs
+    arrange:   async function(input, sandbox) {
+const fs = require('../../src/fs')
 return fs.touch('/tmp/file')
 },
-    assert: tester.assert.equal,
     mocks: {
       path: 'filePath'
     }

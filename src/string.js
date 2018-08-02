@@ -39,6 +39,7 @@ const string = {
    * @test.case ' trim,no,. : \n    ', [',','.',' ', ':', '\n'] > 'trim,no'
    * @test.case ' trim string naneno', ['na','ne','no', ' '] > 'trim string'
    * @test.case '({cut these silly brackets please)}', ['{', '}', '(', ')'] > 'cut these silly brackets please'
+   * @test.case '<p><ul><li>Aliquam.</li></ul></p>', ['<p>', '</p>'] > '<ul><li>Aliquam.</li></ul>'
    */
   trim: function (str, cuts) {
     if (!cuts) {

@@ -219,10 +219,9 @@ const object = {
    * @param {Object} obj
    * @param {string} fkey
    * @param {*} val
-   * @test.case
-   * {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }
-   * {}, 'a', 2 > &{ a: 2 }
-   * {}, 'ann[0].b[1].cic', 1 > &{ ann: [{ b: [null, {cic: 1}] }] }
+   * @test.case {}, 'a.b.c', 1 > &{ a: { b: {c: 1} } }
+   * @test.case {}, 'a', 2 > &{ a: 2 }
+   * @test.case {}, 'ann[0].b[1].cic', 1 > &{ ann: [{ b: [null, {cic: 1}] }] }
    */
   setByFlatKey: function (obj, fkey, val) {
     console.log(fkey)

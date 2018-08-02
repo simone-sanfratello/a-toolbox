@@ -75,8 +75,7 @@ module.exports = {
         input: [[1, undefined]],
         output: undefined
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'array.at': {
     describe: '',
@@ -111,8 +110,7 @@ module.exports = {
         input: [[], 2],
         output: undefined
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'array.first': {
     describe: '',
@@ -143,8 +141,7 @@ module.exports = {
         input: [[]],
         output: undefined
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'array.contains': {
     describe: '',
@@ -159,8 +156,7 @@ module.exports = {
         input: [[1,2,3], 4],
         output: false
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'array.insert': {
     describe: '',
@@ -199,8 +195,7 @@ module.exports = {
         input: [[0, 1, 2, 3], ['a', 'b', 'c'], [{a: 2}]],
         output: [0, 1, 2, 3, 'a', 'b', 'c', {a: 2}]
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'array.empty': {
     describe: '',
@@ -239,8 +234,7 @@ module.exports = {
         input: [[0,[1,2],[3]]],
         output: [0,1,2,3]
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'array.sortingInsert': {
     describe: '',
@@ -283,7 +277,6 @@ module.exports = {
         input: [[0,1,2,3,19,20,100,999], 11],
         output: -1
       }
-    ],
-    assert: tester.assert.equal
+    ]
   }
 }

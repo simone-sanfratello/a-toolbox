@@ -10,8 +10,7 @@ module.exports = {
       {
         input: [  'query']
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'chrono.reset': {
     describe: '',
@@ -21,8 +20,7 @@ module.exports = {
       {
         input: [  'query']
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'chrono.clear': {
     describe: '',
@@ -32,8 +30,7 @@ module.exports = {
       {
         input: [  'query']
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'chrono.get': {
     describe: '',
@@ -44,15 +41,13 @@ module.exports = {
         input: ['query'],
         could: '11'
       }
-    ],
-    assert: tester.assert.equal
+    ]
   },
   'time.gc': {
     describe: '',
     mode: tester.mode.SYNC,
     act: instance.gc,
     cases: [
-    ],
-    assert: tester.assert.equal
+    ]
   }
 }

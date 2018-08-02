@@ -1,14 +1,14 @@
 
-const tester = require('tollo')
+const tollo = require('tollo')
 
-tester.start = async function () {
+tollo.start = async function () {
   // console.log('start')
 }
 
-tester.end = async function () {
+tollo.end = async function () {
   // console.log('end')
 }
 
-tester.bulk(require('./modules/object.js'))
+tollo.bulk(require('./modules/fs.js'))
 
-tester.run()
+tollo.run()
