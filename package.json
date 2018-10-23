@@ -1,6 +1,6 @@
 {
   "name": "a-toolbox",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "javascript lightweight basic tools for node.js and browser",
   "main": "index.js",
   "dependencies": {

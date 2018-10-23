@@ -881,6 +881,10 @@ emitter.off('event#0')
 
 v. 1.5.1
 
+- ``string.template`` support multi-level syntax object
+
+v. 1.5.1
+
 - ``object.setByFlatKey`` support also Array
 
 v. 1.5.0

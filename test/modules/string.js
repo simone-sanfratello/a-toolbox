@@ -24,6 +24,10 @@ module.exports = {
         output: `multiline one\n multiline`
       },
       {
+        input: [`multilevel {a.b.c}`, {a: {b: {c: 'works'}}}],
+        output: `multilevel works`
+      },
+      {
         input: ['<div class="{color}">My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}', {name: 'Alice',year: 2014,color: 'purple'}],
         output: '<div class="purple">My name is Alice I was born in 2014 and my favourite color is purple</div>{nothing}'
       }

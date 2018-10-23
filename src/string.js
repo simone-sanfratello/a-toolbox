@@ -1,10 +1,12 @@
+const tools = {
+  object: require('./object')
+}
 /**
  * @namespace tools.string
  */
 const string = {
   /**
    * replace placeholders inside graph brackets {} with obj dictionary
-   * ~ES6 template string without $
    * @method tools.string.template
    * @param {string} str
    * @param {Object} obj
@@ -17,13 +19,15 @@ const string = {
    * @test.case `multiline {1}\n multiline`, {1: 'one'} > `multiline one\n multiline`
    * @test.case '<div class="{color}">My name is {name} I was born in {year} and my favourite color is {color}</div>{nothing}', {name: 'Alice',year: 2014,color: 'purple'}
    * > '<div class="purple">My name is Alice I was born in 2014 and my favourite color is purple</div>{nothing}'
+   * @test.case 'multi-level {a.b.c}', {a: {b: { c: 'works'} > 'multi-level works'
    */
   template: function (str, obj, remove = false) {
     if (!str) {
       return ''
     }
+    const _obj = tools.object.flat(obj)
     return str.replace(/\{([\w.]+)\}/g, function (str, key) {
-      return obj[key] ? obj[key] : (remove ? '' : str)
+      return _obj[key] ? _obj[key] : (remove ? '' : str)
     })
   },
 
