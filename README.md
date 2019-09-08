@@ -270,7 +270,7 @@ note: not available on browser
 
 #### fs.exists(path)  
 - _path_ \<string\> file path 
-- _return:_ Promise.\<boolean\> true if file exists - and it's a file  
+- _return:_ Promise.\<boolean\> true if file or directory exists
 
 replace deprecated fs.exists  
 
