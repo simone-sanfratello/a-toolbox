@@ -126,6 +126,10 @@ module.exports = {
     mode: tollo.mode.SYNC,
     act: instance.matchAll,
     cases: [
+      {
+        input: ['one two three', /[\w]+/g],
+        output: [["one"],["two"],["three"]]
+      }
     ]
   }
 }
