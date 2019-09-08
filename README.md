@@ -879,6 +879,10 @@ emitter.off('event#0')
 
 ## Changelog
 
+v. 1.6.2
+
+- ``fs.exists`` return true on files and directories, instead of only files
+
 v. 1.5.1
 
 - ``string.template`` support multi-level syntax object
@@ -915,7 +919,7 @@ v. 1.0.0
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2018, [braces lab](https://braceslab.com)
+Copyright (c) 2015-2019, [braces lab](https://braceslab.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
