@@ -10,7 +10,7 @@ const fs = {}
  * replace deprecated fs.exists
  * @method tools.fs.exists
  * @param {string} path (filePath) file path
- * @return {Promise.<boolean>} true if file exists - and it's a file
+ * @return {Promise.<boolean>} true if file/folder exists
  * https://nodejs.org/api/fs.html#fs_fs_exists_path_callback
  * @test.arrange async function(input, sandbox) {
  *   const fs = require('../../src/fs')
@@ -26,7 +26,7 @@ fs.exists = function (path) {
       if (err || !stats) {
         resolve(false)
         return
-      } else if (stats.isFile()) {
+      } else if (stats.isFile() || stats.isDirectory()) {
         resolve(true)
         return
       }
