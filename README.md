@@ -269,7 +269,7 @@ tools.array.binaryIndexOf([0,1,2,3], 0)
 note: not available on browser
 
 #### fs.exists(path)  
-- _path_ \<string\> file path 
+- _path_ \<string\> path 
 - _return:_ Promise.\<boolean\> true if file or directory exists
 
 replace deprecated fs.exists  
@@ -279,6 +279,30 @@ _Example_
 ````js
 
 tools.fs.exists('/tmp/file')
+// > true
+````
+
+#### fs.isFile(path)  
+- _path_ \<string\> file path 
+- _return:_ Promise.\<boolean\> true if it exists and is a file
+
+_Example_
+
+````js
+
+tools.fs.isFile('/tmp/file')
+// > true
+````
+
+#### fs.isDirectory(path)  
+- _path_ \<string\> dir path 
+- _return:_ Promise.\<boolean\> true if it exists and is a dir
+
+_Example_
+
+````js
+
+tools.fs.isDirectory('/tmp')
 // > true
 ````
 
@@ -311,7 +335,6 @@ _Example_
 tools.fs.unlink('/tmp/file')
 
 ````
-
 
 ---
 
@@ -878,6 +901,10 @@ emitter.off('event#0')
 
 
 ## Changelog
+
+v. 1.7.1
+
+- add ``fs.isFile`` and ``fs.isDirectory``
 
 v. 1.6.2
 
