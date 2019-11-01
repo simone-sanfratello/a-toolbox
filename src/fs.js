@@ -9,8 +9,8 @@ const fs = {}
 /**
  * replace deprecated fs.exists
  * @method tools.fs.exists
- * @param {string} path (filePath) file path
- * @return {Promise.<boolean>} true if file exists
+ * @param {string} path path
+ * @return {Promise.<boolean>} true if file/folder exists
  */
 fs.exists = function (path) {
   return new Promise(function (resolve) {
@@ -18,7 +18,7 @@ fs.exists = function (path) {
       if (err || !stats) {
         resolve(false)
         return
-      } else if (stats.isFile()) {
+      } else if (stats.isFile() || stats.isDirectory()) {
         resolve(true)
         return
       }

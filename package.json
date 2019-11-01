@@ -1,13 +1,13 @@
 {
   "name": "a-toolbox",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "javascript lightweight basic tools for node.js and browser",
   "main": "index.js",
   "dependencies": {
-    "hash.js": "^1.1.5",
-    "tollo": "0.0.7-dev"
+    "hash.js": "^1.1.5"
   },
   "devDependencies": {
+    "natives": "^1.1.6",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
@@ -21,17 +21,14 @@
     "gulp-sourcemaps": "^2.6",
     "ink-docstrap": "^1",
     "pre-commit": "^1",
-    "standard": "^14.3.1",
+    "standard": "^11.0.1",
     "tap": "^12.0.1",
     "vinyl-source-stream": "^1"
   },
   "pre-commit": [
-    "test",
     "build"
   ],
   "scripts": {
-    "test": "standard && tap test/tdd.js",
-    "test-cov": "standard && tap test/tdd.js --cov",
     "build": "gulp",
     "clear": "gulp clear"
   },
