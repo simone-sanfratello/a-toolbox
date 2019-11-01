@@ -1,5 +1,4 @@
-module.exports = {
-  array: require('./array'),
+module.exports = {array: require('./array'),
   fs: require('./fs'),
   hash: require('./hash'),
   object: require('./object'),
@@ -9,5 +8,4 @@ module.exports = {
   sys: require('./sys'),
   task: require('./task'),
   time: require('./time'),
-  util: require('./util')
-}
+  util: require('./util')}
