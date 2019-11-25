@@ -454,7 +454,6 @@ restore flat object
 _Example_
 
 ````js
-
 tools.object.raise({ 'a.a1': 1, 'a.a2': 2, 'b': 3 })
 // > { a: { a1: 1, a2: 2 }, b: 3 }
 ````
@@ -472,6 +471,9 @@ _Example_
 
 tools.object.getByFlatKey({ a: { b: {c: 1} } }, 'a.b.c')
 // > 1
+
+tools.object.getByFlatKey({ a: { b: [{c: 1}] } }, 'a.b[0].c')
+// > 1
 ````
 
 #### object.setByFlatKey(obj, fkey, val)  
@@ -488,6 +490,10 @@ _Example_
 let a = {}
 tools.object.setByFlatKey(a, 'a.b.c', 1)
 // > a = { a: { b: {c: 1} } }
+
+let a = {}
+tools.object.setByFlatKey(a, 'a.b[0].c', 1)
+// > a = { a: { b: [{c: 1}] } }
 ````
 
 
@@ -902,6 +908,10 @@ emitter.off('event#0')
 
 ## Changelog
 
+v. 1.7.2
+
+- add ``object.getByFlatKey`` support also Array
+
 v. 1.7.1
 
 - add ``fs.isFile`` and ``fs.isDirectory``
@@ -936,6 +946,7 @@ v. 1.0.0
 
 ## TODO
 
+- [ ] string.caseCamel, string.casePascal
 - [ ] object.walk test, doc
 - [ ] travis CI / node, browser
 - [ ] coverage badge / coverage 100%

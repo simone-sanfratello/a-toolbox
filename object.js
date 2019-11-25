@@ -205,6 +205,7 @@ const object = {
    * @return {Object}
    * @test.case { a: { b: {c: 1} } }, 'a.b.c' > 1
    */
+  /*
   getByFlatKey: function (obj, fkey) {
     let _path = fkey.split('.')
     let _walk = obj
@@ -213,6 +214,31 @@ const object = {
         return undefined
       }
       _walk = _walk[_path[i]]
+    }
+    return _walk
+  },
+  */
+  getByFlatKey: function (obj, fkey) {
+    let _path = fkey
+      .split('.')
+      .map((path) => {
+        if (path.indexOf('[') === -1) {
+          return {t: '{}', s: path}
+        }
+        const _array = path.substr(0, path.length - 1).split('[')
+        return [{t: '{}', s: _array[0]}, {t: '[]', s: parseInt(_array[1])}]
+      })
+    _path = tools.array.flat(_path)
+    let _walk = obj
+    for (let i = 0; i < _path.length; i++) {
+      let _step = _path[i]
+      if (i === _path.length - 1) {
+        return _walk[_step.s]
+      }
+      if (!_walk[_step.s]) {
+        _walk[_step.s] = _path[i + 1].t === '{}' ? {} : []
+      }
+      _walk = _walk[_step.s]
     }
     return _walk
   },
@@ -229,7 +255,6 @@ const object = {
    * @test.case {}, 'a', 2 > &{ a: 2 }
    */
   setByFlatKey: function (obj, fkey, val) {
-    console.log(fkey)
     let _path = fkey
       .split('.')
       .map((path) => {
@@ -253,7 +278,6 @@ const object = {
       _walk = _walk[_step.s]
     }
     _walk = val
-    console.log(obj)
   }
 }
 
